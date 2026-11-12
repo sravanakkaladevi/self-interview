@@ -160,24 +160,31 @@ body.ready .line>span{transform:none;opacity:1}
 
 /* ---------- Header ---------- */
 .hdr{position:fixed;inset-inline:0;top:0;z-index:50;transition:background .35s ease,box-shadow .35s ease,opacity .35s ease,translate .45s var(--e-soft);--from:translateY(-14px);--d:150ms;--ease:var(--e-spring)}
-.hdr.stuck{background:var(--background);box-shadow:0 1px 0 rgba(var(--fg-rgb),.08)}
-.hdr.stuck .hdr__in{padding-block:.85rem}
+.hdr.stuck{background:color-mix(in srgb,var(--background) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(var(--fg-rgb),.08)}
+.hdr.stuck .hdr__in{padding-block:.75rem}
 .hdr.away{opacity:0;translate:0 -100%;pointer-events:none}
-.hdr__in{transition:padding .35s ease;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding-block:1.25rem}
-@media (min-width:640px){.hdr__in{padding-block:1.5rem}}
-.brand{display:flex;align-items:center;gap:.5rem;font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.hdr__in{max-width:min(100%,96rem);margin-inline:auto;width:100%;transition:padding .35s ease;display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;padding:1.1rem clamp(1.25rem,3vw,3rem)}
+@media (min-width:640px){.hdr__in{padding-block:1.25rem}}
+@media (min-width:1200px){.hdr__in{padding-right:clamp(4.5rem,5.5vw,6rem)}}
+.brand{display:flex;align-items:center;gap:.5rem;font-size:1.25rem;font-weight:700;letter-spacing:-.02em;flex:none}
 .brand svg{font-size:1.35rem;color:var(--gold)}
-.hdr nav{flex:1;min-width:0;display:flex;align-items:center;gap:2rem}
-.nav{display:none}
-@media (min-width:1200px){.nav{display:flex;gap:1.35rem;font-size:.9375rem;white-space:nowrap}.menu-btn{display:none}}
-@media (max-width:1199.98px){.hdr nav{display:none}.hdr__right{flex:1;justify-content:space-between}}
-.nav button{display:block;font-weight:500}
-.nav button>span{display:inline-flex;align-items:center;gap:.25rem;opacity:.82}
-.hdr__right{display:flex;align-items:center;gap:.75rem}
+.hdr__nav{display:none;flex:1;justify-content:center;min-width:0}
+.nav{display:flex;align-items:center;gap:.25rem;padding:.3rem;border-radius:9999px;border:1px solid var(--chip-line);background:var(--chip-bg);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:.875rem;white-space:nowrap}
+@media (min-width:1200px){.hdr__nav{display:flex}.menu-btn{display:none}}
+.nav li{display:flex;align-items:center}
+.nav button{display:inline-flex;align-items:center;justify-content:center;padding:.45rem .85rem;border-radius:9999px;font-weight:550;line-height:1;transition:background .2s,color .2s}
+.nav button:hover{background:rgba(var(--fg-rgb),.07)}
+.nav button>span{display:inline-flex;align-items:center;gap:.25rem;opacity:.86}
+.nav button:hover>span{opacity:1}
+.hdr__right{display:flex;align-items:center;gap:.65rem;flex:none}
+.hdr__cta{display:none;align-items:center;gap:.45rem;min-height:40px;padding:.5rem 1.05rem;border-radius:9999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.8125rem;font-weight:700;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(26,143,87,.55);transition:transform .2s var(--e-soft),filter .2s}
+.hdr__cta:hover{transform:translateY(-1px);filter:brightness(1.06)}
+@media (min-width:1200px){.hdr__cta{display:inline-flex}}
 .chip{border:1px solid var(--chip-line);background:var(--chip-bg);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border-radius:var(--radius-control)}
-.clock{display:flex;flex:none;white-space:nowrap;align-items:center;gap:.65rem;padding:.55rem .85rem;font-size:.8125rem;color:rgba(var(--fg-rgb),.7)}
-@media (max-width:767.98px){.clock{gap:.45rem;padding:.5rem .75rem;font-size:.78rem}.clock__date,.clock__sep{display:none}}
-@media (max-width:1199.98px){.menu-btn{order:-1}}
+.clock{display:flex;flex:none;white-space:nowrap;align-items:center;gap:.55rem;padding:.5rem .85rem;min-height:40px;font-size:.8125rem;color:rgba(var(--fg-rgb),.7)}
+@media (max-width:767.98px){.clock{gap:.45rem;padding:.45rem .7rem;font-size:.78rem}.clock__date,.clock__sep{display:none}}
+@media (max-width:1199.98px){.menu-btn{order:1}.clock{display:none}}
+@media (min-width:640px) and (max-width:1199.98px){.clock{display:flex}}
 .clock__lbl{color:rgba(var(--fg-rgb),.66)}
 .clock__time{font-weight:600;color:var(--foreground)}
 .clock__sep{color:rgba(var(--fg-rgb),.3)}
@@ -308,11 +315,20 @@ html[data-mode="dark"] .hero::before{opacity:1}
 .doors__tex{position:absolute;inset:0;pointer-events:none;opacity:.35;background:radial-gradient(rgba(var(--fg-rgb),.05) 1px,transparent 1.2px);background-size:1.2rem 1.2rem}
 .doors__pin{position:relative;z-index:1}
 .doors__wall{position:relative;display:flex;flex-direction:column;align-items:center}
-.paint{align-self:flex-start;margin:0 0 2.75rem;font-size:2.4rem;font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--paint);max-width:14ch;clip-path:inset(-20% -6% -30% -6%)}
+.paint{align-self:flex-start;margin:0 0 1.25rem;font-size:2.4rem;font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--paint);max-width:14ch;clip-path:inset(-20% -6% -30% -6%)}
 @media (min-width:640px){.paint{font-size:3.5rem;max-width:none}}
 @media (min-width:1024px){.paint{font-size:4.25rem}}
 .doors.pre .paint{clip-path:inset(-20% 100% -30% -6%)}
 .doors.in .paint{transition:clip-path 1.5s cubic-bezier(.65,0,.25,1) .1s}
+.doors__bar{align-self:stretch;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;margin:0 0 2.25rem;z-index:2}
+.doors__pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.doors__pill{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:.45rem .95rem;border-radius:9999px;border:1px solid var(--line);background:var(--chip-bg);color:var(--foreground);font-size:.8125rem;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:transform .2s var(--e-soft),background .2s,border-color .2s,color .2s,box-shadow .2s}
+.doors__pill i{font-style:normal;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.7rem;font-weight:700;opacity:.65}
+.doors__pill:hover,.doors__pill.on{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(6,10,36,.45)}
+html[data-mode="dark"] .doors__pill:hover,html[data-mode="dark"] .doors__pill.on{background:#1BD0FA;border-color:#1BD0FA;color:#060A24}
+.doors__pill.on i,.doors__pill:hover i{opacity:.9}
+.doors__cue{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+@media (max-width:639.98px){.doors__bar{display:none}}
 .doors__row{--gap:1.5rem;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:end;width:100%;transition:transform .8s cubic-bezier(.65,0,.35,1)}
 @media (min-width:1024px){.doors__row{--gap:3rem}}
 .doors__row::after{content:"";position:absolute;left:-50vw;right:-50vw;bottom:0;height:1.5rem;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.55) 1px,rgba(0,0,0,.06) 2px,transparent 4px,transparent 7px,rgba(0,0,0,.05) 8px,rgba(255,255,255,.25) 9px,transparent 11px,rgba(0,0,0,.08) 100%),var(--base);box-shadow:0 -1px 0 rgba(0,0,0,.07),0 -.5rem .9rem -.45rem rgba(0,0,0,.16)}
@@ -321,18 +337,22 @@ html[data-mode="dark"] .doors__row::after{background:linear-gradient(180deg,rgba
 .unit .doorway{transition:opacity .5s var(--e-soft),filter .5s var(--e-soft)}
 .doors.focus .unit:not(.on) .doorway{opacity:.06;filter:saturate(.2)}
 .doors.focus .unit:not(.on)::before{opacity:0}
-.dinfo{position:absolute;z-index:3;pointer-events:none;opacity:0;transform:translateY(.6rem);transition:opacity .35s ease,transform .5s var(--e-soft);max-width:30rem}
+.dinfo{position:absolute;z-index:3;pointer-events:none;opacity:0;transform:translateY(.6rem);transition:opacity .35s ease,transform .5s var(--e-soft);max-width:30rem;padding:1.2rem 1.3rem;border-radius:1.25rem;background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--line);box-shadow:0 20px 44px -18px rgba(6,10,36,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+html[data-mode="dark"] .dinfo{box-shadow:0 24px 50px -18px rgba(0,0,0,.65)}
 .dinfo.on{opacity:1;transform:none;transition:opacity .45s ease .08s,transform .6s var(--e-soft) .08s}
-.dinfo__h{font-size:1.85rem;font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--foreground);margin:0 0 .45rem}
-.dinfo__t{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
-.dinfo__p{display:flex;flex-direction:column;gap:.5rem;list-style:none;margin:0;padding:0;font-size:.97rem;font-weight:450;line-height:1.35;color:var(--foreground)}
-.dinfo__p li{display:flex;align-items:center;gap:.65rem}
-.dinfo__p li::before{content:"";flex:none;width:1rem;height:1rem;border-radius:50%;border:1.5px solid var(--text-muted);background:var(--text-muted) center/.6rem no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5'/%3E%3C/svg%3E")}
-html[data-mode="dark"] .dinfo__p li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%231A1818' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5'/%3E%3C/svg%3E")}
+.dinfo__eyebrow{display:inline-flex;align-items:center;gap:.45rem;margin-bottom:.45rem;padding:.2rem .6rem;border-radius:9999px;background:var(--live-soft);color:var(--live);font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dinfo__h{font-size:1.65rem;font-weight:750;line-height:1.08;letter-spacing:-.025em;color:var(--foreground);margin:0 0 .35rem}
+.dinfo__t{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.85rem}
+.dinfo__p{display:flex;flex-direction:column;gap:.45rem;list-style:none;margin:0;padding:0;font-size:.92rem;font-weight:450;line-height:1.35;color:var(--foreground)}
+.dinfo__p li{display:flex;align-items:center;gap:.6rem}
+.dinfo__p li::before{content:"";flex:none;width:1rem;height:1rem;border-radius:50%;border:1.5px solid var(--live);background:var(--live) center/.6rem no-repeat;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 6.2 5 8.5 9.5 3.5'/%3E%3C/svg%3E")}
+.dinfo__hint{margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.75rem;font-weight:600;color:var(--text-muted)}
+.dinfo__hint strong{color:var(--foreground)}
+.dinfo__cta{display:none}
 .dinfo.on li{animation:liIn .5s var(--e-soft) backwards}
 .dinfo.on li:nth-child(2){animation-delay:.05s}.dinfo.on li:nth-child(3){animation-delay:.1s}.dinfo.on li:nth-child(4){animation-delay:.15s}.dinfo.on li:nth-child(5){animation-delay:.2s}
 @keyframes liIn{from{opacity:0;transform:translateX(-.5rem)}}
-@media (hover:hover) and (pointer:fine){.dinfo{max-width:22rem}}
+@media (hover:hover) and (pointer:fine){.dinfo{max-width:23.5rem}}
 
 .unit{position:relative;container-type:inline-size;width:100%;max-width:min(17.5rem,calc((100svh - 19.5rem) / 2.25));justify-self:center;transition:opacity .9s var(--e-soft),transform 1.1s var(--e-soft);transition-delay:calc(var(--i) * 110ms + .35s)}
 .doors.pre .unit{opacity:0;transform:translateY(1.5rem)}
@@ -346,7 +366,14 @@ html[data-mode="dark"] .casing::before{box-shadow:inset 0 .5cqi 0 rgba(255,255,2
 .casing::after{content:"";position:absolute;left:4.6cqi;right:4.6cqi;top:4.6cqi;bottom:0;border-radius:45.4cqi 45.4cqi 0 0;border:.45cqi solid rgba(0,0,0,.07);border-bottom:0}
 html[data-mode="dark"] .casing::after{border-color:rgba(255,255,255,.05)}
 .opening{position:absolute;left:7.5cqi;right:7.5cqi;top:7.5cqi;bottom:0;perspective:160cqi;perspective-origin:50% 42%}
-.room{position:absolute;inset:0;overflow:hidden;border-radius:42.5cqi 42.5cqi 0 0;background:var(--room);box-shadow:inset 2cqi 0 4cqi var(--room-sh),inset 0 2cqi 4cqi var(--room-sh)}
+.room{position:absolute;inset:0;overflow:hidden;border-radius:42.5cqi 42.5cqi 0 0;background:radial-gradient(90% 60% at 50% 25%,rgba(59,130,246,.14),transparent 70%),var(--room);box-shadow:inset 2cqi 0 4cqi var(--room-sh),inset 0 2cqi 4cqi var(--room-sh);display:flex;align-items:center;justify-content:center;padding:18cqi 8cqi 14cqi}
+.room__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4cqi;opacity:.25;transform:scale(.94);transition:opacity .45s var(--e-soft),transform .5s var(--e-soft)}
+.unit.on .room__in,.unit.press .room__in{opacity:1;transform:scale(1)}
+.room__tag{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:4.2cqi;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1.8cqi 3.8cqi;border-radius:999px;background:var(--live-soft);color:var(--live);border:1px solid color-mix(in srgb,var(--live) 28%,transparent)}
+.room__stat{font-size:11.5cqi;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--foreground)}
+.room__cap{font-size:4.4cqi;font-weight:600;line-height:1.25;color:var(--text-muted);max-width:14ch}
+.room__go{margin-top:2cqi;font-size:4.1cqi;font-weight:700;color:var(--brand-blue)}
+.door__num{position:absolute;left:50%;top:15.5%;translate:-50% -50%;z-index:1;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:4.6cqi;font-weight:700;letter-spacing:.16em;color:rgba(245,228,180,.72);text-shadow:0 .2cqi .4cqi rgba(0,0,0,.45)}
 .room::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s var(--e-soft);box-shadow:inset 0 0 5cqi var(--rim),inset 0 0 1.2cqi var(--rim)}
 .door{--dc:var(--door);position:absolute;inset:0;transform-origin:0 50%;transform:rotateY(0deg);will-change:transform;border-radius:42.5cqi 42.5cqi 0 0;background:linear-gradient(100deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 30%,rgba(0,0,0,.18) 100%),var(--dc);box-shadow:inset 0 0 0 .3cqi rgba(0,0,0,.28),inset .6cqi 0 0 rgba(255,255,255,.05);transform-style:preserve-3d;transition:box-shadow .5s var(--e-soft)}
 html[data-mode="dark"] .door{--dc:var(--door-dk,var(--door))}
@@ -376,10 +403,12 @@ html[data-mode="dark"] .door{--dc:var(--door-dk,var(--door))}
   .doors__row::after{left:0;right:auto;width:700vw}
   .unit{flex:0 0 var(--uw);max-width:none}
   .unit::before{display:none}
-  .dinfo{position:relative;left:auto!important;top:auto!important;width:auto!important;max-width:100%;margin:.9rem 0 0;padding-top:1rem;border-top:1px solid rgba(var(--fg-rgb),.1);text-align:left;min-height:10.5rem;opacity:1;transform:none}
-  .dinfo .dinfo__h{font-size:1.45rem;line-height:1.1;margin-bottom:.35rem}
-  .dinfo .dinfo__t{margin-bottom:.75rem;font-size:.65rem;letter-spacing:.08em;line-height:1.4}
-  .dinfo .dinfo__p{font-size:.875rem;line-height:1.35;gap:.45rem}
+  .dinfo{position:relative;left:auto!important;top:auto!important;width:auto!important;max-width:100%;margin:.65rem 0 0;padding:1rem 1.1rem;text-align:left;min-height:9.5rem;opacity:1;transform:none;pointer-events:auto;box-shadow:0 12px 30px -16px rgba(6,10,36,.18)}
+  .dinfo .dinfo__h{font-size:1.35rem;line-height:1.12;margin-bottom:.25rem}
+  .dinfo .dinfo__t{margin-bottom:.6rem;font-size:.68rem;letter-spacing:.05em;line-height:1.35}
+  .dinfo .dinfo__p{font-size:.85rem;line-height:1.35;gap:.4rem}
+  .dinfo__hint{display:none}
+  .dinfo__cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.75rem;padding:.55rem 1rem;min-height:40px;border-radius:9999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.8125rem;font-weight:700;cursor:pointer}
   .doors__dots{display:flex;gap:.4rem;margin:.25rem 0 0}
   .doors.compact .dinfo__p{display:none}
   .doors.compact .dinfo{min-height:0}
@@ -548,8 +577,47 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .enq-status a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- Detail Modal (#projectModal) ---------- */
-.dmodal{display:none;position:fixed;inset:0;z-index:112;background:var(--scrim);backdrop-filter:blur(6px);padding:16px;align-items:center;justify-content:center}
-.dmodal__panel{background:var(--panel);color:var(--foreground);border-radius:24px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--line);position:relative;box-shadow:0 25px 50px -12px rgba(0,0,0,.35);padding:28px}
+.dmodal{display:none;position:fixed;inset:0;z-index:112;background:var(--scrim);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:16px;align-items:center;justify-content:center}
+.dmodal__panel{--svc-accent:#3B82F6;background:var(--panel);color:var(--foreground);border-radius:26px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--line);position:relative;box-shadow:0 32px 70px -18px rgba(6,10,36,.42);padding:0}
+.dmodal__accent{height:4px;width:100%;background:var(--brand-grad);border-radius:26px 26px 0 0}
+.dmodal__hero{padding:24px 26px 20px;background:linear-gradient(155deg,color-mix(in srgb,var(--svc-accent) 11%,var(--panel-2)) 0%,var(--panel) 88%);border-bottom:1px solid var(--line);position:relative}
+.dmodal__toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-right:44px;margin-bottom:14px;flex-wrap:wrap}
+.dmodal__badges{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dmodal__head{display:flex;align-items:flex-start;gap:14px}
+.dmodal__icon{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--svc-accent) 14%,var(--panel));border:1px solid color-mix(in srgb,var(--svc-accent) 32%,var(--line));color:var(--svc-accent);box-shadow:0 10px 24px -12px color-mix(in srgb,var(--svc-accent) 55%,transparent)}
+.dmodal__icon svg{width:22px;height:22px}
+.dmodal__meta{font-size:11px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-weight:700}
+.dmodal__title{font-size:clamp(22px,3vw,28px);font-weight:800;line-height:1.15;letter-spacing:-.025em;margin:0 0 4px}
+.dmodal__sub{font-size:14px;color:var(--text-muted);margin:0;font-weight:500}
+.dmodal__desc{margin-top:14px;font-size:14.5px;line-height:1.62;color:var(--foreground)}
+.dmodal__body{padding:20px 26px 24px;display:flex;flex-direction:column;gap:16px}
+.dmodal__kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.dmodal__kpis{grid-template-columns:1fr}.dmodal__hero{padding:20px 18px 16px}.dmodal__body{padding:16px 18px 20px}}
+.dmodal__kpi{padding:12px 13px;border-radius:14px;background:var(--panel-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.dmodal__kpi b{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--foreground);font-variant-numeric:tabular-nums}
+.dmodal__kpi span{font-size:11px;font-weight:600;color:var(--text-muted);line-height:1.3}
+.dmodal__box{padding:16px;border-radius:18px;background:var(--panel-2);border:1px solid var(--line)}
+.dmodal__boxtitle{font-size:11px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dmodal__boxtitle em{font-style:normal;color:var(--live);font-weight:700}
+.dmodal__delivs{display:grid;grid-template-columns:1fr;gap:9px;font-size:13.5px}
+@media (min-width:560px){.dmodal__delivs{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.dmodal__deliv{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border-radius:12px;background:var(--panel);border:1px solid var(--line);line-height:1.4}
+.dmodal__chk{width:20px;height:20px;flex:none;border-radius:50%;background:var(--live-soft);color:var(--live);display:grid;place-items:center;font-size:11px;font-weight:900;margin-top:1px}
+.dmodal__fit{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 14px;border-radius:14px;background:var(--live-soft);border:1px solid color-mix(in srgb,var(--live) 28%,transparent);font-size:12.5px;line-height:1.45;color:var(--foreground)}
+.dmodal__fit strong{color:var(--live)}
+.dmodal__switcher{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.dmodal__navbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9999px;background:var(--panel);border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--foreground);cursor:pointer;transition:transform .15s,border-color .15s}
+.dmodal__navbtn:hover{border-color:var(--foreground);transform:translateY(-1px)}
+.dmodal__dots{display:flex;align-items:center;gap:6px}
+.dmodal__dot{width:26px;height:26px;border-radius:9999px;border:1px solid var(--line);background:var(--panel);color:var(--text-muted);font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;cursor:pointer;display:grid;place-items:center;transition:all .15s}
+.dmodal__dot.on{background:var(--ink);border-color:var(--ink);color:#fff}
+html[data-mode="dark"] .dmodal__dot.on{background:#1BD0FA;border-color:#1BD0FA;color:#060A24}
+.dmodal__foot{padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.dmodal__wa{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:9999px;border:1px solid color-mix(in srgb,var(--live) 45%,var(--line));background:var(--panel);color:var(--foreground);font-size:13.5px;font-weight:700;transition:background .2s,border-color .2s,transform .2s}
+.dmodal__wa:hover{background:var(--live-soft);border-color:var(--live);transform:translateY(-1px)}
+.dmodal__wa svg{width:16px;height:16px;color:var(--live)}
+@keyframes enqPulse{0%{box-shadow:0 0 0 0 rgba(26,143,87,.55)}100%{box-shadow:0 0 0 12px rgba(26,143,87,0)}}
+.enq-checks.pulse{border-color:var(--live);animation:enqPulse .9s ease-out 2}
 
 /* ---------- Nav Overlay & Request Modal ---------- */
 .navm{position:fixed;inset:0;z-index:115;display:flex;flex-direction:column;background:var(--ink);color:#fff;opacity:0;transition:opacity .45s var(--e-spring)}
@@ -692,23 +760,23 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 
 <!-- ============ Header ============ -->
 <header class="hdr rv">
-  <div class="shell hdr__in">
-    <nav aria-label="Primary">
-      <button class="brand gm-brand" data-go="home" aria-label="Growmetrik home">
-        <svg class="gm-brand__mark gm-logo-svg" aria-hidden="true" focusable="false" viewBox="0 0 40 40" fill="none">
-          <defs>
-            <linearGradient id="gmHdrGrad" x1="4" y1="34" x2="36" y2="6" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#1BD0FA"/><stop offset="52%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#7A5AF8"/>
-            </linearGradient>
-          </defs>
-          <rect class="gm-bar" x="6" y="21" width="6.5" height="9.5" rx="2" fill="url(#gmHdrGrad)"/>
-          <rect class="gm-bar" x="15" y="15" width="6.5" height="15.5" rx="2" fill="url(#gmHdrGrad)"/>
-          <rect class="gm-bar" x="24" y="9" width="6.5" height="21.5" rx="2" fill="url(#gmHdrGrad)"/>
-          <path class="gm-arrow-draw" d="M5 32.5C15.5 34.5 26 27 33.5 12" stroke="url(#gmHdrGrad)" stroke-width="2.6" stroke-linecap="round"/>
-          <path class="gm-arrow-draw" d="M29.2 13.5L34.3 10.6L35.4 16.4" stroke="#1BD0FA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="gm-brand__txt"><span class="gm-brand__word">Grow<em>metrik</em></span><span class="gm-brand__sub">Digital Growth Agency</span></span>
-      </button>
+  <div class="hdr__in">
+    <button class="brand gm-brand" data-go="home" aria-label="Growmetrik home">
+      <svg class="gm-brand__mark gm-logo-svg" aria-hidden="true" focusable="false" viewBox="0 0 40 40" fill="none">
+        <defs>
+          <linearGradient id="gmHdrGrad" x1="4" y1="34" x2="36" y2="6" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1BD0FA"/><stop offset="52%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#7A5AF8"/>
+          </linearGradient>
+        </defs>
+        <rect class="gm-bar" x="6" y="21" width="6.5" height="9.5" rx="2" fill="url(#gmHdrGrad)"/>
+        <rect class="gm-bar" x="15" y="15" width="6.5" height="15.5" rx="2" fill="url(#gmHdrGrad)"/>
+        <rect class="gm-bar" x="24" y="9" width="6.5" height="21.5" rx="2" fill="url(#gmHdrGrad)"/>
+        <path class="gm-arrow-draw" d="M5 32.5C15.5 34.5 26 27 33.5 12" stroke="url(#gmHdrGrad)" stroke-width="2.6" stroke-linecap="round"/>
+        <path class="gm-arrow-draw" d="M29.2 13.5L34.3 10.6L35.4 16.4" stroke="#1BD0FA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="gm-brand__txt"><span class="gm-brand__word">Grow<em>metrik</em></span><span class="gm-brand__sub">Digital Growth Agency</span></span>
+    </button>
+    <nav class="hdr__nav" aria-label="Primary">
       <ul class="nav">
         <li><button data-go="home" aria-current="page"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Home</span></button></li>
         <li><button data-go="works"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Services</span></button></li>
@@ -716,7 +784,6 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <li><button data-go="proof"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Proof</span></button></li>
         <li><button data-go="plans"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Plans</span></button></li>
         <li><button data-go="faq"><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">FAQ</span></button></li>
-        <li><button data-contact><span data-h="y 0 -2|o .8 1" data-hs="320 22" data-ht="button">Free Audit</span></button></li>
       </ul>
     </nav>
     <div class="hdr__right">
@@ -726,6 +793,7 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <span class="clock__sep" aria-hidden="true">•</span>
         <span class="clock__date" data-date>Today</span>
       </div>
+      <button class="hdr__cta" data-contact>Free Audit →</button>
       <button class="chip menu-btn" id="menuBtn" style="min-height:44px;min-width:44px" aria-haspopup="dialog" aria-controls="navm" aria-label="Menu">
         <span data-h="s 1 1.05" data-hs="320 18" data-ht=".menu-btn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="word">Menu</span></span>
       </button>
@@ -856,31 +924,59 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
       <div class="shell doors__wall">
         <h2 class="sr-only" id="doorsTitle">Services — what your store gets</h2>
         <p class="paint" aria-hidden="true">Four ways we grow <br class="mbr">your local store</p>
-        <div class="dinfo" id="dinfo" aria-live="polite"><h3 class="dinfo__h"></h3><p class="dinfo__t"></p><ul class="dinfo__p"></ul></div>
+        <div class="doors__bar">
+          <div class="doors__pills" role="group" aria-label="Jump to service">
+            <button type="button" class="doors__pill" data-svc-pill="0"><i>01</i>Social Media</button>
+            <button type="button" class="doors__pill" data-svc-pill="1"><i>02</i>Reels &amp; Shoots</button>
+            <button type="button" class="doors__pill" data-svc-pill="2"><i>03</i>Meta Ads</button>
+            <button type="button" class="doors__pill" data-svc-pill="3"><i>04</i>Website Design</button>
+          </div>
+          <span class="doors__cue">Hover door to preview · Click to inspect</span>
+        </div>
+        <div class="dinfo" id="dinfo" aria-live="polite">
+          <span class="dinfo__eyebrow" id="dinfoEyebrow">Service 01</span>
+          <h3 class="dinfo__h"></h3>
+          <p class="dinfo__t"></p>
+          <ul class="dinfo__p"></ul>
+          <div class="dinfo__hint"><span>Included in 14-day ₹0 trial</span><strong>Click door for breakdown →</strong></div>
+          <button type="button" class="dinfo__cta" id="dinfoCta">View full deliverables →</button>
+        </div>
         <p class="doors__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></p>
         <ul class="doors__row">
           <li class="unit" style="--i:0;--door:#10254D;--door-dk:#0D1E3F">
             <button class="doorway" aria-label="Explore Social Media Management">
               <span class="casing"></span>
-              <span class="opening"><span class="room"></span><span class="door"><span class="door__flute"></span><span class="plate">Social Media Management</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span></span>
+              <span class="opening">
+                <span class="room"><span class="room__in"><span class="room__tag">01</span><b class="room__stat">3–5/wk</b><span class="room__cap">Posts, offers &amp; daily stories</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">01</span><span class="plate">Social Media Management</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+              </span>
             </button>
           </li>
           <li class="unit" style="--i:1;--door:#2A225A;--door-dk:#211A49">
             <button class="doorway" aria-label="Explore Reels & Video Shoots">
               <span class="casing"></span>
-              <span class="opening"><span class="room"></span><span class="door"><span class="door__flute"></span><span class="plate">Reels &amp; Video Shoots</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span></span>
+              <span class="opening">
+                <span class="room"><span class="room__in"><span class="room__tag">02</span><b class="room__stat">62.7K</b><span class="room__cap">Top reel views format</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">02</span><span class="plate">Reels &amp; Video Shoots</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+              </span>
             </button>
           </li>
           <li class="unit" style="--i:2;--door:#134E4A;--door-dk:#0E3D3A">
             <button class="doorway" aria-label="Explore Meta Ads">
               <span class="casing"></span>
-              <span class="opening"><span class="room"></span><span class="door"><span class="door__flute"></span><span class="plate">Meta Ads</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span></span>
+              <span class="opening">
+                <span class="room"><span class="room__in"><span class="room__tag">03</span><b class="room__stat">5–10km</b><span class="room__cap">Local store radius ads</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">03</span><span class="plate">Meta Ads</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+              </span>
             </button>
           </li>
           <li class="unit" style="--i:3;--door:#0F3B5E;--door-dk:#0B2D48">
             <button class="doorway" aria-label="Explore Website Design">
               <span class="casing"></span>
-              <span class="opening"><span class="room"></span><span class="door"><span class="door__flute"></span><span class="plate">Website Design</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span></span>
+              <span class="opening">
+                <span class="room"><span class="room__in"><span class="room__tag">04</span><b class="room__stat">&lt;1.5s</b><span class="room__cap">4G mobile store page</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">04</span><span class="plate">Website Design</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+              </span>
             </button>
           </li>
         </ul>
@@ -1333,26 +1429,53 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 <!-- ============ Detail Modal (Services & Playbooks) ============ -->
 <div id="projectModal" class="dmodal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div id="projectModalPanel" class="dmodal__panel">
-    <button id="closeProjectModal" class="x-btn" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <span id="modalCategoryBadge" class="exp-card__cat" style="font-size:11px;"></span>
-        <span id="modalBadge" class="exp-card__badge" style="font-size:11px;"></span>
+    <div class="dmodal__accent" aria-hidden="true"></div>
+    <div class="dmodal__hero">
+      <button id="closeProjectModal" class="x-btn" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="dmodal__toprow">
+        <div class="dmodal__badges">
+          <span id="modalCategoryBadge" class="exp-card__cat" style="font-size:11px;"></span>
+          <span id="modalBadge" class="exp-card__badge" style="font-size:11px;"></span>
+        </div>
       </div>
-      <div>
-        <div id="modalClientMeta" style="font-size:11px;font-family:ui-monospace,monospace;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;"></div>
-        <h2 id="modalTitle" style="font-size:26px;font-weight:800;line-height:1.2;margin:0 0 6px;"></h2>
-        <p id="modalSubtitle" style="font-size:14px;color:var(--text-muted);margin:0;font-weight:500;"></p>
+      <div class="dmodal__head">
+        <div class="dmodal__icon" id="modalIcon" aria-hidden="true"></div>
+        <div>
+          <div id="modalClientMeta" class="dmodal__meta"></div>
+          <h2 id="modalTitle" class="dmodal__title"></h2>
+          <p id="modalSubtitle" class="dmodal__sub"></p>
+        </div>
       </div>
-      <div id="modalDescription" style="font-size:14.5px;line-height:1.65;"></div>
-      <div style="padding:16px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line);">
-        <div style="font-size:11px;font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:10px;font-weight:700;">What your store gets</div>
-        <div id="modalDeliverablesList" style="display:grid;grid-template-columns:1fr;gap:8px;font-size:13.5px;"></div>
+      <p id="modalDescription" class="dmodal__desc"></p>
+    </div>
+
+    <div class="dmodal__body">
+      <div id="modalKpis" class="dmodal__kpis"></div>
+
+      <div class="dmodal__box">
+        <div class="dmodal__boxtitle"><span>What your store gets</span><em id="modalDelivCount">4 Deliverables</em></div>
+        <div id="modalDeliverablesList" class="dmodal__delivs"></div>
       </div>
+
+      <div class="dmodal__fit" id="modalFitBar">
+        <span id="modalBestFor"><strong>Best for:</strong> Clothing boutiques, ethnic wear &amp; salons in Hyderabad</span>
+        <span id="modalTrialNote"><strong>14-day ₹0 trial eligible</strong></span>
+      </div>
+
       <div id="modalTags" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
-      <div style="padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
-        <a id="modalLiveLink" href="https://wa.me/918074832297?text=Hi%20Growmetrik%2C%20I%20want%20a%20free%20page%20audit" target="_blank" rel="noopener" class="pill pill--outline"><span class="pill__in" style="padding:10px 18px;font-size:13px;">Chat on WhatsApp</span></a>
-        <button id="modalInquireBtn" class="pill pill--dark"><span class="pill__in" style="padding:10px 18px;font-size:13px;">Get Free Audit for this →</span></button>
+
+      <div id="modalSwitcher" class="dmodal__switcher" hidden>
+        <button type="button" class="dmodal__navbtn" id="modalPrevSvc">← Prev</button>
+        <div class="dmodal__dots" id="modalSvcDots" aria-label="Switch service"></div>
+        <button type="button" class="dmodal__navbtn" id="modalNextSvc">Next →</button>
+      </div>
+
+      <div class="dmodal__foot">
+        <a id="modalLiveLink" href="https://wa.me/918074832297?text=Hi%20Growmetrik%2C%20I%20want%20a%20free%20page%20audit" target="_blank" rel="noopener" class="dmodal__wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.76 14.07c-.24.68-1.39 1.3-1.94 1.38-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.24.59.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.77 1.27 1.66 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.34.07.13.07.72-.17 1.4Z"/></svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+        <button id="modalInquireBtn" class="pill pill--dark"><span class="pill__in" style="padding:11px 20px;font-size:13.5px;">Get Free Audit for this →</span></button>
       </div>
     </div>
   </div>
@@ -1656,8 +1779,8 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
     else { L = 70; EXT_MAX = 54; thick = 3.1; knobS = 1.1; }
     HIDDEN = EXT_MAX + 18; W = Math.min(vw, 340); H = Math.round(L + EXT_MAX + 170); wrap.style.height = H + 'px';
     dpr = Math.min(devicePixelRatio || 1, 2); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    const ck = document.querySelector('.hdr .clock');
-    if (ck && ck.offsetWidth) offset = vw >= 1200 ? Math.max(1.2 * rem, vw - ck.getBoundingClientRect().right - 1.4 * rem) : 2.4 * rem;
+    const ck = document.querySelector('.hdr__right');
+    if (ck && ck.offsetWidth) offset = vw >= 1200 ? Math.max(1.2 * rem, (vw - ck.getBoundingClientRect().right) * .5) : 2.1 * rem;
     const newAx = W - offset; seg = (L + HIDDEN) / N;
     if (!pts.length){ for (let i = 0; i <= N; i++){ const x = newAx, y = -HIDDEN + i * seg; pts.push({ x, y, px: x, py: y, w: i === 0 ? 0 : i === N ? .28 : 1 }); } }
     else { const dx = newAx - ax; for (const p of pts){ p.x += dx; p.px += dx; } }
@@ -1755,6 +1878,16 @@ const SERVICE_INFO = [
     subtitle: 'Posts, stories & steady schedule for your store',
     category: 'Service 01',
     badge: 'Consistent Page',
+    accent: '#3B82F6',
+    enquiryNeed: 'Instagram',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>',
+    kpis: [
+      { v: '3–5 / wk', l: 'Posts & daily stories' },
+      { v: '14 Days', l: '₹0 agency fee trial' },
+      { v: '0 Passwords', l: 'Official Meta partner access' }
+    ],
+    bestFor: 'Clothing boutiques, sarees & salons wanting daily consistency without hiring staff',
+    trialNote: 'Included in 14-day ₹0 trial',
     description: 'Consistent posts, festival offers, and daily stories written around your clothing collections or salon treatments so local shoppers know what’s new.',
     deliverables: ['Weekly content calendar built around your stock', 'Offer & festival story highlights', 'WhatsApp-first bio & enquiry link cleanup', 'Plain monthly report on views, saves & enquiries'],
     tags: ['Instagram', 'Stories', 'Bio Setup', 'Monthly Report']
@@ -1765,6 +1898,16 @@ const SERVICE_INFO = [
     subtitle: 'Short, hook-first reels shot right at your store',
     category: 'Service 02',
     badge: 'Hook-First Reels',
+    accent: '#7A5AF8',
+    enquiryNeed: 'Reels',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2.5"/><path d="m17 10 5-3v10l-5-3Z"/></svg>',
+    kpis: [
+      { v: '62,773', l: 'Top store reel views' },
+      { v: '565', l: 'Customer saves on 1 reel' },
+      { v: '3-sec', l: 'Local shopper hook script' }
+    ],
+    bestFor: 'Store owners who hate filming/editing and want real in-store walk-in content',
+    trialNote: 'In-store Hyderabad shoot',
     description: 'We visit your store in Hyderabad, script the first 3 seconds, shoot clean product/service reels, and edit them to drive profile visits and DMs.',
     deliverables: ['On-site store shoot planning & direction', 'Strong 3-second local shopper hooks', 'Clean editing, captions & price/offer callouts', 'Save-worthy showcase formats (like our 62,773-view reel)'],
     tags: ['Reels', 'On-Site Shoot', 'Editing', 'Hooks']
@@ -1775,6 +1918,16 @@ const SERVICE_INFO = [
     subtitle: 'Local Instagram & Facebook ads near your shop',
     category: 'Service 03',
     badge: 'Local Walk-Ins',
+    accent: '#1A8F57',
+    enquiryNeed: 'Ads',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>',
+    kpis: [
+      { v: '5–10 km', l: 'Radius around your shop' },
+      { v: '100%', l: 'Direct billing in your Meta account' },
+      { v: 'WhatsApp', l: 'Click-to-chat enquiry ads' }
+    ],
+    bestFor: 'Stores ready to turn local views into immediate WhatsApp enquiries & store visits',
+    trialNote: 'Zero markup on ad spend',
     description: 'Targeted Instagram and Facebook ads shown to people within 5–10 km of your Hyderabad store. You pay Meta directly from your own ad account.',
     deliverables: ['5–10 km Hyderabad radius targeting', 'Click-to-WhatsApp enquiry campaigns', 'Creative testing & weekly ad checks', 'Direct ad billing in your own Meta account'],
     tags: ['Meta Ads', 'WhatsApp Ads', 'Local Radius', 'Hyderabad']
@@ -1785,11 +1938,22 @@ const SERVICE_INFO = [
     subtitle: 'Fast mobile-first store page with WhatsApp button',
     category: 'Service 04',
     badge: 'Mobile-First',
+    accent: '#1BD0FA',
+    enquiryNeed: 'Website',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 14h5M8 17h3"/></svg>',
+    kpis: [
+      { v: '< 1.5s', l: 'Fast 4G mobile load' },
+      { v: '1-Tap', l: 'WhatsApp + Google Maps pin' },
+      { v: '5-Field', l: 'Instant enquiry capture' }
+    ],
+    bestFor: 'Shops linking an Instagram bio or Google profile to a trustworthy offer page',
+    trialNote: 'Built for mobile shoppers',
     description: 'A clean, fast-loading one-page website built for phones, showing your best offers, Google Maps location, and an instant WhatsApp button.',
     deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', 'Floating WhatsApp CTA + short enquiry form', 'Domain & tracking setup from day one'],
     tags: ['One-Page Site', 'WhatsApp CTA', 'Fast Load', 'Mobile UI']
   }
 ];
+window.__SERVICES = SERVICE_INFO;
 
 (function doors(){
   const sec = $('#works'); if (!sec) return;
@@ -1826,32 +1990,52 @@ const SERVICE_INFO = [
   }
 
   const dinfo = $('#dinfo'), wallEl = $('.doors__wall', sec), MOB = matchMedia('(max-width: 639.98px)');
+  const svcPills = [...sec.querySelectorAll('[data-svc-pill]')];
+  let currentDoorIdx = 0;
   const setInfo = i => {
     const info = SERVICE_INFO[i];
+    if (!info) return;
+    currentDoorIdx = i;
+    const eye = $('#dinfoEyebrow');
+    if (eye) eye.textContent = `${info.category} · ${info.badge}`;
     dinfo.querySelector('.dinfo__h').textContent = info.title;
     dinfo.querySelector('.dinfo__t').textContent = info.subtitle;
     dinfo.querySelector('.dinfo__p').innerHTML = info.deliverables.map(s => `<li>${s}</li>`).join('');
+    svcPills.forEach((p, k) => p.classList.toggle('on', k === i));
+  };
+
+  const openDoorModal = i => {
+    const d = doorsState[i];
+    if (!d || !SERVICE_INFO[i]) return;
+    d.u.classList.add('press');
+    d.s.set(.85);
+    setTimeout(() => {
+      d.u.classList.remove('press');
+      window.__openServiceModal?.(SERVICE_INFO[i], () => d.s.set(0), i);
+    }, 220);
   };
 
   doorsState.forEach((d, i) => {
     if (canHover){
-      d.way.addEventListener('mouseenter', () => d.s.set(.14));
+      d.way.addEventListener('mouseenter', () => d.s.set(.18));
       d.way.addEventListener('mouseleave', () => d.s.set(0));
     }
-    d.way.addEventListener('click', () => {
-      d.u.classList.add('press');
-      d.s.set(.85);
-      setTimeout(() => {
-        d.u.classList.remove('press');
-        window.__openServiceModal?.(SERVICE_INFO[i], () => d.s.set(0));
-      }, 240);
-    });
+    d.way.addEventListener('click', () => openDoorModal(i));
   });
+
+  svcPills.forEach(btn => {
+    const idx = +btn.dataset.svcPill;
+    btn.addEventListener('mouseenter', () => { doorsState[idx]?.s.set(.22); units.forEach((u, k) => u.classList.toggle('on', k === idx)); setInfo(idx); });
+    btn.addEventListener('mouseleave', () => { doorsState[idx]?.s.set(0); units.forEach(u => u.classList.remove('on')); svcPills.forEach(p => p.classList.remove('on')); });
+    btn.addEventListener('click', () => openDoorModal(idx));
+  });
+
+  $('#dinfoCta')?.addEventListener('click', () => openDoorModal(currentDoorIdx));
 
   document.querySelectorAll('[data-door-open]').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = +btn.dataset.doorOpen;
-      if (SERVICE_INFO[idx]) window.__openServiceModal?.(SERVICE_INFO[idx]);
+      if (SERVICE_INFO[idx]) window.__openServiceModal?.(SERVICE_INFO[idx], null, idx);
     });
   });
 
@@ -1869,7 +2053,7 @@ const SERVICE_INFO = [
       const placeInfo = () => {
         if (my !== token || active !== i) return;
         setInfo(i);
-        const w = Math.min(right - left, 22 * 16);
+        const w = Math.min(right - left, 23.5 * 16);
         dinfo.style.width = w + 'px';
         dinfo.style.left = (left - wr.left + (right - left - w) / 2) + 'px';
         dinfo.style.top = (r.top - wr.top + r.height * .5 - dinfo.offsetHeight / 2) + 'px';
@@ -1877,7 +2061,7 @@ const SERVICE_INFO = [
       };
       if (dinfo.classList.contains('on')){ dinfo.classList.remove('on'); setTimeout(placeInfo, 110); } else placeInfo();
     };
-    const hide = () => { token++; sec.classList.remove('focus'); units.forEach(u => u.classList.remove('on')); dinfo.classList.remove('on'); };
+    const hide = () => { token++; sec.classList.remove('focus'); units.forEach(u => u.classList.remove('on')); dinfo.classList.remove('on'); svcPills.forEach(p => p.classList.remove('on')); };
     const set = i => { if (i === active) return; active = i; if (i < 0) hide(); else show(i); };
     const under = el => { const w = el && el.closest ? el.closest('.doorway') : null; return w ? units.findIndex(u => u.contains(w)) : -1; };
     addEventListener('pointermove', e => { px = e.clientX; py = e.clientY; set(under(e.target)); }, { passive: true });
@@ -2135,17 +2319,29 @@ try {
   const resetAllBtn = document.getElementById('resetAllBtn');
 
   const modal = document.getElementById('projectModal');
+  const modalPanel = document.getElementById('projectModalPanel');
   const closeModalBtn = document.getElementById('closeProjectModal');
   const modalCategoryBadge = document.getElementById('modalCategoryBadge');
   const modalBadge = document.getElementById('modalBadge');
   const modalClientMeta = document.getElementById('modalClientMeta');
+  const modalIcon = document.getElementById('modalIcon');
   const modalTitle = document.getElementById('modalTitle');
   const modalSubtitle = document.getElementById('modalSubtitle');
   const modalDesc = document.getElementById('modalDescription');
+  const modalKpis = document.getElementById('modalKpis');
+  const modalDelivCount = document.getElementById('modalDelivCount');
   const modalDeliverablesList = document.getElementById('modalDeliverablesList');
+  const modalBestFor = document.getElementById('modalBestFor');
+  const modalTrialNote = document.getElementById('modalTrialNote');
   const modalTags = document.getElementById('modalTags');
+  const modalSwitcher = document.getElementById('modalSwitcher');
+  const modalSvcDots = document.getElementById('modalSvcDots');
+  const modalPrevSvc = document.getElementById('modalPrevSvc');
+  const modalNextSvc = document.getElementById('modalNextSvc');
   const modalLiveLink = document.getElementById('modalLiveLink');
   const modalInquireBtn = document.getElementById('modalInquireBtn');
+  let activeServiceIdx = -1, currentModalItem = null;
+  const DEFAULT_SVC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>';
 
   function getFiltered(){
     const cat = activeCategory.toLowerCase(), q = searchQuery.trim().toLowerCase();
@@ -2218,26 +2414,66 @@ try {
     }
   }
 
-  function openDetailModal(item, onClose = null){
-    modalOnClose = onClose;
+  function populateModal(item, serviceIdx = -1){
+    currentModalItem = item;
+    activeServiceIdx = typeof serviceIdx === 'number' ? serviceIdx : -1;
+    modalPanel?.style.setProperty('--svc-accent', item.accent || '#3B82F6');
     modalCategoryBadge.textContent = item.category;
     modalBadge.textContent = item.badge;
     modalClientMeta.textContent = item.client || 'Growmetrik · Hyderabad';
+    if (modalIcon) modalIcon.innerHTML = item.icon || DEFAULT_SVC_ICON;
     modalTitle.textContent = item.title;
     modalSubtitle.textContent = item.subtitle;
     modalDesc.textContent = item.description;
-    modalDeliverablesList.innerHTML = item.deliverables.map(d => `<div style="display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--live);font-weight:800;">✓</span><span>${d}</span></div>`).join('');
+    const kpis = item.kpis || [
+      { v: '14 Days', l: '₹0 agency fee trial' },
+      { v: 'Hyderabad', l: 'Local store focus' },
+      { v: 'WhatsApp', l: 'Direct enquiry flow' }
+    ];
+    if (modalKpis) modalKpis.innerHTML = kpis.map(k => `<div class="dmodal__kpi"><b>${k.v}</b><span>${k.l}</span></div>`).join('');
+    if (modalDelivCount) modalDelivCount.textContent = `${item.deliverables.length} Deliverables`;
+    modalDeliverablesList.innerHTML = item.deliverables.map(d => `<div class="dmodal__deliv"><span class="dmodal__chk" aria-hidden="true">✓</span><span>${d}</span></div>`).join('');
+    if (modalBestFor) modalBestFor.innerHTML = `<strong>Best for:</strong> ${item.bestFor || 'Clothing stores & salons in Hyderabad'}`;
+    if (modalTrialNote) modalTrialNote.innerHTML = `<strong>${item.trialNote || '14-day ₹0 trial eligible'}</strong>`;
     modalTags.innerHTML = item.tags.map(t => `<span class="exp-card__tag">${t}</span>`).join('');
     modalLiveLink.href = `https://wa.me/918074832297?text=${encodeURIComponent('Hi Growmetrik, I want to know more about: ' + item.title)}`;
+
+    const svcs = window.__SERVICES || [];
+    if (modalSwitcher && activeServiceIdx >= 0 && svcs.length){
+      modalSwitcher.hidden = false;
+      modalSvcDots.innerHTML = svcs.map((s, idx) => `<button type="button" class="dmodal__dot${idx === activeServiceIdx ? ' on' : ''}" data-svc-jump="${idx}" aria-label="View ${s.title}">0${idx + 1}</button>`).join('');
+      modalSvcDots.querySelectorAll('[data-svc-jump]').forEach(b => {
+        b.addEventListener('click', () => switchService(+b.dataset.svcJump));
+      });
+    } else if (modalSwitcher){
+      modalSwitcher.hidden = true;
+    }
+  }
+
+  function switchService(idx){
+    const svcs = window.__SERVICES || [];
+    if (!svcs.length) return;
+    const next = (idx + svcs.length) % svcs.length;
+    populateModal(svcs[next], next);
+    if (modalPanel && window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+      window.anime.animate(modalPanel, { opacity: [0.85, 1], y: [6, 0], duration: 220, ease: 'outCubic' });
+    }
+  }
+
+  function openDetailModal(item, onClose = null, serviceIdx = -1){
+    modalOnClose = onClose;
+    populateModal(item, serviceIdx);
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     window.__lenis?.stop();
-    const panel = modal.querySelector('.dmodal__panel');
-    if (panel && window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-      window.anime.animate(panel, { opacity: [0, 1], scale: [0.94, 1], y: [18, 0], duration: 340, ease: 'outCubic' });
+    if (modalPanel && window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+      window.anime.animate(modalPanel, { opacity: [0, 1], scale: [0.95, 1], y: [18, 0], duration: 340, ease: 'outCubic' });
     }
   }
   window.__openServiceModal = openDetailModal;
+
+  modalPrevSvc?.addEventListener('click', () => switchService(activeServiceIdx - 1));
+  modalNextSvc?.addEventListener('click', () => switchService(activeServiceIdx + 1));
 
   function closeDetailModal(){
     modal.style.display = 'none';
@@ -2247,9 +2483,25 @@ try {
   }
   closeModalBtn.addEventListener('click', closeDetailModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeDetailModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display === 'flex') closeDetailModal(); });
+  document.addEventListener('keydown', e => {
+    if (modal.style.display !== 'flex') return;
+    if (e.key === 'Escape') closeDetailModal();
+    else if (activeServiceIdx >= 0 && e.key === 'ArrowRight') switchService(activeServiceIdx + 1);
+    else if (activeServiceIdx >= 0 && e.key === 'ArrowLeft') switchService(activeServiceIdx - 1);
+  });
   modalInquireBtn.addEventListener('click', () => {
+    const need = currentModalItem?.enquiryNeed || (
+      /reel|video|shoot/i.test(currentModalItem?.title || '') ? 'Reels' :
+      /ads|meta/i.test(currentModalItem?.title || '') ? 'Ads' :
+      /web|site/i.test(currentModalItem?.title || '') ? 'Website' : 'Instagram'
+    );
     closeDetailModal();
+    const cb = document.querySelector(`#enquiryForm input[name="need"][value="${need}"]`);
+    if (cb){
+      cb.checked = true;
+      const box = cb.closest('.enq-checks');
+      if (box){ box.classList.remove('pulse'); void box.offsetWidth; box.classList.add('pulse'); }
+    }
     const target = document.getElementById('enquiry');
     if (window.__lenis) window.__lenis.scrollTo(target, { duration: 0.9 });
     else target?.scrollIntoView({ behavior: 'smooth' });
