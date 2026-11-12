@@ -578,7 +578,7 @@ html[data-mode="dark"] .story__amb::after{display:none}
 
 /* ---------- Detail Modal (#projectModal) ---------- */
 .dmodal{display:none;position:fixed;inset:0;z-index:112;background:var(--scrim);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:16px;align-items:center;justify-content:center}
-.dmodal__panel{--svc-accent:#3B82F6;background:var(--panel);color:var(--foreground);border-radius:26px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid var(--line);position:relative;box-shadow:0 32px 70px -18px rgba(6,10,36,.42);padding:0}
+.dmodal__panel{--svc-accent:#3B82F6;background:var(--panel);color:var(--foreground);border-radius:26px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;overscroll-behavior:contain;border:1px solid var(--line);position:relative;box-shadow:0 32px 70px -18px rgba(6,10,36,.42);padding:0}
 .dmodal__accent{height:4px;width:100%;background:var(--brand-grad);border-radius:26px 26px 0 0}
 .dmodal__hero{padding:24px 26px 20px;background:linear-gradient(155deg,color-mix(in srgb,var(--svc-accent) 11%,var(--panel-2)) 0%,var(--panel) 88%);border-bottom:1px solid var(--line);position:relative}
 .dmodal__toprow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-right:44px;margin-bottom:14px;flex-wrap:wrap}
@@ -643,7 +643,7 @@ html[data-mode="dark"] .dmodal__dot.on{background:#1BD0FA;border-color:#1BD0FA;c
 .modal{position:fixed;inset:0;z-index:110;display:flex;align-items:flex-end;justify-content:center;padding:1rem;background:var(--scrim);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);opacity:0;transition:opacity .4s var(--e-spring)}
 @media (min-width:640px){.modal{align-items:center}}
 .modal.open{opacity:1}
-.modal__panel{position:relative;width:100%;max-width:32rem;max-height:calc(100dvh - 2rem);overflow:auto;border-radius:var(--radius-card);background:var(--panel);padding:1.5rem;box-shadow:0 0 0 1px var(--line),0 25px 50px -12px rgba(0,0,0,.25);transform:translateY(28px);opacity:0;transition:transform .55s var(--e-spring),opacity .45s var(--e-spring)}
+.modal__panel{position:relative;width:100%;max-width:32rem;max-height:calc(100dvh - 2rem);overflow:auto;overscroll-behavior:contain;border-radius:var(--radius-card);background:var(--panel);padding:1.5rem;box-shadow:0 0 0 1px var(--line),0 25px 50px -12px rgba(0,0,0,.25);transform:translateY(28px);opacity:0;transition:transform .55s var(--e-spring),opacity .45s var(--e-spring)}
 .modal.open .modal__panel{transform:none;opacity:1}
 .modal.closing .modal__panel{transform:translateY(18px);opacity:0}
 @media (min-width:640px){.modal__panel{padding:2rem}}
@@ -1427,8 +1427,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 </div>
 
 <!-- ============ Detail Modal (Services & Playbooks) ============ -->
-<div id="projectModal" class="dmodal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div id="projectModalPanel" class="dmodal__panel">
+<div id="projectModal" class="dmodal" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div id="projectModalPanel" class="dmodal__panel" data-lenis-prevent tabindex="-1">
     <div class="dmodal__accent" aria-hidden="true"></div>
     <div class="dmodal__hero">
       <button id="closeProjectModal" class="x-btn" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
@@ -1482,8 +1482,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 </div>
 
 <!-- ============ Request Modal ============ -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
-  <div class="modal__panel" id="mPanel">
+<div class="modal" id="modal" data-lenis-prevent role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="modal__panel" id="mPanel" data-lenis-prevent>
     <button class="x-btn" id="mClose" aria-label="Close"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
     <div id="mForm">
       <div class="mhead"><p>Free Page Audit · Growmetrik</p><h2 id="mTitle">Tell us about your store.</h2></div>
@@ -1533,7 +1533,7 @@ const animeApi = window.anime || null;
 let lenis = null;
 if (!reduced && window.Lenis){
   try {
-    lenis = new window.Lenis({ duration: 1.05, smoothWheel: true });
+    lenis = new window.Lenis({ duration: 1.05, smoothWheel: true, allowNestedScroll: true });
     function lenisRaf(t){ lenis.raf(t); requestAnimationFrame(lenisRaf); }
     requestAnimationFrame(lenisRaf);
     window.__lenis = lenis;
@@ -2455,6 +2455,7 @@ try {
     if (!svcs.length) return;
     const next = (idx + svcs.length) % svcs.length;
     populateModal(svcs[next], next);
+    if (modalPanel) modalPanel.scrollTop = 0;
     if (modalPanel && window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches){
       window.anime.animate(modalPanel, { opacity: [0.85, 1], y: [6, 0], duration: 220, ease: 'outCubic' });
     }
@@ -2464,6 +2465,7 @@ try {
     modalOnClose = onClose;
     populateModal(item, serviceIdx);
     modal.style.display = 'flex';
+    if (modalPanel) modalPanel.scrollTop = 0;
     document.body.style.overflow = 'hidden';
     window.__lenis?.stop();
     if (modalPanel && window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches){
