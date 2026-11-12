@@ -300,14 +300,31 @@ html[data-mode="dark"] .hero::before{opacity:1}
 .sec__p{font-size:1.02rem;line-height:1.65;color:var(--text-muted);max-width:58ch}
 
 /* ---------- Problem Band ---------- */
+.gm-w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
+.gm-wi{display:inline-block;will-change:transform,opacity}
+.prob__hl{position:relative;display:inline-block;color:var(--brand-blue)}
+.prob__hl svg{position:absolute;left:-2%;right:-2%;bottom:-.12em;width:104%;height:.36em;pointer-events:none;overflow:visible}
 .prob__grid{display:grid;grid-template-columns:1fr;gap:1rem}
 @media (min-width:768px){.prob__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}}
-.prob__card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card-sm);padding:1.5rem;display:flex;flex-direction:column;gap:.65rem}
-.prob__no{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;color:#1BD0FA;background:#060A24;display:inline-flex;width:2rem;height:2rem;border-radius:999px;align-items:center;justify-content:center;border:1px solid rgba(27,208,250,.3)}
-.prob__card h3{font-size:1.2rem;font-weight:700;line-height:1.25}
-.prob__card p{font-size:.9375rem;line-height:1.55;color:var(--text-muted)}
-.prob__fix{margin-top:1.75rem;padding:1.25rem 1.5rem;border-radius:var(--radius-card-sm);background:var(--surface);border:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
-.prob__fix p{font-size:1rem;font-weight:500;color:var(--foreground);max-width:60ch}
+.prob__card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card-sm);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;transition:transform .28s var(--e-soft),border-color .28s,box-shadow .28s}
+.prob__card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--brand-blue) 40%,var(--line));box-shadow:0 18px 40px -22px rgba(6,10,36,.28)}
+.prob__top{display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+.prob__no{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;color:#1BD0FA;background:#060A24;display:inline-flex;width:2.1rem;height:2.1rem;border-radius:999px;align-items:center;justify-content:center;border:1px solid rgba(27,208,250,.35);flex:none}
+.prob__flag{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.24rem .62rem;border-radius:999px;background:rgba(239,68,68,.09);color:#DC2626;border:1px solid rgba(239,68,68,.22)}
+html[data-mode="dark"] .prob__flag{background:rgba(248,113,113,.12);color:#FCA5A5;border-color:rgba(248,113,113,.28)}
+.prob__card h3{font-size:1.18rem;font-weight:700;line-height:1.25;letter-spacing:-.015em}
+.prob__card p{font-size:.9375rem;line-height:1.58;color:var(--text-muted);flex:1}
+.prob__foot{display:flex;align-items:center;gap:.45rem;padding-top:.7rem;border-top:1px dashed var(--line);font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.7rem;font-weight:600;color:var(--text-muted)}
+.prob__foot i{width:6px;height:6px;border-radius:50%;background:var(--brand-cyan);flex:none}
+.prob__fix{margin-top:1.75rem;padding:1.45rem 1.55rem;border-radius:var(--radius-card-sm);background:linear-gradient(135deg,color-mix(in srgb,var(--brand-blue) 7%,var(--surface)),var(--surface) 60%,color-mix(in srgb,var(--green) 6%,var(--surface)));border:1px solid color-mix(in srgb,var(--brand-blue) 22%,var(--line));display:grid;grid-template-columns:1fr;gap:1.15rem;align-items:center}
+@media (min-width:900px){.prob__fix{grid-template-columns:1fr auto;gap:1.5rem}}
+.prob__fixc{display:flex;flex-direction:column;gap:.8rem}
+.prob__fixk{display:inline-flex;align-items:center;gap:.45rem;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.prob__fixk i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.prob__fix p{font-size:.98rem;font-weight:500;line-height:1.6;color:var(--foreground);max-width:66ch}
+.prob__steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.55rem}
+.prob__step{display:flex;align-items:center;gap:.5rem;padding:.52rem .75rem;border-radius:10px;background:var(--panel);border:1px solid var(--line);font-size:.8rem;font-weight:600;color:var(--foreground)}
+.prob__step b{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.68rem;color:var(--brand-blue);background:color-mix(in srgb,var(--brand-blue) 12%,transparent);padding:.16rem .42rem;border-radius:6px}
 
 /* ---------- Doors (Services) ---------- */
 .doors{position:relative;z-index:1;padding-top:5rem;overflow:hidden;border-top:1px solid var(--line);
@@ -323,6 +340,7 @@ html[data-mode="dark"] .hero::before{opacity:1}
 .doors__bar{align-self:stretch;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;margin:0 0 2.25rem;z-index:2}
 .doors__pills{display:flex;flex-wrap:wrap;gap:.5rem}
 .doors__pill{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:.45rem .95rem;border-radius:9999px;border:1px solid var(--line);background:var(--chip-bg);color:var(--foreground);font-size:.8125rem;font-weight:600;cursor:pointer;backdrop-filter:blur(8px);transition:transform .2s var(--e-soft),background .2s,border-color .2s,color .2s,box-shadow .2s}
+.doors__pill svg{width:15px;height:15px;flex:none}
 .doors__pill i{font-style:normal;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.7rem;font-weight:700;opacity:.65}
 .doors__pill:hover,.doors__pill.on{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(6,10,36,.45)}
 html[data-mode="dark"] .doors__pill:hover,html[data-mode="dark"] .doors__pill.on{background:#1BD0FA;border-color:#1BD0FA;color:#060A24}
@@ -373,7 +391,11 @@ html[data-mode="dark"] .casing::after{border-color:rgba(255,255,255,.05)}
 .room__stat{font-size:11.5cqi;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--foreground)}
 .room__cap{font-size:4.4cqi;font-weight:600;line-height:1.25;color:var(--text-muted);max-width:14ch}
 .room__go{margin-top:2cqi;font-size:4.1cqi;font-weight:700;color:var(--brand-blue)}
-.door__num{position:absolute;left:50%;top:15.5%;translate:-50% -50%;z-index:1;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:4.6cqi;font-weight:700;letter-spacing:.16em;color:rgba(245,228,180,.72);text-shadow:0 .2cqi .4cqi rgba(0,0,0,.45)}
+.room__logo{width:13cqi;height:13cqi;border-radius:3.5cqi;display:grid;place-items:center;background:var(--panel);border:1px solid var(--line);box-shadow:0 1.5cqi 3cqi rgba(6,10,36,.16)}
+.room__logo svg{width:7.5cqi;height:7.5cqi}
+.door__num{position:absolute;left:50%;top:10.5%;translate:-50% -50%;z-index:1;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:4.2cqi;font-weight:700;letter-spacing:.16em;color:rgba(245,228,180,.72);text-shadow:0 .2cqi .4cqi rgba(0,0,0,.45)}
+.door__emblem{position:absolute;left:50%;top:19.5%;translate:-50% -50%;z-index:1;width:13.5cqi;height:13.5cqi;border-radius:3.8cqi;display:grid;place-items:center;background:rgba(6,10,36,.42);border:.35cqi solid rgba(255,255,255,.22);box-shadow:0 .8cqi 1.8cqi rgba(0,0,0,.35);backdrop-filter:blur(4px)}
+.door__emblem svg{width:8cqi;height:8cqi}
 .room::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s var(--e-soft);box-shadow:inset 0 0 5cqi var(--rim),inset 0 0 1.2cqi var(--rim)}
 .door{--dc:var(--door);position:absolute;inset:0;transform-origin:0 50%;transform:rotateY(0deg);will-change:transform;border-radius:42.5cqi 42.5cqi 0 0;background:linear-gradient(100deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 30%,rgba(0,0,0,.18) 100%),var(--dc);box-shadow:inset 0 0 0 .3cqi rgba(0,0,0,.28),inset .6cqi 0 0 rgba(255,255,255,.05);transform-style:preserve-3d;transition:box-shadow .5s var(--e-soft)}
 html[data-mode="dark"] .door{--dc:var(--door-dk,var(--door))}
@@ -383,7 +405,7 @@ html[data-mode="dark"] .door{--dc:var(--door-dk,var(--door))}
 .unit.on .casing{box-shadow:0 0 0 1px rgba(0,0,0,.06),2cqi 5cqi 9cqi var(--lift),-1cqi 2cqi 5cqi rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.55)}
 .unit.on .door{box-shadow:inset 0 0 0 .35cqi rgba(0,0,0,.2),inset -2.5cqi 0 3cqi rgba(0,0,0,.18),4cqi 0 7cqi rgba(0,0,0,.45)}
 .unit.on .room::after{opacity:1}
-.plate{position:absolute;left:50%;top:31%;translate:-50% -50%;width:64cqi;padding:2.6cqi 4cqi;border-radius:.9cqi;z-index:1;text-align:center;font-size:4.9cqi;font-weight:700;line-height:1.15;letter-spacing:.07em;text-transform:uppercase;text-wrap:balance;color:#2b2112;text-shadow:0 .28cqi 0 rgba(255,238,196,.55),0 -.15cqi 0 rgba(0,0,0,.25);background:linear-gradient(160deg,#efdfb2 0%,#c9a866 28%,#e3cc92 48%,#a98747 72%,#d2b67a 100%);box-shadow:0 .5cqi 1cqi rgba(0,0,0,.4),inset 0 .3cqi 0 rgba(255,250,228,.7),inset 0 -.3cqi 0 rgba(88,62,22,.45)}
+.plate{position:absolute;left:50%;top:34%;translate:-50% -50%;width:64cqi;padding:2.6cqi 4cqi;border-radius:.9cqi;z-index:1;text-align:center;font-size:4.9cqi;font-weight:700;line-height:1.15;letter-spacing:.07em;text-transform:uppercase;text-wrap:balance;color:#2b2112;text-shadow:0 .28cqi 0 rgba(255,238,196,.55),0 -.15cqi 0 rgba(0,0,0,.25);background:linear-gradient(160deg,#efdfb2 0%,#c9a866 28%,#e3cc92 48%,#a98747 72%,#d2b67a 100%);box-shadow:0 .5cqi 1cqi rgba(0,0,0,.4),inset 0 .3cqi 0 rgba(255,250,228,.7),inset 0 -.3cqi 0 rgba(88,62,22,.45)}
 .plate::before,.plate::after{content:"";position:absolute;top:50%;width:1.6cqi;height:1.6cqi;margin-top:-.8cqi;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff3cf,#8f6f33 70%);box-shadow:0 .15cqi .2cqi rgba(0,0,0,.4)}
 .plate::before{left:1.8cqi}.plate::after{right:1.8cqi}
 .handle{position:absolute;right:7cqi;top:59%;width:9.4cqi;height:9.4cqi;border-radius:50%;z-index:1;background:radial-gradient(circle at 36% 30%,#fff6dc 0,#e6cb8a 14%,#b8934c 40%,#80602a 70%,#4d3816 100%);box-shadow:0 0 0 .35cqi rgba(0,0,0,.22),.9cqi 1.5cqi 2cqi rgba(0,0,0,.45),inset -.7cqi -.9cqi 1.1cqi rgba(40,26,6,.55),inset .5cqi .6cqi .8cqi rgba(255,248,222,.5)}
@@ -605,6 +627,10 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .dmodal__chk{width:20px;height:20px;flex:none;border-radius:50%;background:var(--live-soft);color:var(--live);display:grid;place-items:center;font-size:11px;font-weight:900;margin-top:1px}
 .dmodal__fit{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 14px;border-radius:14px;background:var(--live-soft);border:1px solid color-mix(in srgb,var(--live) 28%,transparent);font-size:12.5px;line-height:1.45;color:var(--foreground)}
 .dmodal__fit strong{color:var(--live)}
+.dmodal__plats{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.dmodal__platlbl{font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:700;margin-right:2px}
+.dmodal__plat{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:9999px;background:var(--panel-2);border:1px solid var(--line);font-size:12px;font-weight:650;color:var(--foreground)}
+.dmodal__plat svg{width:15px;height:15px;flex:none}
 .dmodal__switcher{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .dmodal__navbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9999px;background:var(--panel);border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--foreground);cursor:pointer;transition:transform .15s,border-color .15s}
 .dmodal__navbtn:hover{border-color:var(--foreground);transform:translateY(-1px)}
@@ -886,28 +912,40 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
     <div class="shell">
       <div class="sec__head">
         <span class="sec__tag"><i></i>Why most local pages stall</span>
-        <h2 class="sec__h" id="probTitle">Posting, but no enquiries?</h2>
-        <p class="sec__p">Most clothing stores and salons in Hyderabad already post reels. Views alone don’t bring walk-ins when the offer, hook, and enquiry path are broken.</p>
+        <h2 class="sec__h" id="probTitle" data-anime-words>Posting, but <span class="prob__hl">no enquiries?<svg viewBox="0 0 220 14" fill="none" aria-hidden="true"><path class="prob__ul" d="M3 10C58 3 142 2 217 9" stroke="#3B82F6" stroke-width="3.2" stroke-linecap="round"/></svg></span></h2>
+        <p class="sec__p" data-anime-sub>Most clothing stores and salons in Hyderabad already post reels. Views alone don’t bring walk-ins when the offer, hook, and enquiry path are broken.</p>
       </div>
       <div class="prob__grid">
         <article class="prob__card">
-          <span class="prob__no">01</span>
+          <div class="prob__top"><span class="prob__no">01</span><span class="prob__flag">Broken Path</span></div>
           <h3>Posting, but no enquiries?</h3>
           <p>Photos and reels go up without a clear offer, price range, or direct WhatsApp tap path — so shoppers scroll past without messaging.</p>
+          <div class="prob__foot"><i></i><span>Fix: Clear offer + WhatsApp tap path</span></div>
         </article>
         <article class="prob__card">
-          <span class="prob__no">02</span>
+          <div class="prob__top"><span class="prob__no">02</span><span class="prob__flag">Wrong Radius</span></div>
           <h3>Reels get views, but no walk-ins?</h3>
           <p>Random viral views outside your locality don’t visit your store. Your content and Meta ads must reach buyers within 5–10 km of your shop.</p>
+          <div class="prob__foot"><i></i><span>Fix: 5–10 km Hyderabad buyer reach</span></div>
         </article>
         <article class="prob__card">
-          <span class="prob__no">03</span>
+          <div class="prob__top"><span class="prob__no">03</span><span class="prob__flag">Zero Bandwidth</span></div>
           <h3>No time to manage it?</h3>
           <p>Between customers, stock, and staff, filming, editing, writing captions, and tracking ads gets pushed to next week.</p>
+          <div class="prob__foot"><i></i><span>Fix: Done-for-you weekly system</span></div>
         </article>
       </div>
       <div class="prob__fix">
-        <p><strong>How Growmetrik fixes this:</strong> Reels that lose viewers in the first 3 seconds, no clear offer, no WhatsApp message button, and no way to see what worked — we fix those four things, and send you a plain monthly report.</p>
+        <div class="prob__fixc">
+          <span class="prob__fixk"><i></i>How Growmetrik fixes this</span>
+          <p>Reels that lose viewers in the first 3 seconds, no clear offer, no WhatsApp message button, and no way to see what worked — we fix those four things, and send you a plain monthly report.</p>
+          <div class="prob__steps" aria-label="Four things Growmetrik fixes">
+            <span class="prob__step"><b>01</b>3-Sec Reel Hook</span>
+            <span class="prob__step"><b>02</b>Clear Store Offer</span>
+            <span class="prob__step"><b>03</b>WhatsApp Button</span>
+            <span class="prob__step"><b>04</b>Plain Monthly Report</span>
+          </div>
+        </div>
         <button class="pill pill--dark pill--arrow" data-go="enquiry">
           <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Get a Free Audit
             <span class="pill__badge"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -926,10 +964,22 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <p class="paint" aria-hidden="true">Four ways we grow <br class="mbr">your local store</p>
         <div class="doors__bar">
           <div class="doors__pills" role="group" aria-label="Jump to service">
-            <button type="button" class="doors__pill" data-svc-pill="0"><i>01</i>Social Media</button>
-            <button type="button" class="doors__pill" data-svc-pill="1"><i>02</i>Reels &amp; Shoots</button>
-            <button type="button" class="doors__pill" data-svc-pill="2"><i>03</i>Meta Ads</button>
-            <button type="button" class="doors__pill" data-svc-pill="3"><i>04</i>Website Design</button>
+            <button type="button" class="doors__pill" data-svc-pill="0">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="#E4405F" stroke="none"/></svg>
+              <i>01</i>Social Media
+            </button>
+            <button type="button" class="doors__pill" data-svc-pill="1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D946EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 9h18M9 3l2.5 6M15 3l2.5 6"/><polygon points="10.2,12 15.8,15 10.2,18" fill="#D946EF" stroke="none"/></svg>
+              <i>02</i>Reels &amp; Shoots
+            </button>
+            <button type="button" class="doors__pill" data-svc-pill="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0081FB" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12C9.8 7.8 7.9 6.2 5.6 6.2 3.4 6.2 2 8.5 2 12c0 3.5 1.4 5.8 3.6 5.8 2.3 0 4.2-1.6 6.4-5.8 2.2-4.2 4.1-5.8 6.4-5.8 2.2 0 3.6 2.3 3.6 5.8 0 3.5-1.4 5.8-3.6 5.8-2.3 0-4.2-1.6-6.4-5.8Z"/></svg>
+              <i>03</i>Meta Ads
+            </button>
+            <button type="button" class="doors__pill" data-svc-pill="3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              <i>04</i>Website Design
+            </button>
           </div>
           <span class="doors__cue">Hover door to preview · Click to inspect</span>
         </div>
@@ -947,8 +997,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
             <button class="doorway" aria-label="Explore Social Media Management">
               <span class="casing"></span>
               <span class="opening">
-                <span class="room"><span class="room__in"><span class="room__tag">01</span><b class="room__stat">3–5/wk</b><span class="room__cap">Posts, offers &amp; daily stories</span><span class="room__go">Inspect →</span></span></span>
-                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">01</span><span class="plate">Social Media Management</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+                <span class="room"><span class="room__in"><span class="room__logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="#F472B6" stroke="none"/></svg></span><span class="room__tag">01 · Instagram</span><b class="room__stat">3–5/wk</b><span class="room__cap">Posts, offers &amp; daily stories</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">01</span><span class="door__emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#F9A8D4" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="#F9A8D4" stroke="none"/></svg></span><span class="plate">Social Media Management</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
               </span>
             </button>
           </li>
@@ -956,8 +1006,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
             <button class="doorway" aria-label="Explore Reels & Video Shoots">
               <span class="casing"></span>
               <span class="opening">
-                <span class="room"><span class="room__in"><span class="room__tag">02</span><b class="room__stat">62.7K</b><span class="room__cap">Top reel views format</span><span class="room__go">Inspect →</span></span></span>
-                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">02</span><span class="plate">Reels &amp; Video Shoots</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+                <span class="room"><span class="room__in"><span class="room__logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#E879F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 9h18M9 3l2.5 6M15 3l2.5 6"/><polygon points="10.2,12 15.8,15 10.2,18" fill="#E879F9" stroke="none"/></svg></span><span class="room__tag">02 · Reels</span><b class="room__stat">62.7K</b><span class="room__cap">Top reel views format</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">02</span><span class="door__emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#F0ABFC" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 9h18M9 3l2.5 6M15 3l2.5 6"/><polygon points="10.2,12 15.8,15 10.2,18" fill="#F0ABFC" stroke="none"/></svg></span><span class="plate">Reels &amp; Video Shoots</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
               </span>
             </button>
           </li>
@@ -965,8 +1015,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
             <button class="doorway" aria-label="Explore Meta Ads">
               <span class="casing"></span>
               <span class="opening">
-                <span class="room"><span class="room__in"><span class="room__tag">03</span><b class="room__stat">5–10km</b><span class="room__cap">Local store radius ads</span><span class="room__go">Inspect →</span></span></span>
-                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">03</span><span class="plate">Meta Ads</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+                <span class="room"><span class="room__in"><span class="room__logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12C9.8 7.8 7.9 6.2 5.6 6.2 3.4 6.2 2 8.5 2 12c0 3.5 1.4 5.8 3.6 5.8 2.3 0 4.2-1.6 6.4-5.8 2.2-4.2 4.1-5.8 6.4-5.8 2.2 0 3.6 2.3 3.6 5.8 0 3.5-1.4 5.8-3.6 5.8-2.3 0-4.2-1.6-6.4-5.8Z"/></svg></span><span class="room__tag">03 · Meta</span><b class="room__stat">5–10km</b><span class="room__cap">Local store radius ads</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">03</span><span class="door__emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12C9.8 7.8 7.9 6.2 5.6 6.2 3.4 6.2 2 8.5 2 12c0 3.5 1.4 5.8 3.6 5.8 2.3 0 4.2-1.6 6.4-5.8 2.2-4.2 4.1-5.8 6.4-5.8 2.2 0 3.6 2.3 3.6 5.8 0 3.5-1.4 5.8-3.6 5.8-2.3 0-4.2-1.6-6.4-5.8Z"/></svg></span><span class="plate">Meta Ads</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
               </span>
             </button>
           </li>
@@ -974,8 +1024,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
             <button class="doorway" aria-label="Explore Website Design">
               <span class="casing"></span>
               <span class="opening">
-                <span class="room"><span class="room__in"><span class="room__tag">04</span><b class="room__stat">&lt;1.5s</b><span class="room__cap">4G mobile store page</span><span class="room__go">Inspect →</span></span></span>
-                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">04</span><span class="plate">Website Design</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
+                <span class="room"><span class="room__in"><span class="room__logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="room__tag">04 · Web &amp; Maps</span><b class="room__stat">&lt;1.5s</b><span class="room__cap">4G mobile store page</span><span class="room__go">Inspect →</span></span></span>
+                <span class="door"><span class="door__flute"></span><span class="door__num" aria-hidden="true">04</span><span class="door__emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="plate">Website Design</span><span class="handle"><span class="handle__lever"></span><span class="handle__lock"></span></span><span class="door__shade"></span></span>
               </span>
             </button>
           </li>
@@ -1462,6 +1512,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <span id="modalTrialNote"><strong>14-day ₹0 trial eligible</strong></span>
       </div>
 
+      <div id="modalPlatforms" class="dmodal__plats"></div>
+
       <div id="modalTags" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
 
       <div id="modalSwitcher" class="dmodal__switcher" hidden>
@@ -1871,6 +1923,16 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
 })();
 
 /* Doors (4 Growmetrik Services) */
+const BRAND_LOGOS = {
+  meta: '<svg viewBox="0 0 24 24" fill="none" stroke="#0081FB" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 12C9.8 7.8 7.9 6.2 5.6 6.2 3.4 6.2 2 8.5 2 12c0 3.5 1.4 5.8 3.6 5.8 2.3 0 4.2-1.6 6.4-5.8 2.2-4.2 4.1-5.8 6.4-5.8 2.2 0 3.6 2.3 3.6 5.8 0 3.5-1.4 5.8-3.6 5.8-2.3 0-4.2-1.6-6.4-5.8Z"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="#E4405F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="#E4405F" stroke="none"/></svg>',
+  reels: '<svg viewBox="0 0 24 24" fill="none" stroke="#D946EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M3 9h18M9 3l2.5 6M15 3l2.5 6"/><polygon points="10.2,12 15.8,15 10.2,18" fill="#D946EF" stroke="none"/></svg>',
+  facebook: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="#1877F2"/><path d="M13.3 19.5v-6.7h2.2l.35-2.6H13.3V8.5c0-.75.22-1.26 1.3-1.26h1.36V4.92c-.24-.03-1.06-.1-2-.1-1.98 0-3.34 1.2-3.34 3.43v1.95H8.4v2.6h2.22v6.7h2.68Z" fill="#fff"/></svg>',
+  whatsapp: '<svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9.5 9.2c.3-.5.7-.5 1 0l.8 1.5c.2.3.1.7-.2 1l-.5.4c.5 1 1.4 1.9 2.4 2.4l.4-.5c.3-.3.7-.4 1-.2l1.5.8c.5.3.5.7 0 1-.8.6-2 .8-3.4.1-1.8-.9-3.6-2.7-4.5-4.5-.7-1.4-.5-2.6.1-3.4Z"/></svg>',
+  maps: '<svg viewBox="0 0 24 24" fill="none" stroke="#EA4335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.6-6-10.5a6 6 0 1 1 12 0C18 15.4 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.2" fill="#EA4335" stroke="none"/></svg>',
+  web: '<svg viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>'
+};
+
 const SERVICE_INFO = [
   {
     id: 'social-media',
@@ -1878,9 +1940,15 @@ const SERVICE_INFO = [
     subtitle: 'Posts, stories & steady schedule for your store',
     category: 'Service 01',
     badge: 'Consistent Page',
-    accent: '#3B82F6',
+    accent: '#E4405F',
     enquiryNeed: 'Instagram',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>',
+    icon: BRAND_LOGOS.instagram,
+    platforms: [
+      { k: 'instagram', name: 'Instagram' },
+      { k: 'facebook', name: 'Facebook' },
+      { k: 'whatsapp', name: 'WhatsApp Business' },
+      { k: 'meta', name: 'Meta Business Suite' }
+    ],
     kpis: [
       { v: '3–5 / wk', l: 'Posts & daily stories' },
       { v: '14 Days', l: '₹0 agency fee trial' },
@@ -1898,9 +1966,15 @@ const SERVICE_INFO = [
     subtitle: 'Short, hook-first reels shot right at your store',
     category: 'Service 02',
     badge: 'Hook-First Reels',
-    accent: '#7A5AF8',
+    accent: '#D946EF',
     enquiryNeed: 'Reels',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2.5"/><path d="m17 10 5-3v10l-5-3Z"/></svg>',
+    icon: BRAND_LOGOS.reels,
+    platforms: [
+      { k: 'reels', name: 'Instagram Reels' },
+      { k: 'instagram', name: 'Instagram' },
+      { k: 'meta', name: 'Meta Insights' },
+      { k: 'whatsapp', name: 'WhatsApp Share' }
+    ],
     kpis: [
       { v: '62,773', l: 'Top store reel views' },
       { v: '565', l: 'Customer saves on 1 reel' },
@@ -1918,9 +1992,15 @@ const SERVICE_INFO = [
     subtitle: 'Local Instagram & Facebook ads near your shop',
     category: 'Service 03',
     badge: 'Local Walk-Ins',
-    accent: '#1A8F57',
+    accent: '#0081FB',
     enquiryNeed: 'Ads',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>',
+    icon: BRAND_LOGOS.meta,
+    platforms: [
+      { k: 'meta', name: 'Meta Ads Manager' },
+      { k: 'instagram', name: 'Instagram Ads' },
+      { k: 'facebook', name: 'Facebook Ads' },
+      { k: 'whatsapp', name: 'Click-to-WhatsApp' }
+    ],
     kpis: [
       { v: '5–10 km', l: 'Radius around your shop' },
       { v: '100%', l: 'Direct billing in your Meta account' },
@@ -1938,9 +2018,15 @@ const SERVICE_INFO = [
     subtitle: 'Fast mobile-first store page with WhatsApp button',
     category: 'Service 04',
     badge: 'Mobile-First',
-    accent: '#1BD0FA',
+    accent: '#0EA5E9',
     enquiryNeed: 'Website',
-    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 14h5M8 17h3"/></svg>',
+    icon: BRAND_LOGOS.web,
+    platforms: [
+      { k: 'web', name: 'Mobile Web' },
+      { k: 'maps', name: 'Google Maps' },
+      { k: 'whatsapp', name: 'WhatsApp CTA' },
+      { k: 'meta', name: 'Meta Pixel' }
+    ],
     kpis: [
       { v: '< 1.5s', l: 'Fast 4G mobile load' },
       { v: '1-Tap', l: 'WhatsApp + Google Maps pin' },
@@ -2333,6 +2419,7 @@ try {
   const modalDeliverablesList = document.getElementById('modalDeliverablesList');
   const modalBestFor = document.getElementById('modalBestFor');
   const modalTrialNote = document.getElementById('modalTrialNote');
+  const modalPlatforms = document.getElementById('modalPlatforms');
   const modalTags = document.getElementById('modalTags');
   const modalSwitcher = document.getElementById('modalSwitcher');
   const modalSvcDots = document.getElementById('modalSvcDots');
@@ -2435,6 +2522,16 @@ try {
     modalDeliverablesList.innerHTML = item.deliverables.map(d => `<div class="dmodal__deliv"><span class="dmodal__chk" aria-hidden="true">✓</span><span>${d}</span></div>`).join('');
     if (modalBestFor) modalBestFor.innerHTML = `<strong>Best for:</strong> ${item.bestFor || 'Clothing stores & salons in Hyderabad'}`;
     if (modalTrialNote) modalTrialNote.innerHTML = `<strong>${item.trialNote || '14-day ₹0 trial eligible'}</strong>`;
+    if (modalPlatforms){
+      const plats = Array.isArray(item.platforms) ? item.platforms : [];
+      if (plats.length){
+        modalPlatforms.style.display = 'flex';
+        modalPlatforms.innerHTML = '<span class="dmodal__platlbl">Platforms &amp; Tools</span>' + plats.map(p => `<span class="dmodal__plat">${BRAND_LOGOS[p.k] || ''}${p.name}</span>`).join('');
+      } else {
+        modalPlatforms.style.display = 'none';
+        modalPlatforms.innerHTML = '';
+      }
+    }
     modalTags.innerHTML = item.tags.map(t => `<span class="exp-card__tag">${t}</span>`).join('');
     modalLiveLink.href = `https://wa.me/918074832297?text=${encodeURIComponent('Hi Growmetrik, I want to know more about: ' + item.title)}`;
 
@@ -2569,6 +2666,66 @@ try {
       const parent = document.querySelector(sel)?.parentElement;
       if (parent && !parent._gmObserved){ parent._gmObserved = 1; groupIO.observe(parent); }
     });
+
+    /* Kinetic Anime.js text + fix-step reveals in Problem section */
+    const probSec = document.getElementById('problem');
+    if (probSec){
+      const titleEl = probSec.querySelector('[data-anime-words]');
+      if (titleEl && !titleEl.dataset.splitDone){
+        titleEl.dataset.splitDone = '1';
+        const wrapText = node => {
+          [...node.childNodes].forEach(ch => {
+            if (ch.nodeType === 3){
+              const frag = document.createDocumentFragment();
+              ch.textContent.split(/(\s+)/).forEach(part => {
+                if (!part) return;
+                if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(part));
+                else {
+                  const o = document.createElement('span'); o.className = 'gm-w';
+                  const i = document.createElement('span'); i.className = 'gm-wi';
+                  i.textContent = part; o.appendChild(i); frag.appendChild(o);
+                }
+              });
+              node.replaceChild(frag, ch);
+            } else if (ch.nodeType === 1 && !/^svg$/i.test(ch.tagName)){
+              wrapText(ch);
+            }
+          });
+        };
+        wrapText(titleEl);
+      }
+
+      const probHeadIO = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const words = probSec.querySelectorAll('.gm-wi');
+          if (words.length) A.animate(words, { y: [26, 0], opacity: [0, 1], duration: 640, delay: A.stagger(60), ease: 'outExpo' });
+          const sub = probSec.querySelector('[data-anime-sub]');
+          if (sub) A.animate(sub, { opacity: [0, 1], y: [14, 0], duration: 600, delay: 220, ease: 'outCubic' });
+          if (A.svg?.createDrawable && probSec.querySelector('.prob__ul')){
+            A.animate(A.svg.createDrawable('.prob__ul'), { draw: ['0 0', '0 1'], duration: 760, delay: 300, ease: 'outCubic' });
+          }
+          const nos = probSec.querySelectorAll('.prob__no');
+          if (nos.length) A.animate(nos, { scale: [0.65, 1], opacity: [0, 1], duration: 480, delay: A.stagger(100, { start: 180 }), ease: 'outBack' });
+          probHeadIO.unobserve(en.target);
+        });
+      }, { threshold: 0.22 });
+      probHeadIO.observe(probSec);
+
+      const fixEl = probSec.querySelector('.prob__fix');
+      if (fixEl){
+        const fixIO = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            if (!en.isIntersecting) return;
+            const steps = fixEl.querySelectorAll('.prob__step');
+            A.animate(fixEl, { opacity: [0, 1], y: [16, 0], duration: 520, ease: 'outCubic' });
+            if (steps.length) A.animate(steps, { opacity: [0, 1], y: [10, 0], scale: [0.95, 1], duration: 440, delay: A.stagger(75, { start: 140 }), ease: 'outBack' });
+            fixIO.unobserve(en.target);
+          });
+        }, { threshold: 0.2 });
+        fixIO.observe(fixEl);
+      }
+    }
   }
 })();
 </script>
