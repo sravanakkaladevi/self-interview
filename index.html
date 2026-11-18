@@ -642,8 +642,11 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .dmodal__demoscount{font-size:11px;color:var(--text-muted);font-weight:600}
 .dmodal__demosgrid{display:grid;grid-template-columns:1fr;gap:8px}
 @media (min-width:580px){.dmodal__demosgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.dmodal__democard{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:11px 13px;border-radius:12px;background:var(--panel);border:1px solid var(--line);text-decoration:none;color:var(--foreground);transition:transform .2s var(--e-soft),border-color .2s,box-shadow .2s}
+.dmodal__democard{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px;border-radius:12px;background:var(--panel);border:1px solid var(--line);text-decoration:none;color:var(--foreground);transition:transform .2s var(--e-soft),border-color .2s,box-shadow .2s;overflow:hidden}
 .dmodal__democard:hover{transform:translateY(-2px);border-color:var(--brand-blue);box-shadow:0 10px 24px -12px rgba(59,130,246,.35)}
+.dmodal__democard-preview{position:relative;border-radius:8px;overflow:hidden;background:#060A24;height:78px}
+.dmodal__democard-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.dmodal__democard-content{display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-width:0}
 .dmodal__democard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
 .dmodal__democard-title{font-size:13px;font-weight:700;line-height:1.28}
 .dmodal__democard-tag{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(59,130,246,.12);color:var(--brand-blue);border:1px solid rgba(59,130,246,.25);flex:none}
@@ -651,24 +654,38 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .dmodal__democard-link{display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;color:var(--brand-blue)}
 .dmodal__demobtn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:9999px;background:linear-gradient(135deg,#0284C7,#0369A1);color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
 .dmodal__demobtn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(2,132,199,.5)}
-.exp-card__livedemo{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:rgba(2,132,199,.12);color:#0284C7;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(2,132,199,.28);transition:background .2s,color .2s}
-html[data-mode="dark"] .exp-card__livedemo{background:rgba(56,189,248,.15);color:#38BDF8;border-color:rgba(56,189,248,.32)}
-.exp-card__livedemo:hover{background:#0284C7;color:#fff}
-.exp-card__cover{position:relative;border-radius:14px 14px 0 0;margin:-18px -18px 14px -18px;height:128px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:var(--cover-bg,#060A24);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
-.exp-card__cover-bgtex{position:absolute;inset:0;opacity:.14;background-image:radial-gradient(rgba(255,255,255,.45) 1px,transparent 1px);background-size:11px 11px;pointer-events:none}
-.exp-card__cover-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;z-index:1}
-.exp-card__cover-dots{display:inline-flex;align-items:center;gap:4px}
+
+.exp-card__cover{position:relative;border-radius:14px 14px 0 0;margin:-18px -18px 14px -18px;height:160px;overflow:hidden;display:flex;flex-direction:column;background:#060A24;color:#fff;border-bottom:1px solid var(--line)}
+.exp-card__cover-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:rgba(6,10,36,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;z-index:2;flex-shrink:0}
+.exp-card__cover-dots{display:inline-flex;align-items:center;gap:4.5px}
 .exp-card__cover-dots i{width:6px;height:6px;border-radius:50%;display:inline-block}
 .exp-card__cover-dots i:nth-child(1){background:#EF4444}
 .exp-card__cover-dots i:nth-child(2){background:#F59E0B}
 .exp-card__cover-dots i:nth-child(3){background:#10B981}
-.exp-card__cover-domain{opacity:.9;font-weight:600;letter-spacing:.02em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:150px}
-.exp-card__cover-live{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.45);color:#34D399;font-weight:700;font-size:9.5px;letter-spacing:.05em}
+.exp-card__cover-domain{opacity:.9;font-weight:600;letter-spacing:.02em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:140px;color:rgba(255,255,255,.85)}
+.exp-card__cover-live{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.45);color:#34D399;font-weight:700;font-size:9.5px;letter-spacing:.05em;text-decoration:none;transition:background .2s,border-color .2s;flex-shrink:0}
+.exp-card__cover-live:hover{background:rgba(16,185,129,.35);border-color:#34D399;color:#fff}
 .exp-card__cover-live i{width:5px;height:5px;border-radius:50%;background:#34D399;box-shadow:0 0 6px #34D399;display:inline-block}
-.exp-card__cover-body{display:flex;flex-direction:column;gap:3px;z-index:1}
-.exp-card__cover-brand{font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75);font-weight:700}
-.exp-card__cover-hero{font-size:14.5px;font-weight:800;line-height:1.2;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45);letter-spacing:-.015em}
-.dmodal__cover{position:relative;border-radius:14px;height:130px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:var(--cover-bg,#060A24);color:#fff;border:1px solid rgba(255,255,255,.12);margin-bottom:12px}
+.exp-card__cover-frame{position:relative;flex:1;overflow:hidden;display:block;background:#060A24}
+.exp-card__cover-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.exp-card:hover .exp-card__cover-img{transform:scale(1.05)}
+.exp-card__cover-overlay{position:absolute;inset:0;background:rgba(6,10,36,.42);opacity:0;display:grid;place-items:center;transition:opacity .25s ease;pointer-events:none}
+.exp-card:hover .exp-card__cover-overlay{opacity:1}
+.exp-card__cover-viewbtn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:9999px;background:#0284C7;color:#fff;font-size:11.5px;font-weight:700;box-shadow:0 8px 24px rgba(2,132,199,.5);pointer-events:auto;transition:transform .18s,background .18s}
+.exp-card__cover-viewbtn:hover{background:#0369A1;transform:scale(1.04)}
+
+.exp-card__actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.exp-card__deliv-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;font-size:12px;color:var(--text-muted);min-width:0;flex:1}
+.exp-card__livebtn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 12px;border-radius:999px;background:#0284C7;color:#fff;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .18s ease;box-shadow:0 2px 8px -2px rgba(2,132,199,.5)}
+.exp-card__livebtn:hover{background:#0369A1;transform:translateY(-1px);color:#fff;box-shadow:0 4px 12px -2px rgba(2,132,199,.6)}
+.exp-card__detailslink{font-weight:700;color:var(--foreground);white-space:nowrap;flex-shrink:0;cursor:pointer}
+
+.dmodal__cover{position:relative;border-radius:14px;height:190px;overflow:hidden;display:flex;flex-direction:column;background:#060A24;border:1px solid var(--line);margin-bottom:14px}
+.dmodal__cover-frame{position:relative;flex:1;overflow:hidden}
+.dmodal__cover-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.dmodal__cover-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(6,10,36,.88) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px 14px}
+.dmodal__cover-brand{font-size:10px;font-family:ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:700}
+.dmodal__cover-tagline{font-size:14px;font-weight:800;color:#fff;letter-spacing:-.01em}
 .dmodal__switcher{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .dmodal__navbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9999px;background:var(--panel);border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--foreground);cursor:pointer;transition:transform .15s,border-color .15s}
 .dmodal__navbtn:hover{border-color:var(--foreground);transform:translateY(-1px)}
@@ -759,8 +776,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 .sf__bot button:hover{color:#fff}
 
 /* ---------- Floating Back-to-top + Floating WhatsApp CTA ---------- */
-.totop{--tt-bg:#0B1536;--tt-fg:#F2F6FF;--tt-ring:242,246,255;position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;
-  display:grid;place-items:center;width:3.25rem;height:3.25rem;border-radius:50%;background:var(--tt-bg);color:var(--tt-fg);cursor:pointer;
+.totop{--tt-bg:#0B1536;--tt-fg:#F2F6FF;--tt-ring:242,246,255;position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:calc(max(1.25rem,env(safe-area-inset-bottom)) + 58px);z-index:60;
+  display:grid;place-items:center;width:3rem;height:3rem;border-radius:50%;background:var(--tt-bg);color:var(--tt-fg);cursor:pointer;
   box-shadow:0 10px 30px -10px rgba(0,0,0,.45),0 0 0 1px rgba(var(--tt-ring),.14);opacity:0;visibility:hidden;transform:translateY(.75rem) scale(.9);transition:opacity .35s ease,visibility 0s linear .35s,transform .45s var(--e-soft)}
 .totop.show{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .totop[data-on="dark"]{--tt-bg:#F2F6FF;--tt-fg:#060A24;--tt-ring:6,10,36}
@@ -768,13 +785,17 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 .totop svg.ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
 .totop .ring circle{fill:none;stroke:currentColor;stroke-width:2;opacity:.85;stroke-dasharray:var(--len);stroke-dashoffset:calc(var(--len) * (1 - var(--p,0)))}
 
-.wa-float{position:fixed;left:max(1rem,env(safe-area-inset-left));bottom:max(1rem,env(safe-area-inset-bottom));z-index:65;
+.wa-float{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:65;
   display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:.7rem 1.15rem;border-radius:999px;
   background:#1A8F57;color:#FFFFFF;font-size:.875rem;font-weight:700;letter-spacing:-.01em;
   box-shadow:0 12px 28px -8px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.16);
   transition:transform .25s var(--e-soft),background .2s}
 .wa-float:hover{transform:translateY(-2px);background:#157949}
 .wa-float svg{width:1.15rem;height:1.15rem}
+@media (max-width:480px){
+  .wa-float{min-height:44px;padding:.6rem 1rem;font-size:.82rem;gap:.45rem;bottom:max(1rem,env(safe-area-inset-bottom));right:max(1rem,env(safe-area-inset-right))}
+  .totop{width:2.75rem;height:2.75rem;bottom:calc(max(1rem,env(safe-area-inset-bottom)) + 52px);right:max(1rem,env(safe-area-inset-right))}
+}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -902,7 +923,7 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
             </span>
           </span>
         </h1>
-        <p class="hero__sub rv" style="--d:620ms">We manage Instagram and run Meta ads for clothing stores and salons in Hyderabad. We do the first two weeks of work first, and you pay only if you like the results.</p>
+        <p class="hero__sub rv" style="--d:620ms">We script, shoot on-site in Hyderabad, and run hyper-local Meta ads for clothing stores, bridal boutiques, and salons. We work the first 14 days at ₹0 agency fee — you measure the walk-ins and WhatsApp enquiries before paying anything.</p>
         <div class="ctas rv" style="--d:750ms">
           <button class="pill pill--dark pill--arrow" data-go="enquiry">
             <span class="pill__in" data-h="s 1 1.04" data-hs="320 18" data-ht=".pill">Get a Free Page Audit
@@ -940,7 +961,7 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 
     <div class="shell hero__bar rv">
       <span>Accepting Hyderabad stores</span>
-      <span class="mid">14-day free trial · No advance</span>
+      <span class="mid">14-day ₹0 agency fee trial · No advance</span>
       <span class="scroll">Scroll to explore <i aria-hidden="true">↓</i></span>
     </div>
   </section>
@@ -1193,15 +1214,15 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
       <div style="text-align:center;max-width:680px;margin:0 auto 44px;">
         <div class="exp-badge">
           <span style="color:var(--gold);">●</span>
-          <span>Store Playbooks &amp; Deliverables</span>
+          <span>Live Store &amp; Brand Demos</span>
           <span>•</span>
-          <span id="totalProjectCountHeader" style="color:var(--foreground);">6 Playbooks</span>
+          <span id="totalProjectCountHeader" style="color:var(--foreground);">6 Live Demos</span>
         </div>
         <h2 id="exploreTitle" style="font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin:0 0 12px;">
-          Explore what we build for your store.
+          Live Store &amp; Brand Experiences
         </h2>
         <p style="font-size:15px;color:var(--text-muted);line-height:1.6;margin:0;">
-          Search by store type, service, or deliverable — tap any card to see exactly what your shop receives.
+          Explore real production sites and stores built for clothing, dining, luxury travel, and modern e-commerce. Tap any card or button to test the live demo.
         </p>
       </div>
 
@@ -1209,13 +1230,13 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
           <div class="exp-search-wrap">
             <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-muted);pointer-events:none;" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-            <input id="searchInput" class="exp-search" type="text" placeholder="Search Clothing, Salon, Reels, Meta Ads, Website, WhatsApp..." />
+            <input id="searchInput" class="exp-search" type="text" placeholder="Search Silks, Streetwear, Chai Café, Cruises, Aviation, Live Demos..." />
             <button id="clearSearchBtn" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);padding:4px;" aria-label="Clear search">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
           <div style="display:flex;align-items:center;gap:12px;font-size:12px;font-family:ui-monospace,monospace;color:var(--text-muted);margin-left:auto;">
-            <span id="resultsCount">Showing 6 of 6 playbooks</span>
+            <span id="resultsCount">Showing 6 of 6 live demos</span>
             <button id="resetFiltersLink" style="display:none;color:var(--foreground);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Reset</button>
           </div>
         </div>
@@ -2086,12 +2107,12 @@ const SERVICE_INFO = [
     description: 'A clean, fast-loading one-page website built for phones, showing your best offers, Google Maps location, and an instant WhatsApp button.',
     deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', '6 interactive live client demos (clothing, café, luxury & e-commerce)', 'Floating WhatsApp CTA + short enquiry form'],
     demos: [
-      { name: 'ASK — Handcrafted Silks & Sarees', url: 'https://ask-commerce-eta.vercel.app/', type: 'Silk & Saree Boutique', tag: 'Live Store', desc: 'Authentic Varanasi Kadwa & Kanchipuram bridal silks with WhatsApp enquiry checkout.' },
-      { name: 'Drift — Streetwear E-Commerce', url: 'https://drift-ecommerce-weld.vercel.app/', type: 'Fashion & Apparel', tag: 'Live Store', desc: 'Bold urban fashion storefront with responsive mobile collection grid.' },
-      { name: 'ASK Chai Premium Hotel & Kitchen', url: 'https://ask-chai-hotel.vercel.app/', type: 'Café & Kitchen', tag: 'Live Site', desc: 'Artisanal Karak Chai house and Indian dining showcase with location and menu.' },
-      { name: 'Boutique Cruises & Ocean Voyages', url: 'https://sravan-ship-co.vercel.app/', type: 'Luxury Travel', tag: 'Live Site', desc: 'Boutique travel & cruise experience with elegant visual narrative and itinerary details.' },
-      { name: 'Sunrise Golden Hour Aviation', url: 'https://website-seven-nu-66.vercel.app/', type: 'Luxury Brand', tag: 'Live Site', desc: 'Editorial sunrise carrier brand experience built for high-end engagement.' },
-      { name: 'Her Special Day ♡ | K-Drama Story', url: 'https://k-drama-interactive-birthday-story.vercel.app/', type: 'Interactive Story', tag: 'Live App', desc: 'Scrapbook and interactive café experience with responsive audio & visual cues.' }
+      { name: 'ASK — Handcrafted Silks & Sarees', url: 'https://ask-commerce-eta.vercel.app/', img: 'assets/demos/ask-silks.webp', type: 'Silk & Saree Boutique', tag: 'Live Store', desc: 'Authentic Varanasi Kadwa & Kanchipuram bridal silks with WhatsApp enquiry checkout.' },
+      { name: 'Drift — Streetwear E-Commerce', url: 'https://drift-ecommerce-weld.vercel.app/', img: 'assets/demos/drift.webp', type: 'Fashion & Apparel', tag: 'Live Store', desc: 'Bold urban fashion storefront with responsive mobile collection grid.' },
+      { name: 'ASK Chai Premium Hotel & Kitchen', url: 'https://ask-chai-hotel.vercel.app/', img: 'assets/demos/ask-chai.webp', type: 'Café & Kitchen', tag: 'Live Site', desc: 'Artisanal Karak Chai house and Indian dining showcase with location and menu.' },
+      { name: 'Boutique Cruises & Ocean Voyages', url: 'https://sravan-ship-co.vercel.app/', img: 'assets/demos/cruises.webp', type: 'Luxury Travel', tag: 'Live Site', desc: 'Boutique travel & cruise experience with elegant visual narrative and itinerary details.' },
+      { name: 'Sunrise Golden Hour Aviation', url: 'https://website-seven-nu-66.vercel.app/', img: 'assets/demos/sunrise.webp', type: 'Luxury Brand', tag: 'Live Site', desc: 'Editorial sunrise carrier brand experience built for high-end engagement.' },
+      { name: 'Her Special Day ♡ | K-Drama Story', url: 'https://k-drama-interactive-birthday-story.vercel.app/', img: 'assets/demos/kdrama.webp', type: 'Interactive Story', tag: 'Live App', desc: 'Scrapbook and interactive café experience with responsive audio & visual cues.' }
     ],
     tags: ['One-Page Site', 'WhatsApp CTA', 'Fast Load', 'Mobile UI', 'Live Demos']
   }
@@ -2453,80 +2474,15 @@ try {
 (() => {
   const PLAYBOOKS = [
     {
-      id: 'clothing-ethnic',
-      title: 'Clothing Store Reel & Festival Funnel',
-      subtitle: 'Built for boutiques, sarees, kids & women’s wear in Hyderabad',
-      client: 'Clothing Stores',
-      category: 'Clothing Stores',
-      badge: '62,773 Views Format',
-      tags: ['Reels', 'Hook Script', 'Dussehra', 'WhatsApp CTA'],
-      deliverables: ['3-second price/collection hook filmed in store', 'Save-worthy outfit showcase reels', 'Local 5–10 km Meta ad amplification', 'Direct WhatsApp enquiry button on every post'],
-      description: 'The exact playbook behind our 62,773-view, 565-save Dussehra reel for Sri Venkateswara Kids & Women’s Wear in L.B. Nagar.'
-    },
-    {
-      id: 'salon-bookings',
-      title: 'Salon Appointment & Bridal Offer Engine',
-      subtitle: 'Turn local Instagram scrollers into booked chair slots',
-      client: 'Salons & Studios',
-      category: 'Salons',
-      badge: 'WhatsApp Bookings',
-      tags: ['Salons', 'Before & After', 'Meta Ads', 'Appointments'],
-      deliverables: ['Before/after transformation reels filmed at salon', 'Weekday combo & bridal trial ad offers', 'Click-to-WhatsApp slot booking flow', 'Location pin & pricing clarity in highlights'],
-      description: 'Designed for unisex salons, hair studios, and bridal makeup artists across Hyderabad looking for steady weekday and weekend bookings.'
-    },
-    {
-      id: 'local-meta-ads',
-      title: 'Hyper-Local Hyderabad Meta Ads',
-      subtitle: 'Reach shoppers within 5–10 km of your storefront',
-      client: 'Meta Ads Setup',
-      category: 'Meta Ads',
-      badge: 'Direct Billing',
-      tags: ['Meta Ads', 'Radius Targeting', 'WhatsApp Ads', 'Tracking'],
-      deliverables: ['Ads billed directly in your own Meta account', '5–10 km radius targeting around your shop area', 'WhatsApp conversation & offer-code tracking', 'Weekly ad spend & cost-per-enquiry check'],
-      description: 'No wasted impressions across other states. Every rupee focuses on nearby Hyderabad shoppers likely to visit or message your store.'
-    },
-    {
-      id: 'store-shoot',
-      title: 'On-Site Store Reels Shoot Day',
-      subtitle: 'Zero studio hassle — we film right inside your shop',
-      client: 'Reels & Video',
-      category: 'Reels & Content',
-      badge: 'In-Store Shoot',
-      tags: ['Reels', 'Video Shoot', 'Captions', 'Editing'],
-      deliverables: ['Monthly or bi-weekly shoot plan at your store', 'Short, natural staff/owner or product hooks', 'Clean color grading, subtitles & offer graphics', 'Ready-to-post Reels formatted for vertical reach'],
-      description: 'Shop owners don’t have hours to learn editing. We script, shoot on-site, edit cleanly, and publish on schedule.'
-    },
-    {
-      id: 'one-page-site',
-      title: 'Fast One-Page Store Website',
-      subtitle: 'Mobile-first store page connected to WhatsApp & Maps',
-      client: 'Website Design',
-      category: 'Websites',
-      badge: 'Mobile-First',
-      tags: ['Website', 'WhatsApp Button', 'Google Maps', 'Fast Load'],
-      deliverables: ['Lightweight page built for mobile 4G speeds', 'Best-selling categories & starting range display', 'Floating WhatsApp button + short 5-field enquiry form', 'Google Maps directions & Instagram link'],
-      description: 'Gives local shoppers confidence in 30 seconds — your store story, proof, location, and one-tap WhatsApp enquiry.'
-    },
-    {
-      id: 'day1-tracking',
-      title: '14-Day Trial & Plain Monthly Report',
-      subtitle: 'Work first, measure 2–3 numbers together, pay only if happy',
-      client: 'Process & Proof',
-      category: 'Meta Ads',
-      badge: '14-Day Trial',
-      tags: ['Free Audit', '14-Day Trial', 'Reports', 'No Lock-In'],
-      deliverables: ['Free Instagram page audit within 24 hours', '14 days of agreed execution at ₹0 agency fee', 'Simple 1-page report: views, saves, follows & chats', 'Zero password sharing — official partner access only'],
-      description: 'Built for cautious store owners burned by agencies that disappear after taking retainers.'
-    },
-    {
       id: 'demo-silks',
       title: 'ASK — Handcrafted Silks & Heirloom Sarees',
       subtitle: 'Ultra-luxury bridal silks with WhatsApp enquiry checkout',
       client: 'ASK Silks Boutique',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'E-Commerce',
+      badge: 'Live Store',
       domain: 'ask-commerce-eta.vercel.app',
       coverTagline: 'Varanasi & Kanchipuram Heirloom Sarees',
+      coverImg: 'assets/demos/ask-silks.webp',
       coverBg: 'linear-gradient(135deg, #3B0715 0%, #701A28 50%, #B45309 100%)',
       tags: ['Live Demo', 'E-Commerce', 'Handloom Silks', 'WhatsApp CTA'],
       deliverables: ['Varanasi Kadwa & Kanjeevaram catalogue layout', 'Fast mobile 4G collection grid', 'Floating WhatsApp order & enquiry CTA', 'Verified live deployment in production'],
@@ -2538,10 +2494,11 @@ try {
       title: 'Drift — Streetwear E-Commerce Experience',
       subtitle: 'Bold urban fashion storefront with responsive collection grid',
       client: 'Streetwear Brand',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'Fashion',
+      badge: 'Live Store',
       domain: 'drift-ecommerce-weld.vercel.app',
       coverTagline: 'Streetwear. Redefined. Bold Fits.',
+      coverImg: 'assets/demos/drift.webp',
       coverBg: 'linear-gradient(135deg, #09090B 0%, #18181B 55%, #0284C7 100%)',
       tags: ['Live Demo', 'Streetwear', 'E-Commerce', 'Mobile UI'],
       deliverables: ['Bold high-contrast apparel storefront', 'Drop countdown & collection filter', 'Instant mobile cart & size selector', 'Optimized sub-second load on mobile'],
@@ -2553,10 +2510,11 @@ try {
       title: 'ASK Chai Premium Hotel & Modern Kitchen',
       subtitle: 'Artisanal Karak Chai house and Indian dining showcase',
       client: 'Café & Kitchen',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'Café & Dining',
+      badge: 'Live Site',
       domain: 'ask-chai-hotel.vercel.app',
       coverTagline: 'Artisanal Karak Chai & Modern Kitchen',
+      coverImg: 'assets/demos/ask-chai.webp',
       coverBg: 'linear-gradient(135deg, #2D1305 0%, #5B270C 50%, #D97706 100%)',
       tags: ['Live Demo', 'Café & Kitchen', 'Karak Chai', 'Google Maps'],
       deliverables: ['Artisanal drink & street kitchen menu showcase', 'One-tap Google Maps directions pin', 'Direct WhatsApp table booking CTA', 'Local SEO & fast mobile load'],
@@ -2568,10 +2526,11 @@ try {
       title: 'Boutique Cruises & Ocean Voyages',
       subtitle: 'Luxury maritime travel experience with itinerary details',
       client: 'Ocean Voyages',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'Luxury & Travel',
+      badge: 'Live Site',
       domain: 'sravan-ship-co.vercel.app',
       coverTagline: 'Boutique Cruises & Ocean Voyages',
+      coverImg: 'assets/demos/cruises.webp',
       coverBg: 'linear-gradient(135deg, #051937 0%, #004D7A 50%, #008793 100%)',
       tags: ['Live Demo', 'Luxury Travel', 'Voyages', 'Editorial Design'],
       deliverables: ['Cinematic voyage showcase & cabin suites', 'Interactive route & destination timeline', 'High-ticket concierge booking enquiry', 'Fast visual rendering across all devices'],
@@ -2583,10 +2542,11 @@ try {
       title: 'Sunrise Golden Hour Aviation Experience',
       subtitle: 'Luxury airline told as one golden-hour sunrise flight',
       client: 'Luxury Aviation',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'Luxury & Travel',
+      badge: 'Live Site',
       domain: 'website-seven-nu-66.vercel.app',
       coverTagline: 'Sunrise-Exclusive Golden Hour Aviation',
+      coverImg: 'assets/demos/sunrise.webp',
       coverBg: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #B45309 100%)',
       tags: ['Live Demo', 'Luxury Brand', 'Editorial Story', 'Fast 4G'],
       deliverables: ['Golden-hour sunrise visual narrative', 'Fleet specs & premium private charter inquiry', 'Fluid animations & typography hierarchy', 'Sub-1.2s mobile 4G performance'],
@@ -2598,10 +2558,11 @@ try {
       title: 'Her Special Day ♡ | K-Drama Café Story',
       subtitle: 'Interactive scrapbook and café memory experience',
       client: 'Interactive Café',
-      category: 'Websites',
-      badge: 'Live Demo',
+      category: 'Interactive',
+      badge: 'Live App',
       domain: 'k-drama-interactive-birthday-story.vercel.app',
       coverTagline: 'Her Special Day ♡ | K-Drama Story',
+      coverImg: 'assets/demos/kdrama.webp',
       coverBg: 'linear-gradient(135deg, #4A044E 0%, #701A75 45%, #BE185D 100%)',
       tags: ['Live Demo', 'Interactive Experience', 'Café Story', 'Scrapbook'],
       deliverables: ['Interactive chapter-based storytelling', 'Responsive photo scrapbook layout', 'Audio-visual cues & micro-interactions', 'Mobile-first tap progression'],
@@ -2610,8 +2571,8 @@ try {
     }
   ];
 
-  const CATEGORIES = ['All', 'Clothing Stores', 'Salons', 'Reels & Content', 'Meta Ads', 'Websites'];
-  const QUICK_TAGS = ['Reels', 'Meta Ads', 'Salons', 'WhatsApp CTA', 'Website', '14-Day Trial'];
+  const CATEGORIES = ['All', 'E-Commerce', 'Fashion', 'Café & Dining', 'Luxury & Travel', 'Interactive'];
+  const QUICK_TAGS = ['E-Commerce', 'Streetwear', 'Handloom Silks', 'Karak Chai', 'Luxury Travel', 'K-Drama'];
 
   let activeCategory = 'All', searchQuery = '', modalOnClose = null;
   const searchInput = document.getElementById('searchInput');
@@ -2688,13 +2649,13 @@ try {
 
   function renderCards(){
     const list = getFiltered();
-    resultsCount.textContent = `Showing ${list.length} of ${PLAYBOOKS.length} playbooks & demos`;
+    resultsCount.textContent = `Showing ${list.length} of ${PLAYBOOKS.length} live demos`;
     const totalH = document.getElementById('totalProjectCountHeader');
-    if (totalH) totalH.textContent = `${PLAYBOOKS.length} Playbooks & Demos`;
+    if (totalH) totalH.textContent = `${PLAYBOOKS.length} Live Demos`;
     resetLink.style.display = (searchQuery.trim() || activeCategory !== 'All') ? 'inline-block' : 'none';
     if (!list.length){
       projectsGrid.style.display = 'none'; emptyState.style.display = 'block';
-      emptyStateMsg.textContent = `No playbooks match "${searchQuery}" in "${activeCategory}".`; return;
+      emptyStateMsg.textContent = `No live demos match "${searchQuery}" in "${activeCategory}".`; return;
     }
     projectsGrid.style.display = 'grid'; emptyState.style.display = 'none'; projectsGrid.innerHTML = '';
     const newCards = [];
@@ -2707,16 +2668,17 @@ try {
       card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openDetailModal(p); } });
       card.innerHTML = `
         ${p.liveUrl ? `
-          <div class="exp-card__cover" style="--cover-bg:${p.coverBg || '#060A24'}">
-            <div class="exp-card__cover-bgtex"></div>
+          <div class="exp-card__cover">
             <div class="exp-card__cover-bar">
               <span class="exp-card__cover-dots"><i></i><i></i><i></i></span>
               <span class="exp-card__cover-domain">${p.domain || 'growmetrik.live'}</span>
-              <span class="exp-card__cover-live"><i></i>LIVE DEMO</span>
+              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__cover-live" onclick="event.stopPropagation()"><i></i>LIVE ↗</a>
             </div>
-            <div class="exp-card__cover-body">
-              <span class="exp-card__cover-brand">${p.client}</span>
-              <span class="exp-card__cover-hero">${p.coverTagline || p.title}</span>
+            <div class="exp-card__cover-frame">
+              <img src="${p.coverImg || 'assets/demos/ask-silks.webp'}" alt="${p.title}" class="exp-card__cover-img" loading="eager">
+              <div class="exp-card__cover-overlay">
+                <span class="exp-card__cover-viewbtn">Launch Live Site ↗</span>
+              </div>
             </div>
           </div>
         ` : ''}
@@ -2730,10 +2692,10 @@ try {
           <div class="exp-card__tags">${p.tags.slice(0, 3).map(t => `<span class="exp-card__tag">${t}</span>`).join('')}</div>
         </div>
         <div class="exp-card__foot">
-          <span>${p.deliverables[0]}</span>
-          <div style="display:flex;align-items:center;gap:8px;">
-            ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__livedemo" onclick="event.stopPropagation()">Live Demo ↗</a>` : ''}
-            <strong>Details →</strong>
+          <span class="exp-card__deliv-text" title="${p.deliverables[0]}">${p.deliverables[0]}</span>
+          <div class="exp-card__actions">
+            ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__livebtn" onclick="event.stopPropagation()">Live Demo ↗</a>` : ''}
+            <span class="exp-card__detailslink">Details →</span>
           </div>
         </div>
       `;
@@ -2760,17 +2722,18 @@ try {
     if (modalCoverMockup){
       if (item.liveUrl){
         modalCoverMockup.style.display = 'flex';
-        modalCoverMockup.style.setProperty('--cover-bg', item.coverBg || '#060A24');
         modalCoverMockup.innerHTML = `
-          <div class="exp-card__cover-bgtex"></div>
           <div class="exp-card__cover-bar">
             <span class="exp-card__cover-dots"><i></i><i></i><i></i></span>
             <span class="exp-card__cover-domain">${item.domain || 'growmetrik.live'}</span>
-            <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__cover-live" style="text-decoration:none;" onclick="event.stopPropagation()"><i></i>LIVE DEMO ↗</a>
+            <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__cover-live" onclick="event.stopPropagation()"><i></i>OPEN LIVE SITE ↗</a>
           </div>
-          <div class="exp-card__cover-body">
-            <span class="exp-card__cover-brand">${item.client || 'Growmetrik'}</span>
-            <span class="exp-card__cover-hero">${item.coverTagline || item.title}</span>
+          <div class="dmodal__cover-frame">
+            <img src="${item.coverImg || 'assets/demos/ask-silks.webp'}" alt="${item.title}" class="dmodal__cover-img" loading="eager">
+            <div class="dmodal__cover-scrim">
+              <span class="dmodal__cover-brand">${item.client || 'Growmetrik'}</span>
+              <span class="dmodal__cover-tagline">${item.coverTagline || item.title}</span>
+            </div>
           </div>
         `;
         modalCoverMockup.style.cursor = 'pointer';
@@ -2819,15 +2782,17 @@ try {
           <div class="dmodal__demosgrid">
             ${demos.map(dm => `
               <a href="${dm.url}" target="_blank" rel="noopener noreferrer" class="dmodal__democard">
-                <div class="dmodal__democard-top">
-                  <div style="display:flex;align-items:center;gap:6px;">
-                    <span style="display:inline-flex;gap:3px;"><i style="width:5px;height:5px;border-radius:50%;background:#EF4444;display:inline-block;"></i><i style="width:5px;height:5px;border-radius:50%;background:#F59E0B;display:inline-block;"></i><i style="width:5px;height:5px;border-radius:50%;background:#10B981;display:inline-block;"></i></span>
-                    <span class="dmodal__democard-title">${dm.name}</span>
-                  </div>
-                  <span class="dmodal__democard-tag">${dm.tag || 'Live'}</span>
+                <div class="dmodal__democard-preview">
+                  <img src="${dm.img || 'assets/demos/ask-silks.webp'}" alt="${dm.name}" class="dmodal__democard-img" loading="eager">
                 </div>
-                <div class="dmodal__democard-desc">${dm.desc || dm.type}</div>
-                <span class="dmodal__democard-link">View Live Site ↗</span>
+                <div class="dmodal__democard-content">
+                  <div class="dmodal__democard-top">
+                    <span class="dmodal__democard-title">${dm.name}</span>
+                    <span class="dmodal__democard-tag">${dm.tag || 'Live'}</span>
+                  </div>
+                  <div class="dmodal__democard-desc">${dm.desc || dm.type}</div>
+                  <span class="dmodal__democard-link">View Live Site ↗</span>
+                </div>
               </a>
             `).join('')}
           </div>
@@ -2943,6 +2908,15 @@ try {
       if (A.svg?.createDrawable && document.querySelector('.gm-arrow-draw')){
         A.animate(A.svg.createDrawable('.gm-arrow-draw'), { draw: ['0 0', '0 1'], duration: 820, delay: 160, ease: 'outCubic' });
       }
+      /* Hero kinetic text & cta entrance */
+      const heroLines = document.querySelectorAll('.hero .h1 .line span:not(.soft)');
+      if (heroLines.length){
+        A.animate(heroLines, { y: [18, 0], opacity: [0, 1], duration: 620, delay: A.stagger(80, { start: 120 }), ease: 'outExpo' });
+      }
+      const heroSub = document.querySelector('.hero__sub');
+      if (heroSub){
+        A.animate(heroSub, { y: [14, 0], opacity: [0, 1], duration: 560, delay: 340, ease: 'outCubic' });
+      }
     } catch (e) {}
   };
   if (document.body.classList.contains('ready')) runBrandMotion();
@@ -2999,7 +2973,10 @@ try {
                 else {
                   const o = document.createElement('span'); o.className = 'gm-w';
                   const i = document.createElement('span'); i.className = 'gm-wi';
-                  i.textContent = part; o.appendChild(i); frag.appendChild(o);
+                  i.textContent = part;
+                  i.style.opacity = '0';
+                  i.style.transform = 'translateY(110%)';
+                  o.appendChild(i); frag.appendChild(o);
                 }
               });
               node.replaceChild(frag, ch);
@@ -3011,22 +2988,25 @@ try {
         wrapText(titleEl);
       }
 
+      const probTitleTarget = titleEl || probSec;
       const probHeadIO = new IntersectionObserver(entries => {
         entries.forEach(en => {
           if (!en.isIntersecting) return;
           const words = probSec.querySelectorAll('.gm-wi');
-          if (words.length) A.animate(words, { y: [26, 0], opacity: [0, 1], duration: 640, delay: A.stagger(60), ease: 'outExpo' });
+          if (words.length) A.animate(words, { y: ['110%', '0%'], opacity: [0, 1], duration: 560, delay: A.stagger(42), ease: 'outExpo' });
           const sub = probSec.querySelector('[data-anime-sub]');
-          if (sub) A.animate(sub, { opacity: [0, 1], y: [14, 0], duration: 600, delay: 220, ease: 'outCubic' });
+          if (sub) A.animate(sub, { opacity: [0, 1], y: [16, 0], duration: 520, delay: 200, ease: 'outCubic' });
           if (A.svg?.createDrawable && probSec.querySelector('.prob__ul')){
-            A.animate(A.svg.createDrawable('.prob__ul'), { draw: ['0 0', '0 1'], duration: 760, delay: 300, ease: 'outCubic' });
+            A.animate(A.svg.createDrawable('.prob__ul'), { draw: ['0 0', '0 1'], duration: 740, delay: 260, ease: 'outCubic' });
           }
+          const cards = probSec.querySelectorAll('.prob__card');
+          if (cards.length) A.animate(cards, { opacity: [0, 1], y: [20, 0], scale: [0.97, 1], duration: 520, delay: A.stagger(85, { start: 240 }), ease: 'outBack' });
           const nos = probSec.querySelectorAll('.prob__no');
-          if (nos.length) A.animate(nos, { scale: [0.65, 1], opacity: [0, 1], duration: 480, delay: A.stagger(100, { start: 180 }), ease: 'outBack' });
+          if (nos.length) A.animate(nos, { scale: [0.6, 1], opacity: [0, 1], duration: 440, delay: A.stagger(90, { start: 280 }), ease: 'outBack' });
           probHeadIO.unobserve(en.target);
         });
-      }, { threshold: 0.22 });
-      probHeadIO.observe(probSec);
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+      probHeadIO.observe(probTitleTarget);
 
       const fixEl = probSec.querySelector('.prob__fix');
       if (fixEl){
@@ -3034,11 +3014,11 @@ try {
           entries.forEach(en => {
             if (!en.isIntersecting) return;
             const steps = fixEl.querySelectorAll('.prob__step');
-            A.animate(fixEl, { opacity: [0, 1], y: [16, 0], duration: 520, ease: 'outCubic' });
-            if (steps.length) A.animate(steps, { opacity: [0, 1], y: [10, 0], scale: [0.95, 1], duration: 440, delay: A.stagger(75, { start: 140 }), ease: 'outBack' });
+            A.animate(fixEl, { opacity: [0, 1], y: [16, 0], duration: 500, ease: 'outCubic' });
+            if (steps.length) A.animate(steps, { opacity: [0, 1], y: [10, 0], scale: [0.94, 1], duration: 420, delay: A.stagger(70, { start: 120 }), ease: 'outBack' });
             fixIO.unobserve(en.target);
           });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
         fixIO.observe(fixEl);
       }
     }
