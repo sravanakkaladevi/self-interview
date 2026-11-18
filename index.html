@@ -346,7 +346,6 @@ html[data-mode="dark"] .prob__flag{background:rgba(248,113,113,.12);color:#FCA5A
 html[data-mode="dark"] .doors__pill:hover,html[data-mode="dark"] .doors__pill.on{background:#1BD0FA;border-color:#1BD0FA;color:#060A24}
 .doors__pill.on i,.doors__pill:hover i{opacity:.9}
 .doors__cue{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
-@media (max-width:639.98px){.doors__bar{display:none}}
 .doors__row{--gap:1.5rem;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:end;width:100%;transition:transform .8s cubic-bezier(.65,0,.35,1)}
 @media (min-width:1024px){.doors__row{--gap:3rem}}
 .doors__row::after{content:"";position:absolute;left:-50vw;right:-50vw;bottom:0;height:1.5rem;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,.55) 1px,rgba(0,0,0,.06) 2px,transparent 4px,transparent 7px,rgba(0,0,0,.05) 8px,rgba(255,255,255,.25) 9px,transparent 11px,rgba(0,0,0,.08) 100%),var(--base);box-shadow:0 -1px 0 rgba(0,0,0,.07),0 -.5rem .9rem -.45rem rgba(0,0,0,.16)}
@@ -418,25 +417,31 @@ html[data-mode="dark"] .door{--dc:var(--door-dk,var(--door))}
 .handle__lock::before{content:"";position:absolute;left:50%;top:30%;width:2cqi;height:2cqi;margin-left:-1cqi;border-radius:50%;background:#140d04}
 .handle__lock::after{content:"";position:absolute;left:50%;top:calc(30% + 1.3cqi);width:1cqi;height:3cqi;margin-left:-.5cqi;border-radius:0 0 .3cqi .3cqi;background:#140d04}
 @media (max-width:639.98px){
-  .doors{padding-top:0;overflow:clip;height:calc(100svh + 3 * 55svh)}
-  .doors__pin{--uw:min(56vw,calc((100svh - 31rem) / 2.25));--ug:calc(50vw - var(--uw) / 2 + .75rem);position:sticky;top:0;height:100svh;padding-top:4.75rem;display:flex;flex-direction:column;justify-content:flex-start;background:inherit;overflow:clip}
-  .doors__wall{gap:1rem;align-items:stretch}
-  .doors__row{display:flex;gap:var(--ug);overflow:visible;padding-inline:calc(50% - var(--uw) / 2);margin-inline:-1.25rem;width:calc(100% + 2.5rem);padding-top:2rem;margin-top:-1rem;transition:none;will-change:transform}
+  .doors{padding-top:0;overflow:visible;height:calc(100svh + 3 * 50svh)}
+  .doors__pin{--uw:clamp(135px,46vw,175px);--ug:calc(50vw - var(--uw) / 2);position:sticky;top:0;height:100svh;padding-top:4.5rem;display:flex;flex-direction:column;justify-content:flex-start;background:inherit;overflow:clip}
+  .doors__wall{display:flex;flex-direction:column;gap:.55rem;align-items:stretch}
+  .paint{order:1;font-size:1.75rem;max-width:none;align-self:flex-start;text-align:left;margin:.15rem 0 .35rem}
+  .doors__bar{order:2;display:flex;flex-direction:column;align-items:stretch;gap:.45rem;margin:0 0 .5rem;width:100%}
+  .doors__pills{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;gap:.4rem;padding:.2rem .25rem .4rem;margin:0 -1.25rem;padding-inline:1.25rem;scrollbar-width:none}
+  .doors__pills::-webkit-scrollbar{display:none}
+  .doors__pill{flex:0 0 auto;min-height:36px;padding:.35rem .75rem;font-size:.78rem;white-space:nowrap;scroll-snap-align:start}
+  .doors__pill svg{width:14px;height:14px}
+  .doors__cue{display:none}
+  .doors__row{order:3;display:flex;gap:var(--ug);overflow:visible;padding-inline:calc(50% - var(--uw) / 2);margin-inline:-1.25rem;width:calc(100% + 2.5rem);padding-top:.5rem;margin-top:0;touch-action:pan-y pinch-zoom;transition:transform .32s cubic-bezier(.16,1,.3,1);will-change:transform}
   .doors__row::after{left:0;right:auto;width:700vw}
-  .unit{flex:0 0 var(--uw);max-width:none}
+  .unit{flex:0 0 var(--uw);max-width:none;transition:opacity .4s var(--e-soft),transform .4s var(--e-soft)}
   .unit::before{display:none}
-  .dinfo{position:relative;left:auto!important;top:auto!important;width:auto!important;max-width:100%;margin:.65rem 0 0;padding:1rem 1.1rem;text-align:left;min-height:9.5rem;opacity:1;transform:none;pointer-events:auto;box-shadow:0 12px 30px -16px rgba(6,10,36,.18)}
-  .dinfo .dinfo__h{font-size:1.35rem;line-height:1.12;margin-bottom:.25rem}
-  .dinfo .dinfo__t{margin-bottom:.6rem;font-size:.68rem;letter-spacing:.05em;line-height:1.35}
-  .dinfo .dinfo__p{font-size:.85rem;line-height:1.35;gap:.4rem}
+  .doors__dots{order:4;display:flex;justify-content:center;align-items:center;gap:.55rem;margin:.55rem 0 .25rem}
+  .doors__dots button,.doors__dots i{appearance:none;border:none;padding:0;width:.55rem;height:.55rem;border-radius:999px;background:rgba(var(--fg-rgb),.22);cursor:pointer;transition:width .35s cubic-bezier(.16,1,.3,1),background .35s}
+  .doors__dots button.on,.doors__dots i.on{width:1.4rem;background:var(--brand-blue)}
+  .dinfo{order:5;position:relative;left:auto!important;top:auto!important;width:auto!important;max-width:100%;margin:.35rem 0 0;padding:.85rem 1rem;text-align:left;min-height:7.5rem;opacity:1;transform:none;pointer-events:auto;box-shadow:0 12px 30px -16px rgba(6,10,36,.18)}
+  .dinfo .dinfo__h{font-size:1.25rem;line-height:1.15;margin-bottom:.2rem}
+  .dinfo .dinfo__t{margin-bottom:.45rem;font-size:.68rem;letter-spacing:.05em;line-height:1.3}
+  .dinfo .dinfo__p{font-size:.82rem;line-height:1.3;gap:.35rem}
   .dinfo__hint{display:none}
-  .dinfo__cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.75rem;padding:.55rem 1rem;min-height:40px;border-radius:9999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.8125rem;font-weight:700;cursor:pointer}
-  .doors__dots{display:flex;gap:.4rem;margin:.25rem 0 0}
+  .dinfo__cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.65rem;padding:.5rem .95rem;min-height:36px;border-radius:9999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.78rem;font-weight:700;cursor:pointer}
   .doors.compact .dinfo__p{display:none}
   .doors.compact .dinfo{min-height:0}
-  .doors__dots i{width:.4rem;height:.4rem;border-radius:999px;background:rgba(var(--fg-rgb),.2);transition:width .35s cubic-bezier(.16,1,.3,1),background .35s}
-  .doors__dots i.on{width:1.3rem;background:var(--foreground)}
-  .paint{font-size:2rem;max-width:none;align-self:flex-start;text-align:left;margin:.25rem 0 .5rem}
 }
 @media (hover:hover) and (pointer:fine){.doorway{cursor:none}}
 .door-cursor{position:fixed;left:0;top:0;z-index:90;pointer-events:none;padding:.55rem .95rem;border-radius:9999px;background:var(--btn-bg);color:var(--btn-fg);font-size:.8125rem;font-weight:600;white-space:nowrap;box-shadow:0 .5rem 1.5rem -.5rem rgba(0,0,0,.45);opacity:0;transition:opacity .18s ease}
@@ -631,6 +636,39 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .dmodal__platlbl{font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:700;margin-right:2px}
 .dmodal__plat{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:9999px;background:var(--panel-2);border:1px solid var(--line);font-size:12px;font-weight:650;color:var(--foreground)}
 .dmodal__plat svg{width:15px;height:15px;flex:none}
+.dmodal__demos{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line)}
+.dmodal__demoshead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dmodal__demoslbl{font-size:11px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--brand-blue);font-weight:700}
+.dmodal__demoscount{font-size:11px;color:var(--text-muted);font-weight:600}
+.dmodal__demosgrid{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:580px){.dmodal__demosgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dmodal__democard{display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:11px 13px;border-radius:12px;background:var(--panel);border:1px solid var(--line);text-decoration:none;color:var(--foreground);transition:transform .2s var(--e-soft),border-color .2s,box-shadow .2s}
+.dmodal__democard:hover{transform:translateY(-2px);border-color:var(--brand-blue);box-shadow:0 10px 24px -12px rgba(59,130,246,.35)}
+.dmodal__democard-top{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
+.dmodal__democard-title{font-size:13px;font-weight:700;line-height:1.28}
+.dmodal__democard-tag{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(59,130,246,.12);color:var(--brand-blue);border:1px solid rgba(59,130,246,.25);flex:none}
+.dmodal__democard-desc{font-size:11.5px;color:var(--text-muted);line-height:1.4}
+.dmodal__democard-link{display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;color:var(--brand-blue)}
+.dmodal__demobtn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:9999px;background:linear-gradient(135deg,#0284C7,#0369A1);color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.dmodal__demobtn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(2,132,199,.5)}
+.exp-card__livedemo{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:rgba(2,132,199,.12);color:#0284C7;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;text-decoration:none;border:1px solid rgba(2,132,199,.28);transition:background .2s,color .2s}
+html[data-mode="dark"] .exp-card__livedemo{background:rgba(56,189,248,.15);color:#38BDF8;border-color:rgba(56,189,248,.32)}
+.exp-card__livedemo:hover{background:#0284C7;color:#fff}
+.exp-card__cover{position:relative;border-radius:14px 14px 0 0;margin:-18px -18px 14px -18px;height:128px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:var(--cover-bg,#060A24);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+.exp-card__cover-bgtex{position:absolute;inset:0;opacity:.14;background-image:radial-gradient(rgba(255,255,255,.45) 1px,transparent 1px);background-size:11px 11px;pointer-events:none}
+.exp-card__cover-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;z-index:1}
+.exp-card__cover-dots{display:inline-flex;align-items:center;gap:4px}
+.exp-card__cover-dots i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.exp-card__cover-dots i:nth-child(1){background:#EF4444}
+.exp-card__cover-dots i:nth-child(2){background:#F59E0B}
+.exp-card__cover-dots i:nth-child(3){background:#10B981}
+.exp-card__cover-domain{opacity:.9;font-weight:600;letter-spacing:.02em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:150px}
+.exp-card__cover-live{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.45);color:#34D399;font-weight:700;font-size:9.5px;letter-spacing:.05em}
+.exp-card__cover-live i{width:5px;height:5px;border-radius:50%;background:#34D399;box-shadow:0 0 6px #34D399;display:inline-block}
+.exp-card__cover-body{display:flex;flex-direction:column;gap:3px;z-index:1}
+.exp-card__cover-brand{font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75);font-weight:700}
+.exp-card__cover-hero{font-size:14.5px;font-weight:800;line-height:1.2;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.45);letter-spacing:-.015em}
+.dmodal__cover{position:relative;border-radius:14px;height:130px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:var(--cover-bg,#060A24);color:#fff;border:1px solid rgba(255,255,255,.12);margin-bottom:12px}
 .dmodal__switcher{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .dmodal__navbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9999px;background:var(--panel);border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--foreground);cursor:pointer;transition:transform .15s,border-color .15s}
 .dmodal__navbtn:hover{border-color:var(--foreground);transform:translateY(-1px)}
@@ -673,7 +711,7 @@ html[data-mode="dark"] .dmodal__dot.on{background:#1BD0FA;border-color:#1BD0FA;c
 .modal.open .modal__panel{transform:none;opacity:1}
 .modal.closing .modal__panel{transform:translateY(18px);opacity:0}
 @media (min-width:640px){.modal__panel{padding:2rem}}
-.x-btn{position:absolute;right:1rem;top:1rem;width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:9999px;background:var(--surface);color:var(--foreground)}
+.x-btn{position:absolute;right:1rem;top:1rem;width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:9999px;background:var(--surface);color:var(--foreground);z-index:10}
 .x-btn:hover{background:var(--surface-2)}
 .mhead{margin-bottom:1.25rem;display:flex;flex-direction:column;gap:.35rem}
 .mhead p{display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:600;color:var(--text-muted)}
@@ -991,7 +1029,12 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
           <div class="dinfo__hint"><span>Included in 14-day ₹0 trial</span><strong>Click door for breakdown →</strong></div>
           <button type="button" class="dinfo__cta" id="dinfoCta">View full deliverables →</button>
         </div>
-        <p class="doors__dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></p>
+        <div class="doors__dots" role="tablist" aria-label="Choose service">
+          <button type="button" class="doors__dot on" data-door-dot="0" aria-label="Service 01: Social Media Management"></button>
+          <button type="button" class="doors__dot" data-door-dot="1" aria-label="Service 02: Reels & Video Shoots"></button>
+          <button type="button" class="doors__dot" data-door-dot="2" aria-label="Service 03: Meta Ads"></button>
+          <button type="button" class="doors__dot" data-door-dot="3" aria-label="Service 04: Website Design"></button>
+        </div>
         <ul class="doors__row">
           <li class="unit" style="--i:0;--door:#10254D;--door-dk:#0D1E3F">
             <button class="doorway" aria-label="Explore Social Media Management">
@@ -1500,6 +1543,7 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
     </div>
 
     <div class="dmodal__body">
+      <div id="modalCoverMockup" class="dmodal__cover" style="display:none;"></div>
       <div id="modalKpis" class="dmodal__kpis"></div>
 
       <div class="dmodal__box">
@@ -1514,6 +1558,8 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
 
       <div id="modalPlatforms" class="dmodal__plats"></div>
 
+      <div id="modalDemos" class="dmodal__demos" style="display:none;"></div>
+
       <div id="modalTags" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
 
       <div id="modalSwitcher" class="dmodal__switcher" hidden>
@@ -1526,6 +1572,9 @@ html[data-mode="dark"] .sf{--sf-bg:#04071A;box-shadow:inset 0 1px 0 rgba(27,208,
         <a id="modalLiveLink" href="https://wa.me/918074832297?text=Hi%20Growmetrik%2C%20I%20want%20a%20free%20page%20audit" target="_blank" rel="noopener" class="dmodal__wa">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.76 14.07c-.24.68-1.39 1.3-1.94 1.38-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.76-2.18 1.04-2.48.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.24.59.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.61.17.3.77 1.27 1.66 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.47.12.65-.07.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.34.07.13.07.72-.17 1.4Z"/></svg>
           <span>Chat on WhatsApp</span>
+        </a>
+        <a id="modalDemoLink" href="#" target="_blank" rel="noopener noreferrer" class="dmodal__demobtn" style="display:none;">
+          <span>View Live Site ↗</span>
         </a>
         <button id="modalInquireBtn" class="pill pill--dark"><span class="pill__in" style="padding:11px 20px;font-size:13.5px;">Get Free Audit for this →</span></button>
       </div>
@@ -2029,17 +2078,26 @@ const SERVICE_INFO = [
     ],
     kpis: [
       { v: '< 1.5s', l: 'Fast 4G mobile load' },
-      { v: '1-Tap', l: 'WhatsApp + Google Maps pin' },
-      { v: '5-Field', l: 'Instant enquiry capture' }
+      { v: '6 Demos', l: 'Live store & experience sites' },
+      { v: '1-Tap', l: 'WhatsApp + Google Maps pin' }
     ],
     bestFor: 'Shops linking an Instagram bio or Google profile to a trustworthy offer page',
     trialNote: 'Built for mobile shoppers',
     description: 'A clean, fast-loading one-page website built for phones, showing your best offers, Google Maps location, and an instant WhatsApp button.',
-    deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', 'Floating WhatsApp CTA + short enquiry form', 'Domain & tracking setup from day one'],
-    tags: ['One-Page Site', 'WhatsApp CTA', 'Fast Load', 'Mobile UI']
+    deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', '6 interactive live client demos (clothing, café, luxury & e-commerce)', 'Floating WhatsApp CTA + short enquiry form'],
+    demos: [
+      { name: 'ASK — Handcrafted Silks & Sarees', url: 'https://ask-commerce-eta.vercel.app/', type: 'Silk & Saree Boutique', tag: 'Live Store', desc: 'Authentic Varanasi Kadwa & Kanchipuram bridal silks with WhatsApp enquiry checkout.' },
+      { name: 'Drift — Streetwear E-Commerce', url: 'https://drift-ecommerce-weld.vercel.app/', type: 'Fashion & Apparel', tag: 'Live Store', desc: 'Bold urban fashion storefront with responsive mobile collection grid.' },
+      { name: 'ASK Chai Premium Hotel & Kitchen', url: 'https://ask-chai-hotel.vercel.app/', type: 'Café & Kitchen', tag: 'Live Site', desc: 'Artisanal Karak Chai house and Indian dining showcase with location and menu.' },
+      { name: 'Boutique Cruises & Ocean Voyages', url: 'https://sravan-ship-co.vercel.app/', type: 'Luxury Travel', tag: 'Live Site', desc: 'Boutique travel & cruise experience with elegant visual narrative and itinerary details.' },
+      { name: 'Sunrise Golden Hour Aviation', url: 'https://website-seven-nu-66.vercel.app/', type: 'Luxury Brand', tag: 'Live Site', desc: 'Editorial sunrise carrier brand experience built for high-end engagement.' },
+      { name: 'Her Special Day ♡ | K-Drama Story', url: 'https://k-drama-interactive-birthday-story.vercel.app/', type: 'Interactive Story', tag: 'Live App', desc: 'Scrapbook and interactive café experience with responsive audio & visual cues.' }
+    ],
+    tags: ['One-Page Site', 'WhatsApp CTA', 'Fast Load', 'Mobile UI', 'Live Demos']
   }
 ];
 window.__SERVICES = SERVICE_INFO;
+window.BRAND_LOGOS = BRAND_LOGOS;
 
 (function doors(){
   const sec = $('#works'); if (!sec) return;
@@ -2058,7 +2116,7 @@ window.__SERVICES = SERVICE_INFO;
     sec.classList.add('pre');
     const io = new IntersectionObserver(es => {
       if (es.some(e => e.isIntersecting)){ sec.classList.add('in'); requestAnimationFrame(() => sec.classList.remove('pre')); io.disconnect(); }
-    }, { threshold: .18 });
+    }, { threshold: .12 });
     io.observe(sec);
   }
 
@@ -2077,7 +2135,9 @@ window.__SERVICES = SERVICE_INFO;
 
   const dinfo = $('#dinfo'), wallEl = $('.doors__wall', sec), MOB = matchMedia('(max-width: 639.98px)');
   const svcPills = [...sec.querySelectorAll('[data-svc-pill]')];
-  let currentDoorIdx = 0;
+  const mRow = $('.doors__row', sec), mDots = $('.doors__dots', sec), mPin = $('.doors__pin', sec);
+  let currentDoorIdx = 0, mIdx = 0, mCur = 0, mRaf = 0, mLast = 0, manualLockUntil = 0;
+
   const setInfo = i => {
     const info = SERVICE_INFO[i];
     if (!info) return;
@@ -2088,32 +2148,85 @@ window.__SERVICES = SERVICE_INFO;
     dinfo.querySelector('.dinfo__t').textContent = info.subtitle;
     dinfo.querySelector('.dinfo__p').innerHTML = info.deliverables.map(s => `<li>${s}</li>`).join('');
     svcPills.forEach((p, k) => p.classList.toggle('on', k === i));
+    sec.querySelectorAll('[data-door-dot]').forEach((d, k) => d.classList.toggle('on', k === i));
   };
 
   const openDoorModal = i => {
     const d = doorsState[i];
     if (!d || !SERVICE_INFO[i]) return;
     d.u.classList.add('press');
-    d.s.set(.85);
+    d.s.set(.88);
     setTimeout(() => {
       d.u.classList.remove('press');
-      window.__openServiceModal?.(SERVICE_INFO[i], () => d.s.set(0), i);
-    }, 220);
+      window.__openServiceModal?.(SERVICE_INFO[i], () => d.s.set(MOB.matches ? .82 : 0), i);
+    }, 200);
   };
+
+  function activateMobileDoor(idx, openAngle = 0.85, isManual = false){
+    if (!MOB.matches) return;
+    if (isManual) manualLockUntil = Date.now() + 2500;
+    idx = Math.max(0, Math.min(units.length - 1, idx));
+    mIdx = idx;
+    mCur = idx;
+    const step = units[1] && units[0] ? (units[1].offsetLeft - units[0].offsetLeft) : (window.innerWidth * 0.52);
+    mRow.style.transform = `translate3d(${(-idx * step).toFixed(2)}px,0,0)`;
+    setInfo(idx);
+    doorsState.forEach((d, k) => {
+      d.u.classList.toggle('on', k === idx);
+      if (k === idx){
+        d.s.set(openAngle);
+      } else {
+        d.s.set(0);
+      }
+    });
+    if (svcPills[idx]){
+      try {
+        svcPills[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } catch(e) {}
+    }
+  }
 
   doorsState.forEach((d, i) => {
     if (canHover){
       d.way.addEventListener('mouseenter', () => d.s.set(.18));
       d.way.addEventListener('mouseleave', () => d.s.set(0));
     }
-    d.way.addEventListener('click', () => openDoorModal(i));
+    d.way.addEventListener('click', (e) => {
+      if (MOB.matches){
+        if (mIdx !== i){
+          e.preventDefault();
+          activateMobileDoor(i, 0.85, true);
+        } else {
+          openDoorModal(i);
+        }
+      } else {
+        openDoorModal(i);
+      }
+    });
   });
 
   svcPills.forEach(btn => {
     const idx = +btn.dataset.svcPill;
-    btn.addEventListener('mouseenter', () => { doorsState[idx]?.s.set(.22); units.forEach((u, k) => u.classList.toggle('on', k === idx)); setInfo(idx); });
-    btn.addEventListener('mouseleave', () => { doorsState[idx]?.s.set(0); units.forEach(u => u.classList.remove('on')); svcPills.forEach(p => p.classList.remove('on')); });
-    btn.addEventListener('click', () => openDoorModal(idx));
+    if (canHover){
+      btn.addEventListener('mouseenter', () => { doorsState[idx]?.s.set(.22); units.forEach((u, k) => u.classList.toggle('on', k === idx)); setInfo(idx); });
+      btn.addEventListener('mouseleave', () => { doorsState[idx]?.s.set(0); units.forEach(u => u.classList.remove('on')); svcPills.forEach(p => p.classList.remove('on')); });
+    }
+    btn.addEventListener('click', (e) => {
+      if (MOB.matches){
+        e.preventDefault();
+        activateMobileDoor(idx, 0.85, true);
+      } else {
+        openDoorModal(idx);
+      }
+    });
+  });
+
+  sec.querySelectorAll('[data-door-dot]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.doorDot;
+      if (MOB.matches) activateMobileDoor(idx, 0.85, true);
+      else { setInfo(idx); units.forEach((u, k) => u.classList.toggle('on', k === idx)); doorsState[idx]?.s.set(.3); }
+    });
   });
 
   $('#dinfoCta')?.addEventListener('click', () => openDoorModal(currentDoorIdx));
@@ -2124,6 +2237,28 @@ window.__SERVICES = SERVICE_INFO;
       if (SERVICE_INFO[idx]) window.__openServiceModal?.(SERVICE_INFO[idx], null, idx);
     });
   });
+
+  // Touch gestures (swipe left / right)
+  let touchStartX = 0, touchStartY = 0, touchSwiping = false;
+  mRow.addEventListener('touchstart', e => {
+    if (!MOB.matches || e.touches.length !== 1) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchSwiping = true;
+  }, { passive: true });
+  mRow.addEventListener('touchend', e => {
+    if (!touchSwiping || !MOB.matches) return;
+    touchSwiping = false;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 34 && Math.abs(dx) > Math.abs(dy)){
+      if (dx < 0 && mIdx < units.length - 1){
+        activateMobileDoor(mIdx + 1, 0.85, true);
+      } else if (dx > 0 && mIdx > 0){
+        activateMobileDoor(mIdx - 1, 0.85, true);
+      }
+    }
+  }, { passive: true });
 
   if (canHover){
     let active = -1, token = 0, px = -1, py = -1;
@@ -2155,40 +2290,36 @@ window.__SERVICES = SERVICE_INFO;
     document.documentElement.addEventListener('pointerleave', () => set(-1));
   }
 
-  /* mobile pinned scroll along doors */
-  const mRow = $('.doors__row', sec), mDots = $('.doors__dots', sec), mPin = $('.doors__pin', sec);
-  let mIdx = 0, mShown = -1, mCur = 0, mRaf = 0, mLast = 0;
+  /* mobile scroll & size */
   const mSpan = () => Math.max(1, sec.offsetHeight - innerHeight);
   const mDwell = f => { const i = Math.floor(f), t = f - i, u = Math.min(1, Math.max(0, (t - .2) / .6)); return i + u * u * (3 - 2 * u); };
   const mProgress = () => Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / mSpan()));
-  function mShow(i){
-    if (i === mShown) return; mShown = i; setInfo(i);
-    mDots?.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === Math.min(3, i)));
-  }
   function mFrame(now){
     mRaf = 0;
     if (!MOB.matches){ mRow.style.transform = ''; return; }
+    if (Date.now() < manualLockUntil) return;
     const dt = Math.min(64, now - (mLast || now)); mLast = now;
     const t = mDwell(mProgress() * 3);
-    mCur = reduced ? t : mCur + (t - mCur) * Math.min(1, dt / 1000 * 10);
-    if (Math.abs(t - mCur) < .001) mCur = t;
-    const step = units[1].offsetLeft - units[0].offsetLeft;
-    mRow.style.transform = `translate3d(${(-mCur * step).toFixed(2)}px,0,0)`;
-    mIdx = Math.round(t); mShow(mIdx);
-    if (mCur !== t) mRaf = requestAnimationFrame(mFrame);
+    const targetIdx = Math.round(t);
+    if (targetIdx !== mIdx){
+      activateMobileDoor(targetIdx, 0.82);
+    }
   }
   function mApply(){ if (!mRaf) mRaf = requestAnimationFrame(mFrame); }
   function mSize(){
     if (!MOB.matches){ mPin.style.removeProperty('--uw'); sec.classList.remove('compact'); return; }
     sec.classList.remove('compact');
-    const pr = mPin.getBoundingClientRect(), rr = mRow.getBoundingClientRect();
-    const avail = pr.bottom - rr.top - parseFloat(getComputedStyle(mRow).paddingTop) - 2;
-    let w = Math.min(innerWidth * .6, avail / 2.25);
-    if (w < 140){ sec.classList.add('compact'); w = Math.min(innerWidth * .6, avail / 2.25); }
-    mPin.style.setProperty('--uw', Math.max(110, w).toFixed(1) + 'px'); mApply();
+    const w = Math.min(innerWidth * 0.46, 175);
+    mPin.style.setProperty('--uw', Math.max(130, w).toFixed(1) + 'px');
+    activateMobileDoor(mIdx, 0.82);
   }
-  mSize(); addEventListener('resize', mSize); addEventListener('scroll', () => { if (MOB.matches) mApply(); }, { passive: true });
-  if (MOB.matches){ mShow(0); dinfo.classList.add('on'); mApply(); }
+  mSize();
+  addEventListener('resize', mSize);
+  addEventListener('scroll', () => { if (MOB.matches) mApply(); }, { passive: true });
+  if (MOB.matches){
+    activateMobileDoor(0, 0.85);
+    dinfo.classList.add('on');
+  }
 })();
 
 /* PageLoader */
@@ -2386,6 +2517,96 @@ try {
       tags: ['Free Audit', '14-Day Trial', 'Reports', 'No Lock-In'],
       deliverables: ['Free Instagram page audit within 24 hours', '14 days of agreed execution at ₹0 agency fee', 'Simple 1-page report: views, saves, follows & chats', 'Zero password sharing — official partner access only'],
       description: 'Built for cautious store owners burned by agencies that disappear after taking retainers.'
+    },
+    {
+      id: 'demo-silks',
+      title: 'ASK — Handcrafted Silks & Heirloom Sarees',
+      subtitle: 'Ultra-luxury bridal silks with WhatsApp enquiry checkout',
+      client: 'ASK Silks Boutique',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'ask-commerce-eta.vercel.app',
+      coverTagline: 'Varanasi & Kanchipuram Heirloom Sarees',
+      coverBg: 'linear-gradient(135deg, #3B0715 0%, #701A28 50%, #B45309 100%)',
+      tags: ['Live Demo', 'E-Commerce', 'Handloom Silks', 'WhatsApp CTA'],
+      deliverables: ['Varanasi Kadwa & Kanjeevaram catalogue layout', 'Fast mobile 4G collection grid', 'Floating WhatsApp order & enquiry CTA', 'Verified live deployment in production'],
+      description: 'Explore authentic Varanasi Kadwa and Kanchipuram bridal heirloom sarees, handcrafted by master weavers with direct WhatsApp enquiry integration.',
+      liveUrl: 'https://ask-commerce-eta.vercel.app/'
+    },
+    {
+      id: 'demo-streetwear',
+      title: 'Drift — Streetwear E-Commerce Experience',
+      subtitle: 'Bold urban fashion storefront with responsive collection grid',
+      client: 'Streetwear Brand',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'drift-ecommerce-weld.vercel.app',
+      coverTagline: 'Streetwear. Redefined. Bold Fits.',
+      coverBg: 'linear-gradient(135deg, #09090B 0%, #18181B 55%, #0284C7 100%)',
+      tags: ['Live Demo', 'Streetwear', 'E-Commerce', 'Mobile UI'],
+      deliverables: ['Bold high-contrast apparel storefront', 'Drop countdown & collection filter', 'Instant mobile cart & size selector', 'Optimized sub-second load on mobile'],
+      description: 'Streetwear redefined — bold looks, clean fits, and instant mobile-first checkout designed for Gen-Z & urban shoppers.',
+      liveUrl: 'https://drift-ecommerce-weld.vercel.app/'
+    },
+    {
+      id: 'demo-karak-chai',
+      title: 'ASK Chai Premium Hotel & Modern Kitchen',
+      subtitle: 'Artisanal Karak Chai house and Indian dining showcase',
+      client: 'Café & Kitchen',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'ask-chai-hotel.vercel.app',
+      coverTagline: 'Artisanal Karak Chai & Modern Kitchen',
+      coverBg: 'linear-gradient(135deg, #2D1305 0%, #5B270C 50%, #D97706 100%)',
+      tags: ['Live Demo', 'Café & Kitchen', 'Karak Chai', 'Google Maps'],
+      deliverables: ['Artisanal drink & street kitchen menu showcase', 'One-tap Google Maps directions pin', 'Direct WhatsApp table booking CTA', 'Local SEO & fast mobile load'],
+      description: 'Hyderabad’s premier artisanal Karak Chai house and Indian kitchen in Turkayamjal, featuring rich visual menu highlights and WhatsApp bookings.',
+      liveUrl: 'https://ask-chai-hotel.vercel.app/'
+    },
+    {
+      id: 'demo-cruises',
+      title: 'Boutique Cruises & Ocean Voyages',
+      subtitle: 'Luxury maritime travel experience with itinerary details',
+      client: 'Ocean Voyages',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'sravan-ship-co.vercel.app',
+      coverTagline: 'Boutique Cruises & Ocean Voyages',
+      coverBg: 'linear-gradient(135deg, #051937 0%, #004D7A 50%, #008793 100%)',
+      tags: ['Live Demo', 'Luxury Travel', 'Voyages', 'Editorial Design'],
+      deliverables: ['Cinematic voyage showcase & cabin suites', 'Interactive route & destination timeline', 'High-ticket concierge booking enquiry', 'Fast visual rendering across all devices'],
+      description: 'Experience premium boutique ocean travel across the world’s most breathtaking waters with an editorial voyage catalog.',
+      liveUrl: 'https://sravan-ship-co.vercel.app/'
+    },
+    {
+      id: 'demo-aviation',
+      title: 'Sunrise Golden Hour Aviation Experience',
+      subtitle: 'Luxury airline told as one golden-hour sunrise flight',
+      client: 'Luxury Aviation',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'website-seven-nu-66.vercel.app',
+      coverTagline: 'Sunrise-Exclusive Golden Hour Aviation',
+      coverBg: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #B45309 100%)',
+      tags: ['Live Demo', 'Luxury Brand', 'Editorial Story', 'Fast 4G'],
+      deliverables: ['Golden-hour sunrise visual narrative', 'Fleet specs & premium private charter inquiry', 'Fluid animations & typography hierarchy', 'Sub-1.2s mobile 4G performance'],
+      description: 'A carrier that flies only at sunrise — bespoke aviation storytelling with high-touch charter booking enquiry.',
+      liveUrl: 'https://website-seven-nu-66.vercel.app/'
+    },
+    {
+      id: 'demo-kdrama',
+      title: 'Her Special Day ♡ | K-Drama Café Story',
+      subtitle: 'Interactive scrapbook and café memory experience',
+      client: 'Interactive Café',
+      category: 'Websites',
+      badge: 'Live Demo',
+      domain: 'k-drama-interactive-birthday-story.vercel.app',
+      coverTagline: 'Her Special Day ♡ | K-Drama Story',
+      coverBg: 'linear-gradient(135deg, #4A044E 0%, #701A75 45%, #BE185D 100%)',
+      tags: ['Live Demo', 'Interactive Experience', 'Café Story', 'Scrapbook'],
+      deliverables: ['Interactive chapter-based storytelling', 'Responsive photo scrapbook layout', 'Audio-visual cues & micro-interactions', 'Mobile-first tap progression'],
+      description: 'A K-drama café and scrapbook interactive memory experience celebrating special moments with rich interactive pacing.',
+      liveUrl: 'https://k-drama-interactive-birthday-story.vercel.app/'
     }
   ];
 
@@ -2420,13 +2641,17 @@ try {
   const modalBestFor = document.getElementById('modalBestFor');
   const modalTrialNote = document.getElementById('modalTrialNote');
   const modalPlatforms = document.getElementById('modalPlatforms');
+  const modalDemos = document.getElementById('modalDemos');
   const modalTags = document.getElementById('modalTags');
   const modalSwitcher = document.getElementById('modalSwitcher');
   const modalSvcDots = document.getElementById('modalSvcDots');
   const modalPrevSvc = document.getElementById('modalPrevSvc');
   const modalNextSvc = document.getElementById('modalNextSvc');
   const modalLiveLink = document.getElementById('modalLiveLink');
+  const modalDemoLink = document.getElementById('modalDemoLink');
   const modalInquireBtn = document.getElementById('modalInquireBtn');
+  const modalCoverMockup = document.getElementById('modalCoverMockup');
+  const BRAND_LOGOS = window.BRAND_LOGOS || {};
   let activeServiceIdx = -1, currentModalItem = null;
   const DEFAULT_SVC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>';
 
@@ -2463,7 +2688,9 @@ try {
 
   function renderCards(){
     const list = getFiltered();
-    resultsCount.textContent = `Showing ${list.length} of ${PLAYBOOKS.length} playbooks`;
+    resultsCount.textContent = `Showing ${list.length} of ${PLAYBOOKS.length} playbooks & demos`;
+    const totalH = document.getElementById('totalProjectCountHeader');
+    if (totalH) totalH.textContent = `${PLAYBOOKS.length} Playbooks & Demos`;
     resetLink.style.display = (searchQuery.trim() || activeCategory !== 'All') ? 'inline-block' : 'none';
     if (!list.length){
       projectsGrid.style.display = 'none'; emptyState.style.display = 'block';
@@ -2479,6 +2706,20 @@ try {
       card.addEventListener('click', () => openDetailModal(p));
       card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openDetailModal(p); } });
       card.innerHTML = `
+        ${p.liveUrl ? `
+          <div class="exp-card__cover" style="--cover-bg:${p.coverBg || '#060A24'}">
+            <div class="exp-card__cover-bgtex"></div>
+            <div class="exp-card__cover-bar">
+              <span class="exp-card__cover-dots"><i></i><i></i><i></i></span>
+              <span class="exp-card__cover-domain">${p.domain || 'growmetrik.live'}</span>
+              <span class="exp-card__cover-live"><i></i>LIVE DEMO</span>
+            </div>
+            <div class="exp-card__cover-body">
+              <span class="exp-card__cover-brand">${p.client}</span>
+              <span class="exp-card__cover-hero">${p.coverTagline || p.title}</span>
+            </div>
+          </div>
+        ` : ''}
         <div class="exp-card__top">
           <div class="exp-card__meta">
             <span class="exp-card__cat">${p.category}</span>
@@ -2490,7 +2731,10 @@ try {
         </div>
         <div class="exp-card__foot">
           <span>${p.deliverables[0]}</span>
-          <strong>Details →</strong>
+          <div style="display:flex;align-items:center;gap:8px;">
+            ${p.liveUrl ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__livedemo" onclick="event.stopPropagation()">Live Demo ↗</a>` : ''}
+            <strong>Details →</strong>
+          </div>
         </div>
       `;
       projectsGrid.appendChild(card);
@@ -2512,6 +2756,37 @@ try {
     modalTitle.textContent = item.title;
     modalSubtitle.textContent = item.subtitle;
     modalDesc.textContent = item.description;
+
+    if (modalCoverMockup){
+      if (item.liveUrl){
+        modalCoverMockup.style.display = 'flex';
+        modalCoverMockup.style.setProperty('--cover-bg', item.coverBg || '#060A24');
+        modalCoverMockup.innerHTML = `
+          <div class="exp-card__cover-bgtex"></div>
+          <div class="exp-card__cover-bar">
+            <span class="exp-card__cover-dots"><i></i><i></i><i></i></span>
+            <span class="exp-card__cover-domain">${item.domain || 'growmetrik.live'}</span>
+            <a href="${item.liveUrl}" target="_blank" rel="noopener noreferrer" class="exp-card__cover-live" style="text-decoration:none;" onclick="event.stopPropagation()"><i></i>LIVE DEMO ↗</a>
+          </div>
+          <div class="exp-card__cover-body">
+            <span class="exp-card__cover-brand">${item.client || 'Growmetrik'}</span>
+            <span class="exp-card__cover-hero">${item.coverTagline || item.title}</span>
+          </div>
+        `;
+        modalCoverMockup.style.cursor = 'pointer';
+        modalCoverMockup.onclick = (e) => {
+          if (!e.target.closest('a')){
+            window.open(item.liveUrl, '_blank', 'noopener,noreferrer');
+          }
+        };
+      } else {
+        modalCoverMockup.style.display = 'none';
+        modalCoverMockup.innerHTML = '';
+        modalCoverMockup.onclick = null;
+        modalCoverMockup.style.cursor = 'default';
+      }
+    }
+
     const kpis = item.kpis || [
       { v: '14 Days', l: '₹0 agency fee trial' },
       { v: 'Hyderabad', l: 'Local store focus' },
@@ -2532,8 +2807,49 @@ try {
         modalPlatforms.innerHTML = '';
       }
     }
+    if (modalDemos){
+      const demos = Array.isArray(item.demos) ? item.demos : [];
+      if (demos.length){
+        modalDemos.style.display = 'flex';
+        modalDemos.innerHTML = `
+          <div class="dmodal__demoshead">
+            <span class="dmodal__demoslbl">Live Store &amp; Experience Demos</span>
+            <span class="dmodal__demoscount">${demos.length} Live Sites</span>
+          </div>
+          <div class="dmodal__demosgrid">
+            ${demos.map(dm => `
+              <a href="${dm.url}" target="_blank" rel="noopener noreferrer" class="dmodal__democard">
+                <div class="dmodal__democard-top">
+                  <div style="display:flex;align-items:center;gap:6px;">
+                    <span style="display:inline-flex;gap:3px;"><i style="width:5px;height:5px;border-radius:50%;background:#EF4444;display:inline-block;"></i><i style="width:5px;height:5px;border-radius:50%;background:#F59E0B;display:inline-block;"></i><i style="width:5px;height:5px;border-radius:50%;background:#10B981;display:inline-block;"></i></span>
+                    <span class="dmodal__democard-title">${dm.name}</span>
+                  </div>
+                  <span class="dmodal__democard-tag">${dm.tag || 'Live'}</span>
+                </div>
+                <div class="dmodal__democard-desc">${dm.desc || dm.type}</div>
+                <span class="dmodal__democard-link">View Live Site ↗</span>
+              </a>
+            `).join('')}
+          </div>
+        `;
+      } else {
+        modalDemos.style.display = 'none';
+        modalDemos.innerHTML = '';
+      }
+    }
     modalTags.innerHTML = item.tags.map(t => `<span class="exp-card__tag">${t}</span>`).join('');
     modalLiveLink.href = `https://wa.me/918074832297?text=${encodeURIComponent('Hi Growmetrik, I want to know more about: ' + item.title)}`;
+    if (modalDemoLink){
+      if (item.liveUrl){
+        modalDemoLink.style.display = 'inline-flex';
+        modalDemoLink.href = item.liveUrl;
+        const sp = modalDemoLink.querySelector('span');
+        if (sp) sp.textContent = 'View Live Demo ↗';
+      } else {
+        modalDemoLink.style.display = 'none';
+        modalDemoLink.removeAttribute('href');
+      }
+    }
 
     const svcs = window.__SERVICES || [];
     if (modalSwitcher && activeServiceIdx >= 0 && svcs.length){
