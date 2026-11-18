@@ -7,3 +7,4 @@ dist
 *.log
 rea/
 prd.json
+.env*
