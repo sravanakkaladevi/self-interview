@@ -525,28 +525,38 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .proof__note{padding:1.1rem 1.35rem;border-radius:var(--radius-control);background:var(--surface);border:1px solid var(--line);font-size:.9rem;line-height:1.55;color:var(--text-muted)}
 
 /* ---------- Notes-style Explorer (#explore) ---------- */
-.explore-section{position:relative;background:var(--background);border-top:1px solid var(--line);padding:5rem 0;color:var(--foreground)}
-.exp-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--surface);color:var(--text-muted);font-size:12px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-weight:600;margin-bottom:14px}
+body::before{content:'';position:fixed;inset:0;z-index:0;background-color:#05070d;background-image:radial-gradient(circle 800px at 15% 20%,rgba(16,185,129,0.18),transparent 70%),radial-gradient(circle 950px at 85% 30%,rgba(59,130,246,0.20),transparent 70%),radial-gradient(circle 750px at 50% 80%,rgba(139,92,246,0.16),transparent 70%);pointer-events:none}
+.explore-section{position:relative;background:transparent;border-top:1px solid rgba(255,255,255,0.08);padding:5rem 0;color:var(--foreground)}
+.explore-section .shell{max-width:1440px;padding-inline:32px;width:100%;margin-inline:auto}
+@media (max-width:640px){.explore-section .shell{padding-inline:16px}}
+.exp-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:12px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-weight:600;margin-bottom:14px;border:1px solid rgba(255,255,255,0.08)}
 .exp-search-wrap{position:relative;flex:1;min-width:260px;max-width:460px}
-.exp-search{width:100%;padding:12px 38px 12px 42px;border-radius:999px;background:var(--panel);border:1px solid var(--line);font-size:14px;font-family:var(--font);color:var(--foreground);outline:none;transition:border-color .2s}
-.exp-search:focus{border-color:var(--foreground)}
-.exp-pill{padding:8px 18px;border-radius:999px;font-size:12px;font-family:var(--font);font-weight:600;cursor:pointer;white-space:nowrap;border:1px solid var(--line);background:var(--panel-2);color:var(--foreground);transition:all .2s var(--e-soft)}
-.exp-pill.active{border-color:var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg)}
-.exp-tag{padding:4px 11px;border-radius:999px;font-size:11px;font-family:var(--font);font-weight:600;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--text-muted);transition:all .15s}
-.exp-tag.active{border-color:var(--gold);background:var(--gold);color:var(--gold-ink)}
-.exp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
-.exp-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s var(--e-soft),border-color .2s}
-.exp-card:hover{transform:translateY(-3px);border-color:var(--foreground)}
-.exp-card__top{padding:20px 20px 16px;display:flex;flex-direction:column;gap:10px}
+.exp-search{width:100%;height:44px;padding:0 36px 0 42px;border-radius:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);font-size:13.5px;font-family:var(--font);color:#FFFFFF;outline:none;transition:border-color 200ms ease,box-shadow 200ms ease;box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.08);box-sizing:border-box}
+.exp-search:focus{border-color:rgba(255,255,255,0.28);box-shadow:0 8px 32px rgba(0,0,0,0.45),0 0 0 2px rgba(255,255,255,0.1),inset 0 1px 0 rgba(255,255,255,0.14)}
+.exp-pill{height:30px;min-height:30px;padding:0 12px;font-size:12.5px;font-family:var(--font);font-weight:600;cursor:pointer;white-space:nowrap;border-radius:999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);color:rgba(255,255,255,0.85);box-shadow:0 4px 16px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.08);transition:all 200ms ease;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+.exp-pill:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.22);color:#FFFFFF;transform:translateY(-1px)}
+.exp-pill.active{border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.16);color:#FFFFFF;box-shadow:0 4px 16px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.16)}
+@media (max-width:640px){.exp-pill{height:32px;min-height:32px}}
+.exp-tag{padding:4px 12px;border-radius:999px;font-size:11px;font-family:var(--font);font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:var(--text-muted);transition:all .15s}
+.exp-tag:hover{background:rgba(255,255,255,0.07);color:var(--foreground)}
+.exp-tag.active{border-color:var(--gold);background:var(--gold);color:var(--gold-ink);box-shadow:0 2px 10px -2px rgba(234,179,8,0.4)}
+.exp-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media (min-width:768px){.exp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.exp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1280px){.exp-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.exp-card{position:relative;background:rgba(255,255,255,0.05);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;will-change:transform;transition:transform 200ms ease,border-color 200ms ease,box-shadow 200ms ease;box-shadow:0 8px 32px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.08)}
+.exp-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.22);box-shadow:0 12px 36px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.14)}
+.exp-card__top{padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px;flex:1}
 .exp-card__meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
-.exp-card__cat{padding:3px 10px;border-radius:999px;background:#000000;color:#F8FAFC;font-weight:700}
-.exp-card__badge{padding:3px 9px;border-radius:999px;background:var(--live-soft);color:var(--live);font-weight:700;border:1px solid color-mix(in srgb,var(--live) 28%,transparent)}
-.exp-card__title{font-size:18px;font-weight:700;line-height:1.25;color:var(--foreground)}
-.exp-card__desc{font-size:13.5px;line-height:1.55;color:var(--text-muted)}
-.exp-card__tags{display:flex;flex-wrap:wrap;gap:5px;padding-top:10px;border-top:1px solid var(--line)}
-.exp-card__tag{padding:3px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:11px;font-weight:500;color:var(--foreground)}
-.exp-card__foot{padding:11px 20px;background:var(--panel-2);border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted)}
-.exp-card__foot strong{color:var(--foreground)}
+.exp-card__cat{padding:3px 10px;border-radius:999px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.9);font-weight:600;border:1px solid rgba(255,255,255,0.1)}
+.exp-card__badge{padding:3px 10px;border-radius:999px;background:rgba(16,185,129,0.12);color:#34D399;font-weight:600;border:1px solid rgba(16,185,129,0.28)}
+.exp-card__title{font-size:20px;font-weight:700;line-height:1.5;color:#FFFFFF;letter-spacing:-0.015em}
+.exp-card__desc{font-size:15px;line-height:1.5;color:rgba(255,255,255,0.72)}
+.exp-card__tags{display:flex;flex-wrap:wrap;gap:6px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);margin-top:auto}
+.exp-card__tag{padding:3px 10px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:11px;font-weight:500;color:rgba(255,255,255,0.75)}
+.exp-card__foot{padding:12px 18px;background:rgba(5,7,13,0.4);border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.6);gap:10px;border-radius:0 0 15px 15px}
+.exp-card__foot strong{color:#FFFFFF}
+@supports not (backdrop-filter:blur(1px)){.exp-card,.exp-search,.exp-pill,.exp-card__cover-bar,.exp-card__foot{background:rgba(15,20,30,0.85)}}
 
 /* ---------- Packages (#plans) ---------- */
 .plans{display:grid;grid-template-columns:1fr;gap:1.15rem}
@@ -651,37 +661,39 @@ html[data-mode="dark"] .story__amb::after{display:none}
 .dmodal__demobtn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:9999px;background:linear-gradient(135deg,#0284C7,#0369A1);color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
 .dmodal__demobtn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(2,132,199,.5)}
 
-.exp-card__cover{position:relative;border-radius:14px 14px 0 0;margin:-18px -18px 14px -18px;height:160px;overflow:hidden;display:flex;flex-direction:column;background:#000000;color:#fff;border-bottom:1px solid var(--line)}
-.exp-card__cover-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08);font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;z-index:2;flex-shrink:0}
-.exp-card__cover-dots{display:inline-flex;align-items:center;gap:4.5px}
-.exp-card__cover-dots i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.exp-card__cover{position:relative;margin:0;width:100%;height:250px;overflow:hidden;display:flex;flex-direction:column;background:#05070D;color:#fff;border-bottom:1px solid rgba(255,255,255,0.08);border-radius:15px 15px 0 0}
+@media (max-width:640px){.exp-card__cover{height:220px}}
+.exp-card__cover-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 14px;background:rgba(5,7,13,0.7);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,0.08);font-size:10.5px;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;z-index:2;flex-shrink:0}
+.exp-card__cover-dots{display:inline-flex;align-items:center;gap:5px}
+.exp-card__cover-dots i{width:6.5px;height:6.5px;border-radius:50%;display:inline-block}
 .exp-card__cover-dots i:nth-child(1){background:#EF4444}
 .exp-card__cover-dots i:nth-child(2){background:#F59E0B}
 .exp-card__cover-dots i:nth-child(3){background:#10B981}
-.exp-card__cover-domain{opacity:.9;font-weight:600;letter-spacing:.02em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:140px;color:rgba(255,255,255,.85)}
-.exp-card__cover-live{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:999px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.45);color:#34D399;font-weight:700;font-size:9.5px;letter-spacing:.05em;text-decoration:none;transition:background .2s,border-color .2s;flex-shrink:0}
-.exp-card__cover-live:hover{background:rgba(16,185,129,.35);border-color:#34D399;color:#fff}
+.exp-card__cover-domain{opacity:.95;font-weight:600;letter-spacing:.02em;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;max-width:160px;color:rgba(255,255,255,0.9)}
+.exp-card__cover-live{display:inline-flex;align-items:center;gap:4.5px;padding:2.5px 8px;border-radius:999px;background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.45);color:#34D399;font-weight:700;font-size:9.5px;letter-spacing:.05em;text-decoration:none;transition:background 200ms ease,border-color 200ms ease;flex-shrink:0}
+.exp-card__cover-live:hover{background:rgba(16,185,129,0.32);border-color:#34D399;color:#fff}
 .exp-card__cover-live i{width:5px;height:5px;border-radius:50%;background:#34D399;box-shadow:0 0 6px #34D399;display:inline-block}
-.exp-card__cover-frame{position:relative;flex:1;overflow:hidden;display:block;background:#000000}
-.exp-card__cover-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .4s cubic-bezier(.16,1,.3,1)}
-.exp-card:hover .exp-card__cover-img{transform:scale(1.05)}
-.exp-card__cover-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;display:grid;place-items:center;transition:opacity .25s ease;pointer-events:none}
+.exp-card__cover-frame{position:relative;flex:1;width:100%;height:100%;overflow:hidden;display:block;background:#05070D}
+.exp-card__cover-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 200ms ease}
+.exp-card:hover .exp-card__cover-img{transform:scale(1.03)}
+.exp-card__cover-overlay{position:absolute;inset:0;background:rgba(5,8,18,0.5);opacity:0;display:grid;place-items:center;transition:opacity 200ms ease;pointer-events:none}
 .exp-card:hover .exp-card__cover-overlay{opacity:1}
-.exp-card__cover-viewbtn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:9999px;background:#0284C7;color:#fff;font-size:11.5px;font-weight:700;box-shadow:0 8px 24px rgba(2,132,199,.5);pointer-events:auto;transition:transform .18s,background .18s}
-.exp-card__cover-viewbtn:hover{background:#0369A1;transform:scale(1.04)}
+.exp-card__cover-viewbtn{height:36px;min-height:36px;padding:0 16px;font-size:13px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:rgba(14,165,233,0.9);color:#fff;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.2);pointer-events:auto;transition:all 200ms ease;box-sizing:border-box}
+.exp-card__cover-viewbtn:hover{background:rgba(14,165,233,1);transform:scale(1.02)}
 
 .exp-card__actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.exp-card__deliv-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;font-size:12px;color:var(--text-muted);min-width:0;flex:1}
-.exp-card__livebtn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:5px 12px;border-radius:999px;background:#0284C7;color:#fff;font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .18s ease;box-shadow:0 2px 8px -2px rgba(2,132,199,.5)}
-.exp-card__livebtn:hover{background:#0369A1;transform:translateY(-1px);color:#fff;box-shadow:0 4px 12px -2px rgba(2,132,199,.6)}
-.exp-card__detailslink{font-weight:700;color:var(--foreground);white-space:nowrap;flex-shrink:0;cursor:pointer}
+.exp-card__deliv-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px;font-size:12px;color:rgba(255,255,255,0.55);min-width:0;flex:1}
+.exp-card__livebtn{height:32px;min-height:32px;padding:0 14px;font-size:13px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:5px;background:rgba(255,255,255,0.1);color:#FFFFFF;font-family:var(--font);font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;border:1px solid rgba(255,255,255,0.14);box-shadow:inset 0 1px 0 rgba(255,255,255,0.1);transition:all 200ms ease;box-sizing:border-box}
+.exp-card__livebtn:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.28);color:#FFFFFF}
+.exp-card__detailslink{height:32px;min-height:32px;padding:0 14px;font-size:13px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);font-family:var(--font);font-weight:600;white-space:nowrap;flex-shrink:0;cursor:pointer;transition:all 200ms ease;box-sizing:border-box}
+.exp-card__detailslink:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.22);color:#FFFFFF}
 
-.dmodal__cover{position:relative;border-radius:14px;height:190px;overflow:hidden;display:flex;flex-direction:column;background:#000000;border:1px solid var(--line);margin-bottom:14px}
+.dmodal__cover{position:relative;border-radius:16px;height:260px;overflow:hidden;display:flex;flex-direction:column;background:#05070D;border:1px solid rgba(255,255,255,0.12);box-shadow:0 16px 36px -12px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.15);margin-bottom:16px}
 .dmodal__cover-frame{position:relative;flex:1;overflow:hidden}
 .dmodal__cover-img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.dmodal__cover-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(0,0,0,.9) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px 14px}
-.dmodal__cover-brand{font-size:10px;font-family:ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:700}
-.dmodal__cover-tagline{font-size:14px;font-weight:800;color:#fff;letter-spacing:-.01em}
+.dmodal__cover-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.92) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px}
+.dmodal__cover-brand{font-size:10.5px;font-family:ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:700}
+.dmodal__cover-tagline{font-size:14.5px;font-weight:800;color:#fff;letter-spacing:-.01em}
 .dmodal__switcher{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .dmodal__navbtn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:9999px;background:var(--panel);border:1px solid var(--line);font-size:12px;font-weight:700;color:var(--foreground);cursor:pointer;transition:transform .15s,border-color .15s}
 .dmodal__navbtn:hover{border-color:var(--foreground);transform:translateY(-1px)}
@@ -1212,13 +1224,13 @@ html[data-mode="dark"] .sf{--sf-bg:#000000;box-shadow:inset 0 1px 0 rgba(255,255
           <span style="color:var(--gold);">●</span>
           <span>Live Store &amp; Brand Demos</span>
           <span>•</span>
-          <span id="totalProjectCountHeader" style="color:var(--foreground);">6 Live Demos</span>
+          <span id="totalProjectCountHeader" style="color:var(--foreground);">9 Live Demos</span>
         </div>
         <h2 id="exploreTitle" style="font-size:clamp(28px,4.5vw,44px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin:0 0 12px;">
           Live Store &amp; Brand Experiences
         </h2>
         <p style="font-size:15px;color:var(--text-muted);line-height:1.6;margin:0;">
-          Explore real production sites and stores built for clothing, dining, luxury travel, and modern e-commerce. Tap any card or button to test the live demo.
+          Explore real production sites and stores built for clothing, dining, bakery, luxury jewelry, travel, and modern e-commerce. Tap any card or button to test the live demo.
         </p>
       </div>
 
@@ -1226,13 +1238,13 @@ html[data-mode="dark"] .sf{--sf-bg:#000000;box-shadow:inset 0 1px 0 rgba(255,255
         <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;">
           <div class="exp-search-wrap">
             <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-muted);pointer-events:none;" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-            <input id="searchInput" class="exp-search" type="text" placeholder="Search Silks, Streetwear, Chai Café, Cruises, Aviation, Live Demos..." />
+            <input id="searchInput" class="exp-search" type="text" placeholder="Search Silks, Streetwear, Chai Café, Bakery, Gelato, Jewelry, Cruises..." />
             <button id="clearSearchBtn" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);padding:4px;" aria-label="Clear search">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
           <div style="display:flex;align-items:center;gap:12px;font-size:12px;font-family:ui-monospace,monospace;color:var(--text-muted);margin-left:auto;">
-            <span id="resultsCount">Showing 6 of 6 live demos</span>
+            <span id="resultsCount">Showing 9 of 9 live demos</span>
             <button id="resetFiltersLink" style="display:none;color:var(--foreground);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Reset</button>
           </div>
         </div>
@@ -2095,14 +2107,17 @@ const SERVICE_INFO = [
     ],
     kpis: [
       { v: '< 1.5s', l: 'Fast 4G mobile load' },
-      { v: '6 Demos', l: 'Live store & experience sites' },
+      { v: '9 Demos', l: 'Live store & experience sites' },
       { v: '1-Tap', l: 'WhatsApp + Google Maps pin' }
     ],
     bestFor: 'Shops linking an Instagram bio or Google profile to a trustworthy offer page',
     trialNote: 'Built for mobile shoppers',
     description: 'A clean, fast-loading one-page website built for phones, showing your best offers, Google Maps location, and an instant WhatsApp button.',
-    deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', '6 interactive live client demos (clothing, café, luxury & e-commerce)', 'Floating WhatsApp CTA + short enquiry form'],
+    deliverables: ['Mobile-first layout that loads fast on 4G', 'Store catalogue highlights & Google Maps pin', '9 interactive live client demos (clothing, café, bakery, jewelry, luxury & e-commerce)', 'Floating WhatsApp CTA + short enquiry form'],
     demos: [
+      { name: 'ASK Cakes & Creamery', url: 'https://swrilcreamery.vercel.app/', img: 'assets/demos/swirl-creamery.webp', type: 'Bakery & Patisserie', tag: 'Live Store', desc: 'Handcrafted bakery tortes & celebration cakes with custom flavour preorders.' },
+      { name: 'Scoopy Gelato & Dessert Bar', url: 'https://ask-scoopy.vercel.app/', img: 'assets/demos/ask-scoopy.webp', type: 'Gelato & Parlour', tag: 'Live App', desc: 'Artisanal gelato flavour lab with interactive scoop selection and parlor locator.' },
+      { name: 'Zanvara Atelier Bridal Jewelry', url: 'https://jewelsvendrella.vercel.app/', img: 'assets/demos/jewels-vendrella.webp', type: 'High Fine Jewelry', tag: 'Live Store', desc: 'Four Indian bridal traditions in procedural 3D with direct WhatsApp consultation.' },
       { name: 'ASK — Handcrafted Silks & Sarees', url: 'https://ask-commerce-eta.vercel.app/', img: 'assets/demos/ask-silks.webp', type: 'Silk & Saree Boutique', tag: 'Live Store', desc: 'Authentic Varanasi Kadwa & Kanchipuram bridal silks with WhatsApp enquiry checkout.' },
       { name: 'Drift — Streetwear E-Commerce', url: 'https://drift-ecommerce-weld.vercel.app/', img: 'assets/demos/drift.webp', type: 'Fashion & Apparel', tag: 'Live Store', desc: 'Bold urban fashion storefront with responsive mobile collection grid.' },
       { name: 'ASK Chai Premium Hotel & Kitchen', url: 'https://ask-chai-hotel.vercel.app/', img: 'assets/demos/ask-chai.webp', type: 'Café & Kitchen', tag: 'Live Site', desc: 'Artisanal Karak Chai house and Indian dining showcase with location and menu.' },
@@ -2480,7 +2495,7 @@ try {
       coverTagline: 'Varanasi & Kanchipuram Heirloom Sarees',
       coverImg: 'assets/demos/ask-silks.webp',
       coverBg: 'linear-gradient(135deg, #3B0715 0%, #701A28 50%, #B45309 100%)',
-      tags: ['Live Demo', 'E-Commerce', 'Handloom Silks', 'WhatsApp CTA'],
+      tags: ['Live Demo', 'E-Commerce', 'Fashion', 'Handloom Silks', 'WhatsApp CTA'],
       deliverables: ['Varanasi Kadwa & Kanjeevaram catalogue layout', 'Fast mobile 4G collection grid', 'Floating WhatsApp order & enquiry CTA', 'Verified live deployment in production'],
       description: 'Explore authentic Varanasi Kadwa and Kanchipuram bridal heirloom sarees, handcrafted by master weavers with direct WhatsApp enquiry integration.',
       liveUrl: 'https://ask-commerce-eta.vercel.app/'
@@ -2496,7 +2511,7 @@ try {
       coverTagline: 'Streetwear. Redefined. Bold Fits.',
       coverImg: 'assets/demos/drift.webp',
       coverBg: 'linear-gradient(135deg, #09090B 0%, #18181B 55%, #0284C7 100%)',
-      tags: ['Live Demo', 'Streetwear', 'E-Commerce', 'Mobile UI'],
+      tags: ['Live Demo', 'Fashion', 'Streetwear', 'E-Commerce', 'Mobile UI'],
       deliverables: ['Bold high-contrast apparel storefront', 'Drop countdown & collection filter', 'Instant mobile cart & size selector', 'Optimized sub-second load on mobile'],
       description: 'Streetwear redefined — bold looks, clean fits, and instant mobile-first checkout designed for Gen-Z & urban shoppers.',
       liveUrl: 'https://drift-ecommerce-weld.vercel.app/'
@@ -2512,7 +2527,7 @@ try {
       coverTagline: 'Artisanal Karak Chai & Modern Kitchen',
       coverImg: 'assets/demos/ask-chai.webp',
       coverBg: 'linear-gradient(135deg, #2D1305 0%, #5B270C 50%, #D97706 100%)',
-      tags: ['Live Demo', 'Café & Kitchen', 'Karak Chai', 'Google Maps'],
+      tags: ['Live Demo', 'Café & Dining', 'Karak Chai', 'Google Maps'],
       deliverables: ['Artisanal drink & street kitchen menu showcase', 'One-tap Google Maps directions pin', 'Direct WhatsApp table booking CTA', 'Local SEO & fast mobile load'],
       description: 'Hyderabad’s premier artisanal Karak Chai house and Indian kitchen in Turkayamjal, featuring rich visual menu highlights and WhatsApp bookings.',
       liveUrl: 'https://ask-chai-hotel.vercel.app/'
@@ -2528,7 +2543,7 @@ try {
       coverTagline: 'Boutique Cruises & Ocean Voyages',
       coverImg: 'assets/demos/cruises.webp',
       coverBg: 'linear-gradient(135deg, #051937 0%, #004D7A 50%, #008793 100%)',
-      tags: ['Live Demo', 'Luxury Travel', 'Voyages', 'Editorial Design'],
+      tags: ['Live Demo', 'Luxury & Travel', 'Luxury Travel', 'Voyages', 'Editorial Design'],
       deliverables: ['Cinematic voyage showcase & cabin suites', 'Interactive route & destination timeline', 'High-ticket concierge booking enquiry', 'Fast visual rendering across all devices'],
       description: 'Experience premium boutique ocean travel across the world’s most breathtaking waters with an editorial voyage catalog.',
       liveUrl: 'https://sravan-ship-co.vercel.app/'
@@ -2544,7 +2559,7 @@ try {
       coverTagline: 'Sunrise-Exclusive Golden Hour Aviation',
       coverImg: 'assets/demos/sunrise.webp',
       coverBg: 'linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #B45309 100%)',
-      tags: ['Live Demo', 'Luxury Brand', 'Editorial Story', 'Fast 4G'],
+      tags: ['Live Demo', 'Luxury & Travel', 'Luxury Brand', 'Editorial Story', 'Fast 4G'],
       deliverables: ['Golden-hour sunrise visual narrative', 'Fleet specs & premium private charter inquiry', 'Fluid animations & typography hierarchy', 'Sub-1.2s mobile 4G performance'],
       description: 'A carrier that flies only at sunrise — bespoke aviation storytelling with high-touch charter booking enquiry.',
       liveUrl: 'https://website-seven-nu-66.vercel.app/'
@@ -2560,15 +2575,63 @@ try {
       coverTagline: 'Her Special Day ♡ | K-Drama Story',
       coverImg: 'assets/demos/kdrama.webp',
       coverBg: 'linear-gradient(135deg, #4A044E 0%, #701A75 45%, #BE185D 100%)',
-      tags: ['Live Demo', 'Interactive Experience', 'Café Story', 'Scrapbook'],
+      tags: ['Live Demo', 'Interactive', 'Interactive Experience', 'Café Story', 'Scrapbook'],
       deliverables: ['Interactive chapter-based storytelling', 'Responsive photo scrapbook layout', 'Audio-visual cues & micro-interactions', 'Mobile-first tap progression'],
       description: 'A K-drama café and scrapbook interactive memory experience celebrating special moments with rich interactive pacing.',
       liveUrl: 'https://k-drama-interactive-birthday-story.vercel.app/'
+    },
+    {
+      id: 'demo-creamery',
+      title: 'ASK Cakes & Creamery — Handcrafted Bakery Tortes',
+      subtitle: 'Artisanal bakery tortes & celebration cakes handcrafted in small batches',
+      client: 'Bakery & Patisserie',
+      category: 'Café & Dining',
+      badge: 'Live Store',
+      domain: 'swrilcreamery.vercel.app',
+      coverTagline: 'Handcrafted Bakery Tortes & Celebration Cakes',
+      coverImg: 'assets/demos/swirl-creamery.webp',
+      coverBg: 'linear-gradient(135deg, #2E1065 0%, #4C1D95 50%, #7C3AED 100%)',
+      tags: ['Live Demo', 'Café & Dining', 'E-Commerce', 'Bakery', 'Cakes'],
+      deliverables: ['Artisanal cake & dessert catalogue layout', 'Celebration preorder & flavour selection guide', 'Direct WhatsApp cake customization CTA', 'Responsive mobile ordering experience'],
+      description: 'Artisanal bakery tortes and celebration cakes handcrafted in small batches on crisp butter shortcrust with fresh orchard curds and whole fruit.',
+      liveUrl: 'https://swrilcreamery.vercel.app/'
+    },
+    {
+      id: 'demo-scoopy',
+      title: 'Scoopy — Artisanal Gelato & Gourmet Ice Cream',
+      subtitle: 'Vibrant gelato flavour lab & interactive scoop bar',
+      client: 'Gelato & Dessert Bar',
+      category: 'Café & Dining',
+      badge: 'Live App',
+      domain: 'ask-scoopy.vercel.app',
+      coverTagline: 'Artisanal Gelato & Interactive Flavour Lab',
+      coverImg: 'assets/demos/ask-scoopy.webp',
+      coverBg: 'linear-gradient(135deg, #064E3B 0%, #047857 50%, #10B981 100%)',
+      tags: ['Live Demo', 'Café & Dining', 'Interactive', 'Gelato', 'Desserts'],
+      deliverables: ['Playful interactive flavour showcase & scoop builder', 'Bold high-energy neon dessert aesthetics', 'Fast 4G mobile parlour locator & menu', 'Sub-second smooth CSS & gesture micro-animations'],
+      description: 'Artisanal Italian-style gelato and gourmet scoop bar featuring bold fruit infusions, interactive flavour exploration, and one-tap store visit routing.',
+      liveUrl: 'https://ask-scoopy.vercel.app/'
+    },
+    {
+      id: 'demo-jewels',
+      title: 'Zanvara Atelier — Indian Bridal Heirlooms & Jewelry',
+      subtitle: 'Temple, Kundan, Guttapusalu & Haram procedural bridal jewelry',
+      client: 'High Fine Jewelry',
+      category: 'Fashion',
+      badge: 'Live Store',
+      domain: 'jewelsvendrella.vercel.app',
+      coverTagline: 'Four Indian Traditions. Four Lengths. Procedural 3D.',
+      coverImg: 'assets/demos/jewels-vendrella.webp',
+      coverBg: 'linear-gradient(135deg, #1C1917 0%, #44403C 50%, #D97706 100%)',
+      tags: ['Live Demo', 'Fashion', 'Luxury & Travel', 'E-Commerce', 'Bridal Jewelry'],
+      deliverables: ['Temple, Kundan & Guttapusalu bridal suite showcase', 'Procedural 3D interactive jewelry view', 'Private bridal consultation & WhatsApp booking', 'Editorial luxury typography and dark aesthetic'],
+      description: 'Four Indian jewellery traditions across four classic lengths. Explore handcrafted Temple, Kundan, Guttapusalu and Haram necklaces with procedural 3D detail and private bridal concierge.',
+      liveUrl: 'https://jewelsvendrella.vercel.app/'
     }
   ];
 
   const CATEGORIES = ['All', 'E-Commerce', 'Fashion', 'Café & Dining', 'Luxury & Travel', 'Interactive'];
-  const QUICK_TAGS = ['E-Commerce', 'Streetwear', 'Handloom Silks', 'Karak Chai', 'Luxury Travel', 'K-Drama'];
+  const QUICK_TAGS = ['E-Commerce', 'Fashion', 'Café & Dining', 'Luxury & Travel', 'Interactive', 'Bakery', 'Gelato', 'Bridal Jewelry'];
 
   let activeCategory = 'All', searchQuery = '', modalOnClose = null;
   const searchInput = document.getElementById('searchInput');
@@ -2626,7 +2689,8 @@ try {
     CATEGORIES.forEach(cat => {
       const btn = document.createElement('button');
       btn.className = 'exp-pill' + (cat === activeCategory ? ' active' : '');
-      btn.textContent = cat;
+      const count = cat === 'All' ? PLAYBOOKS.length : PLAYBOOKS.filter(p => p.category.toLowerCase() === cat.toLowerCase() || p.tags.some(t => t.toLowerCase() === cat.toLowerCase())).length;
+      btn.innerHTML = `${cat} <span style="opacity:0.65;font-size:10.5px;margin-left:5px;">(${count})</span>`;
       btn.addEventListener('click', () => { activeCategory = cat; renderPills(); renderCards(); });
       categoryPills.appendChild(btn);
     });
@@ -2673,7 +2737,7 @@ try {
             <div class="exp-card__cover-frame">
               <img src="${p.coverImg || 'assets/demos/ask-silks.webp'}" alt="${p.title}" class="exp-card__cover-img" loading="eager">
               <div class="exp-card__cover-overlay">
-                <span class="exp-card__cover-viewbtn">Launch Live Site ↗</span>
+                <span class="exp-card__cover-viewbtn" onclick="event.stopPropagation(); window.open('${p.liveUrl}', '_blank', 'noopener,noreferrer');">Launch Live Site ↗</span>
               </div>
             </div>
           </div>
