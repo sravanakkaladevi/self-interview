@@ -1,5 +1,5 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "headers": [
     {
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "source": "/(sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt)",
+      "source": "/(sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt|google520a341ab9a6f8fd\\.html)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
       ]
