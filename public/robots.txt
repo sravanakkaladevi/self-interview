@@ -1,0 +1,37 @@
+# Growmetrik Robots.txt
+# Canonical Domain: https://growmetrik.in
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+Disallow: /_vercel/
+
+# Explicit permissions for AI search engines & LLM web crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap Location
+Sitemap: https://growmetrik.in/sitemap.xml
+Host: https://growmetrik.in

@@ -25,4 +25,16 @@ for (const folder of foldersToCopy) {
   }
 }
 
+// Copy public directory files to dist root
+const publicDir = path.join(rootDir, 'public');
+if (fs.existsSync(publicDir)) {
+  const files = fs.readdirSync(publicDir);
+  for (const file of files) {
+    const src = path.join(publicDir, file);
+    const dest = path.join(distDir, file);
+    fs.cpSync(src, dest, { recursive: true, force: true });
+    console.log(`Copied public/${file} to dist/${file}`);
+  }
+}
+
 console.log('Dist sync complete!');

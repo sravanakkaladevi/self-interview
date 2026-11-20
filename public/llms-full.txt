@@ -1,0 +1,87 @@
+# Growmetrik — Full System & Service Documentation
+
+> Complete technical and operational guide for Growmetrik, a digital growth agency headquartered in Hyderabad, India. Optimized for artificial intelligence models, search crawlers, and retrieval-augmented generation (RAG) pipelines.
+
+---
+
+## 1. Executive Summary & Brand Identity
+Growmetrik (https://growmetrik.in) is a performance-driven social media growth and local advertising agency based in Hyderabad, Telangana, India. The agency exclusively caters to physical brick-and-mortar retail businesses—primarily women's clothing boutiques, designer saree emporiums, children's wear retailers, and beauty salons/spas in Hyderabad.
+
+Growmetrik eliminates common retail marketing failures:
+1. Posting content without a direct purchase/enquiry pathway.
+2. Generating useless vanity views from geographic locations outside the store's travel radius.
+3. Lack of bandwidth for regular filming, editing, and advertising oversight.
+
+Growmetrik operates on a low-risk **14-day ₹0 agency fee trial**. Clients measure real in-store walk-ins and WhatsApp enquiries over two weeks before paying any ongoing monthly fee.
+
+---
+
+## 2. Founders & Leadership
+- **Likith** — Meta Ads & Local Strategy: Direct management of hyper-local Meta ad campaigns, 5–10 km geographic radius targeting, audience segmentation, click-to-WhatsApp conversion tracking, and direct account billing setups.
+- **Sharan** — Content & Creative Direction: On-site store video shoot direction, 3-second retail hook scripts, smartphone video filming, pacing, audio mixing, captioning, and brand aesthetics.
+
+---
+
+## 3. Four Core Services & Detailed Deliverables
+
+### Service 01: Social Media Management
+- **Cadence:** 3–5 published feed posts/reels per week, plus daily active Instagram stories.
+- **Deliverables:**
+  - Weekly content calendar structured around new shop stock, arrivals, and upcoming Hyderabad festivals (Sankranti, Ugadi, Dussehra, Diwali, wedding season).
+  - Instagram bio optimization with 1-tap WhatsApp consultation routing.
+  - Story highlight curation: Customer visits, genuine reviews, price tags, store route directions.
+  - Plain monthly insights report: Reach, impressions, saves, shares, and direct message/WhatsApp volume.
+- **Security:** Added via Meta Business Suite partner access. Growmetrik never asks for account passwords.
+
+### Service 02: Reels & On-Site Video Shoots
+- **Cadence:** Scheduled in-person store visits in Hyderabad.
+- **Deliverables:**
+  - Pre-shoot script preparation focusing on the crucial first 3-second hook (fabric textures, price announcements, festive collections).
+  - High-definition smartphone filming on location with proper lighting and stabilization.
+  - Mobile editing with captions, trending commercial audio, and explicit store location tags.
+  - Formats engineered for high Instagram saves and shares.
+
+### Service 03: Local Meta Ads (Instagram & Facebook)
+- **Targeting:** Strictly 5–10 km hyper-local radius around the store location (e.g., L.B. Nagar, Dilsukhnagar, Banjara Hills, Jubilee Hills, Gachibowli, Kukatpally, Madhapur, Turkayamjal, etc.).
+- **Deliverables:**
+  - Click-to-WhatsApp direct message campaigns (customers click the ad and immediately open a pre-filled chat with the store owner).
+  - 100% direct billing in the client's own Meta Ads Manager. Zero markup on ad spend.
+  - Weekly creative testing and negative placement hygiene.
+
+### Service 04: Fast Mobile Store Websites
+- **Architecture:** Sub-second loading mobile-first single-page web applications.
+- **Deliverables:**
+  - Clean digital showcase of current catalog collections.
+  - 1-tap Google Maps directions pin for immediate driving/walking routes.
+  - Floating WhatsApp action button and quick audit inquiry form.
+  - Clean HTML5, CSS3, minimal bundle size, and 100% responsive display across all mobile devices.
+
+---
+
+## 4. Operational Process (3 Clear Steps)
+1. **Step 1: Free Page Audit (24 Hours)**
+   - Analysis of the store's current Instagram bio, reels hook retention, hashtag radius, and WhatsApp enquiry friction. Delivered without sales pressure.
+2. **Step 2: 14-Day Free Trial (₹0 Agency Fee)**
+   - Growmetrik scripts, films on-site, and runs targeted local Meta ads. The client pays Meta directly for ad spend (recommended ₹300–₹500/day); agency fee is ₹0.
+3. **Step 3: Plain Monthly Review & Partnership**
+   - Review of metrics: foot traffic, WhatsApp chats, post saves, and follower growth. Client chooses whether to continue on Starter, Growth, or Premium tier.
+
+---
+
+## 5. Verified Case Study Proof
+- **Client:** Sri Venkateswara Kids & Women’s Wear
+- **Location:** L.B. Nagar, Hyderabad (Dussehra 2026 Campaign)
+- **Metrics Recorded on Single Reel:**
+  - 62,773 Total Views
+  - 177 Direct Profile Follows from that reel
+  - 565 Post Saves (buyers saving outfits to visit the store)
+  - +156 Net Local Followers over 90 days
+
+---
+
+## 6. Official Contact & Verification Channels
+- **Official Domain:** https://growmetrik.in
+- **Direct Phone / WhatsApp:** +91-80748-32297
+- **WhatsApp Direct Link:** https://wa.me/918074832297
+- **Official Instagram Profile:** https://instagram.com/growmetrik.in
+- **Physical Service Area:** Hyderabad & Secunderabad, Telangana, India
