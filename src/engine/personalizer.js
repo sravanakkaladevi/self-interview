@@ -185,7 +185,7 @@ export function detectProfileTransitions(profile) {
  * Generates a realistic, profile-adapted question bank across all categories.
  */
 export function generateQuestionsForProfile(profile) {
-  const name = profile.fullName || 'Candidate';
+  const name = getSpokenName(profile) || 'Candidate';
   const role = profile.targetRole || 'Quality Associate';
   const company = profile.targetCompany || 'your target company';
   const techSkills = getTechnicalSkills(profile);
@@ -285,8 +285,16 @@ export function generateQuestionsForProfile(profile) {
 /**
  * Generates all 7 personalized answer styles for any question using ONLY verified profile data.
  */
+export function getSpokenName(profile) {
+  if (profile?.preferredName?.trim()) return profile.preferredName.trim();
+  const full = (profile?.fullName || '').trim();
+  if (!full) return '';
+  if (/\bsravan\b/i.test(full)) return 'Sravan';
+  return full.split(/\s+/)[0];
+}
+
 export function generateAllAnswerStyles(questionObj, profile) {
-  const name = (profile.fullName || '').trim();
+  const name = getSpokenName(profile);
   const degree = (profile.degree || '').trim();
   const degreeFull = getDegreeLabel(degree);
   const spec = (profile.specialization || '').trim();

@@ -38,7 +38,7 @@ export default function MockInterview({ profile, onRecordSession }) {
   const [finished, setFinished] = useState(false);
 
   const currentQuestion = questions[stageIdx];
-  const candidateName = profile.fullName || 'Candidate';
+  const candidateName = profile.preferredName || profile.fullName || 'Candidate';
 
   const startVoice = () => {
     const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;

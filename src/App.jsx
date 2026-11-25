@@ -28,8 +28,8 @@ const NAV_ITEMS = [
   { id: 'preview', label: 'Quick Preview', icon: Sparkles },
 ];
 
-const PROFILES_KEY = 'interviewiq-profiles-v3';
-const STATE_KEY = 'interviewiq-state-v3';
+const PROFILES_KEY = 'interviewiq-profiles-v4';
+const STATE_KEY = 'interviewiq-state-v4';
 const THEME_KEY = 'growmetrik-mode';
 
 function loadInitialProfiles() {

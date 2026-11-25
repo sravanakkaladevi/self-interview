@@ -339,6 +339,7 @@ export const SKILL_SUGGESTIONS = {
 export const DEFAULT_PROFILE = {
   id: 'sravan-permanent',
   fullName: 'Akkaladevi Sravan Kumar',
+  preferredName: 'Sravan',
   email: 'akkaladevisravankumar@gmail.com',
   location: 'Hyderabad, India',
   preferredLanguage: 'English + Telugu Support',
